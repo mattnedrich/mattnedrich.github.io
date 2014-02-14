@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tools | Matt Nedrich]]></title>
+  <link href="http://mattnedrich.github.io/blog/categories/tools/atom.xml" rel="self"/>
+  <link href="http://mattnedrich.github.io/"/>
+  <updated>2014-02-14T10:53:56-05:00</updated>
+  <id>http://mattnedrich.github.io/</id>
+  <author>
+    <name><![CDATA[Matt Nedrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Benchmarking C# Code]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/"/>
+    <updated>2014-02-07T00:01:49-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number</id>
+    <content type="html"><![CDATA[<p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Benchmarker</span>
+{
+    <span class="directive">public</span> <span class="directive">static</span> TimeSpan RunOnce(<span class="predefined-type">Action</span> action)
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        action();
+        stopwatch.Stop();
+        <span class="keyword">return</span> stopwatch.Elapsed;
+    }&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;<span class="directive">public</span> <span class="directive">static</span> IEnumerable&amp;lt;TimeSpan&amp;gt; RunMany(<span class="predefined-type">Action</span> action, <span class="type">int</span> runCount)
+{
+    <span class="predefined-type">List</span>&amp;lt;TimeSpan&amp;gt; results = <span class="keyword">new</span> <span class="predefined-type">List</span>&amp;lt;TimeSpan&amp;gt;();
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &amp;lt; runCount; i++)
+        results.Add(RunOnce(action));
+    <span class="keyword">return</span> results;
+} } </pre></div>
+</div>
+ </figure></notextile></div>
+</code></pre>
+
+<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called Foo. This could be benchmarked via:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; Foo());
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+
+<p>Similarly, if you want to benchmark a method that happens to return something like this</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="type">int</span> bar = Baz();
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+
+<p>you could do this</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="type">int</span> bar;
+TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = Baz());
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>

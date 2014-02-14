@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Machine Learning | Matt Nedrich]]></title>
+  <link href="http://mattnedrich.github.io/blog/categories/machine-learning/atom.xml" rel="self"/>
+  <link href="http://mattnedrich.github.io/"/>
+  <updated>2014-02-14T10:53:56-05:00</updated>
+  <id>http://mattnedrich.github.io/</id>
+  <author>
+    <name><![CDATA[Matt Nedrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[K-Means Clustering]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/01/26/k-means-basics/"/>
+    <updated>2014-01-26T18:19:21-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/01/26/k-means-basics</id>
+    <content type="html"><![CDATA[<h2 id="what-is-k-means">What is K-Means</h2>
+<p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we&rsquo;ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
+
+<h2 id="the-input">The Input</h2>
+<p>The input to K-Means is a set of data and a parameter K, which defines the number of clusters to partition the data into. Each input observation is a vector in d-dimensional space. Tthe number of dimensions doesn&rsquo;t matter.</p>
+
+<h2 id="the-algorithm">The Algorithm</h2>
+<p>The goal of the K-Means algorithm is to find a partitioning of the input data that minimizes within-cluster sum of squares (WCSS). Simply put, the goal is to find a clustering such that the points in each cluster are close together. This objective function (we&rsquo;ll call it $J$) can be expressed as:</p>
+
+<script type="math/tex; mode=display">
+\begin{align}
+J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
+\end{align}
+</script>
+
+<p>Here, $K$ is the number of clusters, $N$ is the number of points, $\mu_k$ is the cluster centroid for cluster $k$, and $x_i$ corresponds to input observation $i$. Informally, this function computes the variance of the observations around each cluster centroid (for a given set of K centroids). The goal is the minimize this function. Each iteration of the K-Means algorithm reduces the objective function, moving closer to a minimum.</p>
+
+<p>K-Means uses an <a href="http://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">Expectation Maximization</a> approach to partition the input data and minimize the WCSS. Conceptually, we start with an initial set of cluster centroids (with an implicitly defined WCSS score). The goal is to figure out how to move these centroids around to make the WCSS score as small as possible. The algorithm can be expressed as
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="float">1.</span> Initialize cluster centroids
+<span class="keyword">while</span> <span class="keyword">not</span> converged:
+    <span class="float">2.</span> Cluster Assignment - assign each observation to the nearest cluster centroid
+    <span class="float">3.</span> Update Centroids - update the cluster centroid locations
+</pre></div>
+</div>
+ </figure></notextile></div>
+Let&rsquo;s go over each of these steps.</p>
+
+<h4 id="initialize-cluter-centroids"><strong>1. Initialize Cluter Centroids</strong></h4>
+<p>The first step is to choose an initial set of K cluster centroid locations. This can be done many ways. One approach is to choose K random locations in whatever dimensional space you&rsquo;re working in. This approach may work, but in practice it may be difficult to choose these locations well. For example, it&rsquo;s undesirable to choose locations very far away from any of the data. Another, perhaps better, approach is to choose K random observations from the input dataset.</p>
+
+<h4 id="cluster-assignment"><strong>2. Cluster Assignment</strong></h4>
+<p>In the cluster assignment step each observation in the dataset is assigned to a cluster centroid. This is done by assigning each observation to it&rsquo;s nearest centroid.</p>
+
+<div class="note">
+<b>Note:</b> The true objective of this step is to minimize the WCSS objective. It just so happens that assinging each observation to the its nearest cluster achieves this when working in Euclidean space. This may not be the case if other distance metrics are used. 
+</div>
+
+<h4 id="cluster-centroid-update"><strong>3. Cluster Centroid Update</strong></h4>
+<p>Next, in the cluster centroid update step, each cluster centroid is updated to be the center (e.g., mean) of the observations assigned to it.</p>
+
+<p>Steps <strong>2</strong> and <strong>3</strong> are repeated until the algorithm converges. There are a few commonly used ways to determine convergence.</p>
+
+<ol>
+  <li><strong>Fixed Iteration Number</strong> - K-Means can be terminated after running for a fixed number of iterations. Obviously, this approach does not guarantee that the algorithm has converged, but can be useful when an approximate solution is sufficient, or termination is difficult to detect.</li>
+  <li><strong>No Cluster Assignment Changes</strong> - This is the most common approach. If no observations change cluster membership between iterations, this indicates that the algorithm will not continue further, and can be terminated.</li>
+  <li><strong>Error Threshold</strong> - An error threshold can also be used to terminate the algorithm. However, choosing a good threshold is problem and domain specific (e.g., a threshold that works well for one application may not work well for another).</li>
+</ol>
+
+<h2 id="example">Example</h2>
+<p>K-Means is often best understood visually, so let&rsquo;s walk through an example. Suppose you have the following data in two dimensional space.</p>
+
+<p><img width="400px" height="300px" src="/images/kmeans_basics/0ab.png" /></p>
+
+<p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we&rsquo;ll randomly select five observations from our data set to be the intial cluster centroids:</p>
+
+<p><img width="400px" height="300px" src="/images/kmeans_basics/0abc.png" /></p>
+
+<p>With the initial cluster centroids selected, we iteration steps <strong>2</strong> and <strong>3</strong> described above.</p>
+
+<p><img width="270px" src="/images/kmeans_basics/00001_a.png" />
+<img width="270px" src="/images/kmeans_basics/00001_b.png" />
+<img width="270px" src="/images/kmeans_basics/00001_c.png" /></p>
+
+<p><img width="270px" src="/images/kmeans_basics/00002_a.png" />
+<img width="270px" src="/images/kmeans_basics/00002_b.png" />
+<img width="270px" src="/images/kmeans_basics/00002_c.png" /></p>
+
+<p><img width="270px" src="/images/kmeans_basics/00003_a.png" />
+<img width="270px" src="/images/kmeans_basics/00003_b.png" />
+<img width="270px" src="/images/kmeans_basics/00003_c.png" /></p>
+
+<h2 id="other-comments">Other Comments</h2>
+
+<h3 id="repeated-runs">Repeated Runs</h3>
+<p>It&rsquo;s very important to note that K-Means is notorious for getting stuck in local minima. This means that there is no guarantee that running K-Means will actually find the optimal solution for a given starting point (set of initial cluster centroids). To overcome this, K-Means is often run multiple times with different initial cluster centroids, and the clustering with the lowest error (WCSS) is chosen.</p>
+
+<h3 id="choosing-k">Choosing K</h3>
+<p>This <a href="http://www.youtube.com/watch?v=Lz0sXs12uPk">video</a> from Andrew Ng&rsquo;s Machine Learning course on <a href="http://www.coursera.org">Coursera</a> does a great job summarizing the task of choosing K. In general, there is no great general purpose method. Choosing K often requires manual input based on data visualizaiton or other domain knowledge. Interestingly, for some applications, K may already be known. The T-Shirt sizing example in the video is a great example of this. For these types of problems the goal is to partition the data into a pre-defined number of sets, rather than learning how many distinct sub-sets make up the original input data.</p>
+
+<h3 id="strengths-and-weaknesses">Strengths and Weaknesses</h3>
+<p><strong>Strengths:</strong> K-Means is great because it&rsquo;s simple and fast. There are several off the shelf implementations available on the internet, and if they&rsquo;re not good enough, it&rsquo;s not terribly difficult to implement K-Means on your own.
+<br />
+<strong>Weaknesses</strong>:The main weakness of K-Means is that it doesn&rsquo;t work that well for non-spherical clusters. Also, as we discussed earlier, it&rsquo;s also notorius for getting stuck in local minima, and requires the user to choose K.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Points, Lines, and Calculus]]></title>
+    <link href="http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus/"/>
+    <updated>2013-03-03T18:49:00-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus</id>
+    <content type="html"><![CDATA[<p>Suppose we want to model some data using a line. This type of problem is very common and can be found in a variety of fields. It&rsquo;s also a great example of how calculus can be applied to solve problems. Let&rsquo;s say that our data set looks something like this:</p>
+
+<p><img width="325px" src="/images/points_lines_calculus/points.jpg" /></p>
+
+<p>The goal is to find a line that fits the data well - probably something like this:</p>
+
+<p><img width="325px" src="/images/points_lines_calculus/points_plot_example_solution.jpg" /></p>
+
+<p>To find the red line we&rsquo;re going to use the following approach. Let&rsquo;s consider all two dimensional lines. We&rsquo;re going to call this set $L$. We want to find some line $l$ in $L$ that models our data well. Seems obvious, right? The big question is how to we find $l$. To do this we need is a mechanism for scoring each line $l$. That way we could theoretically score every line and select the best one.</p>
+
+<p>So, given a line $l$ we require some way to score it. To do this we&rsquo;re going to use the idea that lines that fit our data well will have low error. Let&rsquo;s define error in the following way. For a given line $l$</p>
+
+<p>So, how do we find the red line? It would seem as if there are many lines would fit the data pretty well. How do we determine which one is the best? What we need is a method to score how &ldquo;good&rdquo; a given line is. To do this, we&rsquo;re going to use the following approach. Suppose we have a candidate line $l$. We can measure how close each point in our dataset is from $l$, and add all of these distances up. This sum of distances is called the error for our line $l$. If we find the line with the lowest error, we can find the line the fits our data the best.</p>
+
+<p>Let&rsquo;s get a little more formal. Recall the standard line equation $y = mx + b$. Here, $m$ is the slope of the line and $b$ is the y-intercept. With this equation we can define any two dimensional line. Now suppose we have a line defined by some $(m,b)$ pair. For a given point $p=(x,y)$ in our dataset we can compute an error measure for that point. Let&rsquo;s call this error value $e_p$, and compute it as:</p>
+
+<script type="math/tex; mode=display">
+\begin{align}
+e_p = (y - (mx + b))^2
+\end{align}
+</script>
+
+<p>This gives us the error for a particular point. We want the error for all the points. This will tell us how well the candidate line $l=(m,b)$ fits our data. We can compute this overall error $e_l$ by adding up all of the errors from each data point. This can be expressed as:</p>
+
+<script type="math/tex; mode=display">
+\begin{align}
+e_l = \sum_{p\inP} e_p
+\end{align}
+</script>
+
+<p>Notice that using our line equation, if we provide an $x$ values, the line function gives us back the corresponding $y$ value by pluggin $x$ into $mx+b$. Thus, for any point $(x,y)$, we can plug the $x$ value into our line equation, and it will give us the corresponding $y$ value assuming the point falls onto the line. If the point does not fall onto the line we can determine how close our original point is to the line by comparing the $y$ value of our original point to the $y$ value that the line equation gave us. This difference is called the error (it&rsquo;s also called the residual). </p>
+
+<p>For a given line $y=mx+b$ and a single point $(x,y)$ the error can be computed as $e=y-(mx+b)$. However, in our scenario we have several points, and we also  want to consider multiple lines ($(m,b) pairs)$. Given a line, we can compute the error of each point and add them all up to get a total error. This error $e_{(m,b)}$, can be computed as:</p>
+
+<script type="math/tex; mode=display">e_{(m,b)}=\sum_{p\in P}\left(p_y-(mp_x+b)\right)^2</script>
+
+<div class="note">
+<b>Note:</b> For those not familiar with the notation, this is describing a sum over all points $p$ in our total set of data points $P$. For each $p$ we plug in it's x value ($p_x$) to the term $mp_x+b$ and get a value. That value is then subtracted from $p_y$ (the y-value of the point). If the candidate line defined by $m$ and $b$ does a good job at fitting the point $p$ this subtracted value will be small. If the line does a good job for all points $p\in P$ then the sum of the errors will be small, and $e_{(m,b)}$ will be small. The individual error values are squared to make the error positive and to make the error function differentiable (e.g., if we used the absolute value instead, we would not be able to differentiate it).
+</div>
+<p><br /></p>
+
+<p>Now, for any set of candidate lines (set of $(m,b)$ pairs) we can compute error values for all of them and select the one with the smallest error. Although we&rsquo;ve made progress on our problem definition there are still many important questions to answer. For example - how are we going to be sure that find the best line? We could randomly choose some lines, but the set of lines to consider is infinite. We need a structured method to search for this magical &ldquo;lowest error&rdquo; line.</p>
+
+<p>The fact that we can define a line as any $(m,b)$ pair is important. By doing so we are have actually defined a line space that looks something like this:</p>
+
+<p><img width="325px" src="/images/points_lines_calculus/mb_space.jpg" /></p>
+
+<p>This space is similar to the standard 2D $(x,y)$ space that we grew up with, but instead of $x$ and $y$ we have $m$ and $b$. Every location in this space defines a unique $(m,b)$ pair, and thus a unique line. Some where in this space exists the magical line that produces the lowest amount of error for our data set. The above error function $e_{(m,b)}$ works over this $(m,b)$ space. Using our input data set (which is fixed) if we computed the error for every line in our $(m,b)$ space we could visualize this error function as a surface where the height of the surface corresponds to the error at that location in the $(m,b)$ space (the error that the line yielded given our data set). We might imagine such a surface to look something like this:</p>
+
+<p><img width="350px" src="/images/points_lines_calculus/expected_error_surface.jpg" /></p>
+
+<p>Although this isn&rsquo;t what our surface looks like for our data set, it gives us some intuition as to what we might expect. Somewhere in this surface exists a minimum (e.g., the lowest location on the surface). This location corresponds to a $(m,b)$ pair - the line that we&rsquo;re looking for that produces the lowest amount of error for our data set. Our problem is basically reduced to finding this minimum. We can do this using two approaches - both involve calculus.</p>
+
+<h2 id="method-1---closed-form-solution">Method 1 - Closed Form Solution</h2>
+<p>We have defined our error function <script type="math/tex">e_{(m,b)}=\sum_{p\in P}\left(p_y-(mp_x+b)\right)^2</script>. We are interested in finding the line ($m,b$ pair) that minimizes this function given our data set. If you&rsquo;re familiar with calculus you should realize that in order to do this all we need to do is take the derivative of our error function, set it equal to zero, and solve for $m$ and $b$. The derivative evaluated at zero will give use the line ($m,b$ pair) that yields the minimum error for our data set. To do this we should realize that our error function depends on two variables - $m$ and $b$. Therefore we will need to take two partial derivatives, one with respect to $m$ and one with respect to $b$. These partial derivatives can be computed as:</p>
+
+<script type="math/tex; mode=display">\frac{\partial}{\partial m} = 2 \sum_{i=1}^{N}-x_i(y_i-(m x_i+b))</script>
+
+<script type="math/tex; mode=display">\frac{\partial}{\partial b} = 2 \sum_{i=1}^{N}-(y_i-(m x_i+b))</script>
+
+<p>The problem now reduces to setting each of the partial derivates equal to zero and solving for $m$ and $b$. We have two equations and two unknowns, so this is certainly a solvable problem. If you&rsquo;re interested the closed form solution works out to be:</p>
+
+<script type="math/tex; mode=display">m = \frac{N\sum_{i=1}^Nx_iy_i-\sum_{i=1}^Nx_i\sum_{i=1}^Ny_i}{N\sum_{i=1}^Nx_i^2-(\sum_{i=1}^Nx_i)^2}</script>
+
+<script type="math/tex; mode=display">b = \frac{\sum_{i=1}^Ny_i}{N}-m\frac{\sum_{i=1}^Nx_i}{N}</script>
+
+<div class="note">
+<b>Note:</b> Here $N$ denotes the number of points in the input data set. There are also several terms that have semantic meanings - for example $\frac{\sum_{i=1}^Ny_i}{N}$ and $\frac{\sum_{i=1}^Nx_i}{N}$ correspond to the average y and x values (respectively) for the points in our data set.
+</div>
+<p><br /></p>
+
+<p>Using this solution we end up with the following line for out data set:</p>
+
+<p><img width="325px" src="/images/points_lines_calculus/line_solution.jpg" /></p>
+
+<p>The closed form method is simple, but it requires some algebra to solve for $m$ and $b$. For other problems this can be extremely expensive. The next method eliminates the need to solve for $m$ and $b$ directly. Rather, it utilizes a nice property of the partial deriviaties we took.</p>
+
+<h2 id="method-2---gradient-search">Method 2 - Gradient Search</h2>
+<p>The two partial derivatives above are also known as our error function&rsquo;s gradient. The gradient is extremely useful because it can help us find $m$ and $b$ without actually solving the system of equations. It does this by acting as a compass and allowing us to search around the $(m,b)$ space, always pointing us in the direction of decreasing slope for our error function. This type of search is called gradient descent. The gradient evaluated at any given $(m,b)$ point of the error function gives us the slope of the function at that location (e.g., the direction in $(m,b)$ space to move to be at a lower location on the error surface. Since we&rsquo;re interested in the lowest location of our error function (the minimum) we can use the slope to move toward the solution. This is an iterative process where we evaluate the gradient, move toward the minimum, re-evaluate the gradient at the new location, move again, and continue this process until we reach a loction where the slope is zero (e.g., the minimum).</p>
+
+<div class="note">
+<b>Note:</b> The gradient is evaluated by plugging a $m$ and $b$ value into the partial derivative equations. The result, $\frac{\partial}{\partial m}$ and $\frac{\partial}{\partial b}$ give us a vector that points in the direction of decreasing slope in the $(m,b)$ space. How far we move in that direction is a parameter that can be varied known as the step size. Choosing a good step size is important. A step size that is too large may never converge well, as it might step over the minimum location each time. A step size that is too small may take a long time to find a solution as you will be moving around very slowly.
+</div>
+<p><br /></p>
+
+<p>The actual error function for our problem given our input data looks like this:</p>
+
+<div>
+<img width="325px" src="/images/points_lines_calculus/actual_error_surface.jpg" />
+<img width="325px" src="/images/points_lines_calculus/contour_error_surface.jpg" />
+</div>
+
+<p>Eventhough it may be difficult to tell, there is an actual minimum location on this surface. It&rsquo;s easier to see using the contour plot on the right. In fact, it&rsquo;s even easier to observe if you look at the log of the error function. It&rsquo;s often useful to view the log of a function because log scales compress wide ranging data into a smaller window. Here is the log plot of our error function, and the corresponding contour plot:</p>
+
+<div>
+<img width="325px" src="/images/points_lines_calculus/actual_log_error_surface.jpg" />
+<td><img width="325px" src="/images/points_lines_calculus/contour_log_error_surface.jpg" /></td>
+</div>
+
+<p>From this, it can be seen that there is a strong minimum location in our error function.</p>
+
+<p>Gradient search can be very useful. For our problem it isn&rsquo;t too difficult to solve for $m$ and $b$ directly. However, for many problems it is often difficult or very expensive to compute a closed form solution. In such cases, the gradient can usually be computed or at least estimated and is used to search for a solution. Our problem was also very easy in that our error funtion was monotonically decreasing. That is, it had one minimum location and all other locations sloped toward that minimum. More complex functions can have several local minima or maxima. This creates a mathmatical terrain that is difficult to navigate as it is easy to get suck in local minima/maxima (e.g. other locations where the slope is equal to zero).</p>
+
+<h2 id="method-1-solution">Method 1 Solution</h2>
+<p>Back to the problem. We need to find a line, lets call it $l$, thats fits this data nicely. To be more precise about what &ldquo;fits the data&rdquo; actually means, lets define it to mean the line that results in a smallest amount of error. For any given line we can compute it&rsquo;s error by measuring how close each point is to the line, and adding all of these measurements together to produce a total error value. Our goal now is to find the line that has the lowest error value. Up to this point we&rsquo;ve managed to define the problem more precisely, but we still need a method to find this magical lowest error line. </p>
+
+<p>Talk about the fact that a  line is defined by two parameters - slope and y-intercept
+Talk about randomly choosing lines, and how this isn&rsquo;t a very good method</p>
+
+<p>We&rsquo;re interested in finding a line that fits these points the best. In order to do this, we need a way to determine how good of a fit any given line is. That is - provided a line we need some way to measure how well it fits our data. </p>
+
+<p>Further Thoughts
+More about what we&rsquo;re actually doing - e.g., modelling data (compressing all of the points to a line, which can be described by two peices of data!)
+ This concept in itself is pretty interesting. In some sense what you&rsquo;re doing when you fit a line to data is reducing the information stored in the data into a single line that can be defined by two values (slope and y-intercept).  </p>
+
+]]></content>
+  </entry>
+  
+</feed>

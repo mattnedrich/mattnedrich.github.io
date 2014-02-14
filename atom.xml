@@ -1,154 +1,24 @@
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>Matt Nedrich</title>
-  <meta name="author" content="Matt Nedrich">
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Matt Nedrich]]></title>
+  <link href="http://mattnedrich.github.io/atom.xml" rel="self"/>
+  <link href="http://mattnedrich.github.io/"/>
+  <updated>2014-02-14T10:53:56-05:00</updated>
+  <id>http://mattnedrich.github.io/</id>
+  <author>
+    <name><![CDATA[Matt Nedrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://mattnedrich.github.io">
-  <link href="/favicon.png" type="image/png" rel="icon">
-  <link href="/atom.xml" rel="alternate" title="Matt Nedrich" type="application/atom+xml">
-
-  <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
-<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-<!-- MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript"
-   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-  <script src="/javascripts/libs/jquery/jquery-2.0.3.min.js"></script>
-  
-
-</head>
-
-  <body   >
-    <div id="wrap">
-      <header role="banner">
-        <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Matt Nedrich</a>
-        </div>
-
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active">
-                    <a href="/">Blog</a>
-                </li>
-                <li >
-                    <a href="/blog/archives">Archives</a>
-                </li>
-				<li >
-                    <a href="/projects.html">Projects</a>
-                </li>
-				<li >
-                    <a href="/about.html">About</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
-                        <span class="visible-xs">RSS</span>
-                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
-                    </a>
-                </li>
-                
-            </ul>
-            
-                <form class="search navbar-form navbar-right" action="http://google.com/search" method="GET">
-                    <input type="hidden" name="q" value="site:mattnedrich.github.io">
-                    <div class="form-group">
-                        <input class="form-control" type="text" name="q" placeholder="Search">
-                    </div>
-                </form>
-            
-        </div>
-    </div>
-</nav>
-
-
-      </header>
-      <div id="main" class="container">
-        <div id="content">
-          <div class="row">
-  <div class="page-content col-md-9">
-    <div class="blog-index">
-      
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-09T14:45:25-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>I&rsquo;ve written a general K-Means implementation in Python. It can be found here:<br />
+  <entry>
+    <title type="html"><![CDATA[K-Means in Python]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python/"/>
+    <updated>2014-02-09T14:45:25-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python</id>
+    <content type="html"><![CDATA[<p>I&rsquo;ve written a general K-Means implementation in Python. It can be found here:<br />
 <a href="https://github.com/mattnedrich/algorithms/tree/master/clustering/kmeans/python">https://github.com/mattnedrich/algorithms/tree/master/clustering/kmeans/python</a></p>
 
 <p>Everything is contained in one file, <code>kmeans.py</code> The usage model is the following</p>
@@ -192,55 +62,27 @@
 
 <h3 id="dataset-1">Dataset 1</h3>
 
-<p><img width="350px" src="/images/kmeans_python/basicDataPoints.png" />
-<img width="350px" src="/images/kmeans_python/basicDataResult.png" /></p>
+<p><img width="350px" src="http://mattnedrich.github.io/images/kmeans_python/basicDataPoints.png" />
+<img width="350px" src="http://mattnedrich.github.io/images/kmeans_python/basicDataResult.png" /></p>
 
 <h3 id="dataset-2">Dataset 2</h3>
 
-<p><img width="350px" src="/images/kmeans_python/roundDataSetPoints.png" />
-<img width="350px" src="/images/kmeans_python/roundDataSetResult.png" /></p>
+<p><img width="350px" src="http://mattnedrich.github.io/images/kmeans_python/roundDataSetPoints.png" />
+<img width="350px" src="http://mattnedrich.github.io/images/kmeans_python/roundDataSetResult.png" /></p>
 
 <h3 id="dataset-3">Dataset 3</h3>
 
-<p><img width="350px" src="/images/kmeans_python/gaussianWithRoundPoints.png" />
-<img width="350px" src="/images/kmeans_python/gaussianWithRoundResult.png" /></p>
-</div>
+<p><img width="350px" src="http://mattnedrich.github.io/images/kmeans_python/gaussianWithRoundPoints.png" />
+<img width="350px" src="http://mattnedrich.github.io/images/kmeans_python/gaussianWithRoundResult.png" /></p>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-07T00:01:49-05:00" pubdate data-updated="true">Feb 7<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
+  <entry>
+    <title type="html"><![CDATA[Benchmarking C# Code]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/"/>
+    <updated>2014-02-07T00:01:49-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number</id>
+    <content type="html"><![CDATA[<p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -293,43 +135,15 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
 </pre></div>
 </div>
  </figure></notextile></div>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-01T14:15:29-05:00" pubdate data-updated="true">Feb 1<span>st</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/02/01/android-virtual-machine-acceleration/">Android Virtual Machine Acceleration</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>I&rsquo;m currently taking <a href="https://class.coursera.org/android-001">Programming Mobile Applications for Android Handheld Systems</a> on Coursera. I&rsquo;ve dabbled in Android development in the past, but haven&rsquo;t done much with emulation. In my experience the Android emulators are too slow to use, and I&rsquo;ve usually used my phone for testing/debugging.</p>
+  <entry>
+    <title type="html"><![CDATA[Android Virtual Machine Acceleration]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration/"/>
+    <updated>2014-02-01T14:15:29-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration</id>
+    <content type="html"><![CDATA[<p>I&rsquo;m currently taking <a href="https://class.coursera.org/android-001">Programming Mobile Applications for Android Handheld Systems</a> on Coursera. I&rsquo;ve dabbled in Android development in the past, but haven&rsquo;t done much with emulation. In my experience the Android emulators are too slow to use, and I&rsquo;ve usually used my phone for testing/debugging.</p>
 
 <p>Intel&rsquo;s <a href="http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager">Hardware Accelerated Execution Manager</a> (HAXM) uses CPU virtualization to speed up Android emulators. I wanted to give it a try. </p>
 
@@ -344,7 +158,7 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
 
 <p>The Intel utility looks like this:</p>
 
-<p><img width="525px" height="384px" src="/images/android_virtual/vmx_enabled.jpg" /></p>
+<p><img width="525px" height="384px" src="http://mattnedrich.github.io/images/android_virtual/vmx_enabled.jpg" /></p>
 
 <h2 id="results">Results</h2>
 <p>With virtualization verified and enabled, I followed <a href="http://developer.android.com/tools/devices/emulator.html#acceleration">this</a> writeup to install everything and setup an x86 Android emulator.</p>
@@ -352,43 +166,15 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
 <p>So how did it work? It wasn&rsquo;t that much faster, but there was a noticable difference. The HAXM emulator booted in 182 seconds, compared to 282 seconds for the ARM emulator. With both emulators open, I could click on a button (e.g., open the Settings app) and the HAXM emulator would finish first, usually by 1-5 seconds depending on the task. As a disclaimer, I was using a pretty old computer. I&rsquo;m not sure what impact that had on my experience.</p>
 
 <p>Regardless, while there was some speedup, it&rsquo;s nowhere close to testing/debugging on a real phone (as is to be expected). The emulator is nice for testing different phones/configurations, but in general I find it much nicer to just push my application to a real phone.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-26T18:19:21-05:00" pubdate data-updated="true">Jan 26<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><h2 id="what-is-k-means">What is K-Means</h2>
+  <entry>
+    <title type="html"><![CDATA[K-Means Clustering]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/01/26/k-means-basics/"/>
+    <updated>2014-01-26T18:19:21-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/01/26/k-means-basics</id>
+    <content type="html"><![CDATA[<h2 id="what-is-k-means">What is K-Means</h2>
 <p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we&rsquo;ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
 
 <h2 id="the-input">The Input</h2>
@@ -443,25 +229,25 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 <h2 id="example">Example</h2>
 <p>K-Means is often best understood visually, so let&rsquo;s walk through an example. Suppose you have the following data in two dimensional space.</p>
 
-<p><img width="400px" height="300px" src="/images/kmeans_basics/0ab.png" /></p>
+<p><img width="400px" height="300px" src="http://mattnedrich.github.io/images/kmeans_basics/0ab.png" /></p>
 
 <p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we&rsquo;ll randomly select five observations from our data set to be the intial cluster centroids:</p>
 
-<p><img width="400px" height="300px" src="/images/kmeans_basics/0abc.png" /></p>
+<p><img width="400px" height="300px" src="http://mattnedrich.github.io/images/kmeans_basics/0abc.png" /></p>
 
 <p>With the initial cluster centroids selected, we iteration steps <strong>2</strong> and <strong>3</strong> described above.</p>
 
-<p><img width="270px" src="/images/kmeans_basics/00001_a.png" />
-<img width="270px" src="/images/kmeans_basics/00001_b.png" />
-<img width="270px" src="/images/kmeans_basics/00001_c.png" /></p>
+<p><img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00001_a.png" />
+<img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00001_b.png" />
+<img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00001_c.png" /></p>
 
-<p><img width="270px" src="/images/kmeans_basics/00002_a.png" />
-<img width="270px" src="/images/kmeans_basics/00002_b.png" />
-<img width="270px" src="/images/kmeans_basics/00002_c.png" /></p>
+<p><img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00002_a.png" />
+<img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00002_b.png" />
+<img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00002_c.png" /></p>
 
-<p><img width="270px" src="/images/kmeans_basics/00003_a.png" />
-<img width="270px" src="/images/kmeans_basics/00003_b.png" />
-<img width="270px" src="/images/kmeans_basics/00003_c.png" /></p>
+<p><img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00003_a.png" />
+<img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00003_b.png" />
+<img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00003_c.png" /></p>
 
 <h2 id="other-comments">Other Comments</h2>
 
@@ -475,84 +261,28 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 <p><strong>Strengths:</strong> K-Means is great because it&rsquo;s simple and fast. There are several off the shelf implementations available on the internet, and if they&rsquo;re not good enough, it&rsquo;s not terribly difficult to implement K-Means on your own.
 <br />
 <strong>Weaknesses</strong>:The main weakness of K-Means is that it doesn&rsquo;t work that well for non-spherical clusters. Also, as we discussed earlier, it&rsquo;s also notorius for getting stuck in local minima, and requires the user to choose K.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-18T17:16:43-05:00" pubdate data-updated="true">Jan 18<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/18/latex-math-in-octopress/">LaTeX Math in Octopress</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>I found this post helpful when trying to enable LaTeX style math formulas in Octopress:</p>
+  <entry>
+    <title type="html"><![CDATA[LaTeX Math in Octopress]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress/"/>
+    <updated>2014-01-18T17:16:43-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress</id>
+    <content type="html"><![CDATA[<p>I found this post helpful when trying to enable LaTeX style math formulas in Octopress:</p>
 
 <p><a href="http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress">http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress</a></p>
 
 <p>It&rsquo;s also worth noting that when you change Octopress themes <code>source/_includes/custom/head.html</code> seems to get overwritten, so you have to re-add the provided snippet.</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-18T16:53:50-05:00" pubdate data-updated="true">Jan 18<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/18/finding-files-on-windows/">Finding Files on Windows</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>I often find myself in situations where I know a file exists but can&rsquo;t find it.</p>
+  <entry>
+    <title type="html"><![CDATA[Finding Files on Windows]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows/"/>
+    <updated>2014-01-18T16:53:50-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows</id>
+    <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can&rsquo;t find it.</p>
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 
@@ -566,43 +296,15 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 <div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
 </pre></td><td class="code"><pre><code class=""><span class="line">dir /s /b | grep [search string]</span></code></pre></td></tr></table></div></figure></notextile></div>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-03-25T21:28:00-04:00" pubdate data-updated="true">Mar 25<span>th</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/25/good-ol-c-casting/">Good Ol&#8217; C Casting</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>Understanding data representation is important. Consider the following C code.</p>
+  <entry>
+    <title type="html"><![CDATA[Good ol' C Casting]]></title>
+    <link href="http://mattnedrich.github.io/blog/2013/03/25/good-ol-c-casting/"/>
+    <updated>2013-03-25T21:28:00-04:00</updated>
+    <id>http://mattnedrich.github.io/blog/2013/03/25/good-ol-c-casting</id>
+    <content type="html"><![CDATA[<p>Understanding data representation is important. Consider the following C code.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -629,7 +331,7 @@ printf(<span class="string"><span class="delimiter">&quot;</span><span class="co
 <h2 id="dissecting-floating-point-numbers">Dissecting floating point numbers</h2>
 <p>Let&rsquo;s start with how the float value is stored in memory. Wikipedia gives us this handly IEE 754 single precision binary floating point representation diagram:</p>
 
-<p><img width="500px" src="/images/c_casting/500px-Float_example.svg.png" /></p>
+<p><img width="500px" src="http://mattnedrich.github.io/images/c_casting/500px-Float_example.svg.png" /></p>
 
 <p>The most significant bit denotes the sign of the number. The next 8 bits store what&rsquo;s called the exponent. Finally the last 23 bits store the fraction, also known as the mantissa. When determining the value stored in such a floating point number, the following approach is used.</p>
 
@@ -651,49 +353,21 @@ printf(<span class="string"><span class="delimiter">&quot;</span><span class="co
 
 <h2 id="conclusion">Conclusion</h2>
 <p>In the first snippet when we assigned foo to bar an implicit floating point to two&rsquo;s complement conversion happened. The result of this converion was then stored in bar&rsquo;s memory location. In the second snippet we cast foo to an integer and the bits that make up foo were copied verbatim and stored as bar. Because no conversion occured we ended up with a different result.</p>
-</div>
+]]></content>
+  </entry>
   
-  
+  <entry>
+    <title type="html"><![CDATA[Points, Lines, and Calculus]]></title>
+    <link href="http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus/"/>
+    <updated>2013-03-03T18:49:00-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus</id>
+    <content type="html"><![CDATA[<p>Suppose we want to model some data using a line. This type of problem is very common and can be found in a variety of fields. It&rsquo;s also a great example of how calculus can be applied to solve problems. Let&rsquo;s say that our data set looks something like this:</p>
 
-
-        </article>
-      
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2013-03-03T18:49:00-05:00" pubdate data-updated="true">Mar 3<span>rd</span>, 2013</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/03/points-lines-and-calculus/">Points, Lines, and Calculus</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>Suppose we want to model some data using a line. This type of problem is very common and can be found in a variety of fields. It&rsquo;s also a great example of how calculus can be applied to solve problems. Let&rsquo;s say that our data set looks something like this:</p>
-
-<p><img width="325px" src="/images/points_lines_calculus/points.jpg" /></p>
+<p><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/points.jpg" /></p>
 
 <p>The goal is to find a line that fits the data well - probably something like this:</p>
 
-<p><img width="325px" src="/images/points_lines_calculus/points_plot_example_solution.jpg" /></p>
+<p><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/points_plot_example_solution.jpg" /></p>
 
 <p>To find the red line we&rsquo;re going to use the following approach. Let&rsquo;s consider all two dimensional lines. We&rsquo;re going to call this set $L$. We want to find some line $l$ in $L$ that models our data well. Seems obvious, right? The big question is how to we find $l$. To do this we need is a mechanism for scoring each line $l$. That way we could theoretically score every line and select the best one.</p>
 
@@ -732,11 +406,11 @@ e_l = \sum_{p\inP} e_p
 
 <p>The fact that we can define a line as any $(m,b)$ pair is important. By doing so we are have actually defined a line space that looks something like this:</p>
 
-<p><img width="325px" src="/images/points_lines_calculus/mb_space.jpg" /></p>
+<p><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/mb_space.jpg" /></p>
 
 <p>This space is similar to the standard 2D $(x,y)$ space that we grew up with, but instead of $x$ and $y$ we have $m$ and $b$. Every location in this space defines a unique $(m,b)$ pair, and thus a unique line. Some where in this space exists the magical line that produces the lowest amount of error for our data set. The above error function $e_{(m,b)}$ works over this $(m,b)$ space. Using our input data set (which is fixed) if we computed the error for every line in our $(m,b)$ space we could visualize this error function as a surface where the height of the surface corresponds to the error at that location in the $(m,b)$ space (the error that the line yielded given our data set). We might imagine such a surface to look something like this:</p>
 
-<p><img width="350px" src="/images/points_lines_calculus/expected_error_surface.jpg" /></p>
+<p><img width="350px" src="http://mattnedrich.github.io/images/points_lines_calculus/expected_error_surface.jpg" /></p>
 
 <p>Although this isn&rsquo;t what our surface looks like for our data set, it gives us some intuition as to what we might expect. Somewhere in this surface exists a minimum (e.g., the lowest location on the surface). This location corresponds to a $(m,b)$ pair - the line that we&rsquo;re looking for that produces the lowest amount of error for our data set. Our problem is basically reduced to finding this minimum. We can do this using two approaches - both involve calculus.</p>
 
@@ -760,7 +434,7 @@ e_l = \sum_{p\inP} e_p
 
 <p>Using this solution we end up with the following line for out data set:</p>
 
-<p><img width="325px" src="/images/points_lines_calculus/line_solution.jpg" /></p>
+<p><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/line_solution.jpg" /></p>
 
 <p>The closed form method is simple, but it requires some algebra to solve for $m$ and $b$. For other problems this can be extremely expensive. The next method eliminates the need to solve for $m$ and $b$ directly. Rather, it utilizes a nice property of the partial deriviaties we took.</p>
 
@@ -775,15 +449,15 @@ e_l = \sum_{p\inP} e_p
 <p>The actual error function for our problem given our input data looks like this:</p>
 
 <div>
-<img width="325px" src="/images/points_lines_calculus/actual_error_surface.jpg" />
-<img width="325px" src="/images/points_lines_calculus/contour_error_surface.jpg" />
+<img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/actual_error_surface.jpg" />
+<img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/contour_error_surface.jpg" />
 </div>
 
 <p>Eventhough it may be difficult to tell, there is an actual minimum location on this surface. It&rsquo;s easier to see using the contour plot on the right. In fact, it&rsquo;s even easier to observe if you look at the log of the error function. It&rsquo;s often useful to view the log of a function because log scales compress wide ranging data into a smaller window. Here is the log plot of our error function, and the corresponding contour plot:</p>
 
 <div>
-<img width="325px" src="/images/points_lines_calculus/actual_log_error_surface.jpg" />
-<td><img width="325px" src="/images/points_lines_calculus/contour_log_error_surface.jpg" /></td>
+<img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/actual_log_error_surface.jpg" />
+<td><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/contour_log_error_surface.jpg" /></td>
 </div>
 
 <p>From this, it can be seen that there is a strong minimum location in our error function.</p>
@@ -802,100 +476,7 @@ Talk about randomly choosing lines, and how this isn&rsquo;t a very good method<
 More about what we&rsquo;re actually doing - e.g., modelling data (compressing all of the points to a line, which can be described by two peices of data!)
  This concept in itself is pretty interesting. In some sense what you&rsquo;re doing when you fit a line to data is reducing the information stored in the data into a single line that can be defined by two values (slope and y-intercept).  </p>
 
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-        </article>
-      
-    </div>
-
-    <ul class="pager">
-      
-        <li class="previous disabled"><a href="#">&larr;&nbsp;Older</a></li>
-      
-      <li><a href="/blog/archives">Blog Archives</a></li>
-      
-        <li class="next disabled"><a href="#">Newer&nbsp;&rarr;</a></li>
-      
-    </ul>
-  </div>
-
-  
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Recent Posts</h3>
-  </div>
-  
-  <div id="recent_posts" class="list-group">
-    
-    <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/01/android-virtual-machine-acceleration/">Android Virtual Machine Acceleration</a>
-    
-    <a class="list-group-item " href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a>
-    
-    <a class="list-group-item " href="/blog/2014/01/18/latex-math-in-octopress/">LaTeX Math in Octopress</a>
-    
-  </div>
-</section>
-<section>
-  <h1>About Me</h1>
-  <p>A little something about me.</p>
-</section>
-
-
-
-
-
-
-      
-    </aside>
-  
-</div>
-
-        </div>
-      </div>
-    </div>
-    <footer role="contentinfo"><div class="container">
-    <p class="text-muted credits">
-  Copyright &copy; 2014 - Matt Nedrich<br>
-  <small>
-      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
-      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
-  </small>
-</p>
-
-</div>
-</footer>
-    <script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/javascripts/modernizr-2.0.js"></script>
-
-
-
-
-
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-
-  </body>
-</html>
+</feed>
