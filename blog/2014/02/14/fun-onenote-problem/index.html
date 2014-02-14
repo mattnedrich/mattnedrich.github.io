@@ -4,10 +4,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: K-Means - Matt Nedrich</title>
+  <title>Hide and Seek with OneNote - Matt Nedrich</title>
   <meta name="author" content="Matt Nedrich">
 
-  <meta name="description" content="Category: K-Means">
+  
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://mattnedrich.github.ioblog/categories/k-means">
+  <link rel="canonical" href="http://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Matt Nedrich" type="application/atom+xml">
 
@@ -76,10 +76,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li >
+                <li class="active">
                     <a href="/">Blog</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/blog/archives">Archives</a>
                 </li>
 				<li >
@@ -116,77 +116,132 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <article role="article">
+    <article class="hentry" role="article">
       
-        <header class="page-header">
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-14T11:26:01-05:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Hide and Seek With OneNote
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It&rsquo;s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 20 pixel mistake.</p>
+
+<p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
+
+<p>Some backstory - my original intent was to open a cmd window to the souce directory of my blog to build it (I&rsquo;m using Octopress). At first it wasn&rsquo;t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn&rsquo;t see these in the blog source directory, but everytime I would build my blog they would show up in <strong>every</strong> output directory.</p>
+
+<p>I tried grepping for interesting files/directories in the blog source, but nothing showed up. I tried manually browsing through the source directory structure. Also note that I had show hidden files and folders turned on. Still, I found nothing.</p>
+
+<p>After some digging, and a lot of help from this <a href="http://www.tigraine.at/2009/09/01/howto-get-rid-of-onetoc2-files-using-powershell">post</a> it turns out that there were several OneNote files embedded and hidden in every directory of my blog source. The only way I was able to see them was to display them in a cmd window via</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /A:H /B
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>After it was clear that they were indeed there but hidden, I was able to delete them via</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+del /S /A:H *.onetoc2
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
           
+  
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">Matt Nedrich</span></span>
+
           
-            <h1 class="entry-title">
-              Category: K-Means
-              
-            </h1>
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-14T11:26:01-05:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
           
-        </header>
-      
-      <div class="entry-content">
-        <div id="blog-archives" class="category">
-
-
-
-  
-  <h2>2014</h2>
-
-<article class="page-header">
-  
-<h1><a href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a></h1>
-<p class="meta text-muted">
-  
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-26T18:19:21-05:00" pubdate data-updated="true">Jan 26<span>th</span>, 2014</time>
-  
 
 <span class="glyphicon glyphicon-tags"></span>&nbsp;
 <span class="categories">
   
-    <a class='category' href='/blog/categories/clustering/'>Clustering</a>, <a class='category' href='/blog/categories/k-means/'>K-Means</a>, <a class='category' href='/blog/categories/machine-learning/'>Machine Learning</a>
+    <a class='category' href='/blog/categories/debug/'>Debug</a>, <a class='category' href='/blog/categories/windows/'>Windows</a>
   
 </span>
 
 
-</p>
-
-</article>
-
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/" data-via="" data-counturl="http://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/" >Tweet</a>
+  
+  
+  
 </div>
 
-      </div>
-      
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/2014/02/09/k-means-implementation-in-python/" title="Previous Post: K-Means in Python">&laquo; K-Means in Python</a></li>
+            
+            
+          </ul>
+        
+      </footer>
     </article>
     
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
+    <a class="list-group-item active" href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
     
     <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
     
@@ -204,8 +259,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 

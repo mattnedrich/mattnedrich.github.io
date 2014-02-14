@@ -138,6 +138,68 @@
 
 
 
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-14T11:26:01-05:00" pubdate data-updated="true">Feb 14<span>th</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a></h1>
+    
+  </header>
+
+
+  <div class="entry-content clearfix"><p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It&rsquo;s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 20 pixel mistake.</p>
+
+<p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
+
+<p>Some backstory - my original intent was to open a cmd window to the souce directory of my blog to build it (I&rsquo;m using Octopress). At first it wasn&rsquo;t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn&rsquo;t see these in the blog source directory, but everytime I would build my blog they would show up in <strong>every</strong> output directory.</p>
+
+<p>I tried grepping for interesting files/directories in the blog source, but nothing showed up. I tried manually browsing through the source directory structure. Also note that I had show hidden files and folders turned on. Still, I found nothing.</p>
+
+<p>After some digging, and a lot of help from this <a href="http://www.tigraine.at/2009/09/01/howto-get-rid-of-onetoc2-files-using-powershell">post</a> it turns out that there were several OneNote files embedded and hidden in every directory of my blog source. The only way I was able to see them was to display them in a cmd window via</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /A:H /B
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>After it was clear that they were indeed there but hidden, I was able to delete them via</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+del /S /A:H *.onetoc2
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+</div>
+  
+  
+
+
+        </article>
+      
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-09T14:45:25-05:00" pubdate data-updated="true">Feb 9<span>th</span>, 2014</time>
         
       </p>
@@ -832,6 +894,8 @@ More about what we&rsquo;re actually doing - e.g., modelling data (compressing a
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
+    
     <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
     
     <a class="list-group-item " href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
@@ -840,13 +904,7 @@ More about what we&rsquo;re actually doing - e.g., modelling data (compressing a
     
     <a class="list-group-item " href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a>
     
-    <a class="list-group-item " href="/blog/2014/01/18/latex-math-in-octopress/">LaTeX Math in Octopress</a>
-    
   </div>
-</section>
-<section>
-  <h1>About Me</h1>
-  <p>A little something about me.</p>
 </section>
 
 
