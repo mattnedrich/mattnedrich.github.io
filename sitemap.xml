@@ -2,15 +2,15 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus/</loc>
-        <lastmod>2014-02-11T21:37:58-05:00</lastmod>
+        <lastmod>2014-02-17T18:41:55-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2013/03/25/good-ol-c-casting/</loc>
-        <lastmod>2014-02-11T21:23:53-05:00</lastmod>
+        <lastmod>2014-02-17T17:50:56-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows/</loc>
-        <lastmod>2014-01-18T17:50:24-05:00</lastmod>
+        <lastmod>2014-02-16T23:41:43-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress/</loc>
@@ -18,17 +18,17 @@
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2014/01/26/k-means-basics/</loc>
-        <lastmod>2014-02-11T21:39:05-05:00</lastmod>
+        <lastmod>2014-02-17T17:49:38-05:00</lastmod>
     </url>
     <url>
         <loc>
             http://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration/
         </loc>
-        <lastmod>2014-02-01T15:48:33-05:00</lastmod>
+        <lastmod>2014-02-17T17:48:32-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/</loc>
-        <lastmod>2014-02-11T20:50:05-05:00</lastmod>
+        <lastmod>2014-02-17T12:37:00-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python/</loc>
@@ -36,11 +36,19 @@
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/</loc>
-        <lastmod>2014-02-14T11:47:55-05:00</lastmod>
+        <lastmod>2014-02-17T17:47:37-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes/</loc>
+        <lastmod>2014-02-17T17:46:47-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number/</loc>
+        <lastmod>2014-02-17T17:45:21-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/about.html</loc>
-        <lastmod>2014-02-12T09:50:18-05:00</lastmod>
+        <lastmod>2014-02-17T18:44:11-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/assets/bootstrap/about.html</loc>
@@ -64,7 +72,7 @@
     </url>
     <url>
         <loc>http://mattnedrich.github.io/assets/bootstrap/</loc>
-        <lastmod>2014-02-14T11:47:55-05:00</lastmod>
+        <lastmod>2014-02-17T18:41:55-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/assets/bootstrap/javascript.html</loc>
@@ -72,23 +80,23 @@
     </url>
     <url>
         <loc>http://mattnedrich.github.io/blog/archives/</loc>
-        <lastmod>2014-02-14T11:47:55-05:00</lastmod>
+        <lastmod>2014-02-17T18:41:55-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/</loc>
-        <lastmod>2014-02-14T11:47:55-05:00</lastmod>
+        <lastmod>2014-02-17T18:41:55-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/masters_work/hci_visual_surveillance.html</loc>
-        <lastmod>2014-02-12T10:02:06-05:00</lastmod>
+        <lastmod>2014-02-17T17:52:48-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/masters_work/scene_entry_exit_discovery.html</loc>
-        <lastmod>2014-02-12T10:01:59-05:00</lastmod>
+        <lastmod>2014-02-17T17:53:29-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/projects.html</loc>
-        <lastmod>2014-02-12T10:05:47-05:00</lastmod>
+        <lastmod>2014-02-17T18:49:59-05:00</lastmod>
     </url>
     <url>
         <loc>http://mattnedrich.github.io/robots.txt</loc>

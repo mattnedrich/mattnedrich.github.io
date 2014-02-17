@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | Matt Nedrich]]></title>
   <link href="http://mattnedrich.github.io/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-14T11:57:29-05:00</updated>
+  <updated>2014-02-17T18:57:20-05:00</updated>
   <id>http://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -14,11 +14,97 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Quicksort in C#]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number/"/>
+    <updated>2014-02-17T13:36:31-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number</id>
+    <content type="html"><![CDATA[<p>I have written an implementation of quicksort in C#. It can be found here.<br />
+<a href="https://github.com/mattnedrich/algorithms/blob/master/sorting/quicksort/csharp/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/sorting/quicksort/csharp/Quicksorter.cs</a></p>
+
+<p>It operates on anything that implements <code>IComparable&lt;T&gt;</code>. Suppose you have a class <code>SortableObject</code> that implements <code>IComparable&lt;SortableObject&gt;</code>. The usage model in this scenario would be</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="predefined-type">List</span>&lt;sortableobject&gt; items = ...
+Quicksorter&lt;sortableobject&gt; sorter = <span class="keyword">new</span> Quicksorter&lt;sortableobject&gt;();
+sorter.Sort(items);
+</pre></div>
+</div>
+ </figure></notextile></div></sortableobject></sortableobject></sortableobject></p>
+
+<p>My implementation contains a main <code>Partition</code> method that is called recursively to perform the sorting. In addition, there are two helper methods. The first, <code>ChoosePivotIndex</code> is responsible for choosing a pivot element from a list to be sorted. The current implementation naively selects a pivot at random. This method is virtual to keep it <a href="http://en.wikipedia.org/wiki/Open/closed_principle">Open/Closed</a> and allow others to extend it with a better pivot selection method if desired. The other method, <code>Swap</code>, swaps two elements in a list. I&rsquo;ve found that in-lining the swapping yields faster performance, though I decided not to do so for clarity.</p>
+
+<p>I benchmarked my implementation on different types of input of varying length. Results below.</p>
+
+<p><img width="425px" src="/images/quicksort_csharp/quicksort_perf.png" /></p>
+
+<p>As displayed, my implementation (even with the naive pivot selection) is fairly robust to random, sorted, and reverse sorted lists.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C# Sorting Woes]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes/"/>
+    <updated>2014-02-16T16:22:30-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes</id>
+    <content type="html"><![CDATA[<p>I was having some fun implementing sorting algorithms and thought it might be interesting to compare my implementations against the C# built in <code>List&lt;T&gt;.Sort</code>. That was where the rabbit hole started. </p>
+
+<h3 id="slow-quicksort">Slow Quicksort</h3>
+<p>After finishing an implementation of quicksort I decided to give it a try on some big input. I wrote something to generate integer lists of arbitrary size with uniformly random elements. I ran some benchmarks, and then ran the same input against <code>List&lt;T&gt;.Sort</code>. My implementation was about <b>ten times</b> slower than the built in sort. I thought I must be doing something wrong. There must be some bug in my code. After all, the description of <code>List&lt;T&gt;.Sort</code> states that (from <a href="http://msdn.microsoft.com/en-us/library/b0zbh7b6%28v=vs.110%29.aspx">here</a>)</p>
+
+<ul>
+  <li>If the partition size is fewer than 16 elements, it uses an insertion sort algorithm.</li>
+  <li>If the number of partitions exceeds 2 * LogN, where N is the range of the input array, it uses a Heapsort algorithm.</li>
+  <li>Otherwise, it uses a Quicksort algorithm.</li>
+</ul>
+
+<p>So the built-in sorting should be using Quicksort <em>most</em> of the time. I thought my implementation might just be slow, so I started to make some optimizations. My base implementation can be found here:<br />
+<a href="https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp">https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp</a></p>
+
+<p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn&rsquo;t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
+
+<p>I was stuck, so I posted <a href="http://stackoverflow.com/questions/21818889/why-is-my-c-sharp-quicksort-implementation-significantly-slower-than-listt-sor">this</a>, and learned that the .NET Framework special cases the sorting of built-in types (ints, string, etc). Just how much of a performance gain is achieved by doing this? I wanted to find out so I setup yet another experiment.</p>
+
+<h3 id="int-vs-intinwrapper">Int vs. IntInWrapper</h3>
+<p>I compared the performance of <code>List&lt;T&gt;.Sort</code> when using plain ol&rsquo; <code>int</code>&rsquo;s to the performance when using <code>int</code>&rsquo;s in a wrapper class. For the wrapper class I used:</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">IntInWrapper</span> : IComparable&lt;intinwrapper&gt;
+{
+    <span class="directive">public</span> <span class="type">int</span> Val { get; set; }
+    <span class="directive">public</span> IntInWrapper(<span class="type">int</span> val)
+    {
+        Val = val;
+    }&lt;/intinwrapper&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;<span class="directive">public</span> <span class="type">int</span> CompareTo(IntInWrapper other)
+{
+    <span class="keyword">if</span> (<span class="local-variable">this</span>.Val &amp;lt; other.Val)
+        <span class="keyword">return</span> -<span class="integer">1</span>;
+    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="local-variable">this</span>.Val == other.Val)
+        <span class="keyword">return</span> <span class="integer">0</span>;
+    <span class="keyword">else</span>
+        <span class="keyword">return</span> <span class="integer">1</span>;
+} } </pre></div>
+</div>
+ </figure></notextile></div>
+</code></pre>
+
+<p>I benchmarked sorting Lists of various sizes for the two input classes. Results are shown below. For each List size, sorting was performed ten times (each time on a different randomized list), and the average execution time was kept.</p>
+
+<p><img width="450px" src="/images/c_sharp_sorting/ListT.png" /></p>
+
+<p>Sorting on wrapped <code>int</code>&rsquo;s drastically degrades performance compared to plain  <code>int</code>&rsquo;s. From my understanding, this is largely due to the <code>IComparable&lt;T&gt;.CompareTo</code> function pointer being used for element comparison, rather than a simple <code>&gt;</code> or <code>&lt;</code> (which likely trickles down to a single assembly instruction). Anyway, the key learning from this is that use built-in types when you need sorting performance and be aware of the penalty associated with using custom types! </p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Benchmarking C# Code]]></title>
     <link href="http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/"/>
     <updated>2014-02-07T00:01:49-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number</id>
-    <content type="html"><![CDATA[<p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
+    <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
@@ -43,7 +129,7 @@
  </figure></notextile></div>
 </code></pre>
 
-<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called Foo. This could be benchmarked via:</p>
+<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called <code>Foo</code>. This can be timed via:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
@@ -56,20 +142,23 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; Foo());
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
-<span class="type">int</span> bar = Baz();
+<span class="type">int</span> bar = FooWithReturnValue();
 </pre></div>
 </div>
  </figure></notextile></div></p>
 
-<p>you could do this</p>
+<p>you can use the above Benchmarker class via</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
 <span class="type">int</span> bar;
-TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = Baz());
+TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = FooWithReturnValue());
 </pre></div>
 </div>
  </figure></notextile></div></p>
+
+<p>I&rsquo;ve put this on github:
+<a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>
 ]]></content>
   </entry>
   

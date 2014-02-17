@@ -125,27 +125,63 @@
       
       <div class="entry-content">
         <h2 id="scene-entry-and-exit-discovery">Scene Entry and Exit Discovery</h2>
-<p>My research in school focused developing a method to reliably learn scene entry and exit locations in video. More generally, given a camera that is viewing an area (scene), the goal is to automatically learn areas in the camera view that objects (e.g., people, cars, etc.) enter into the scene and exit out of the scene. These entry and exit &ldquo;zones&rdquo; can correspond to anything from a doorway to the edge of the camera view. The resultant method to do this is novel in that it aims to model and exploit the behavioral consistency of the objects in the scene when determining if a plausible entry/exit &ldquo;zone&rdquo; is likely to be a real entry/exit. </p>
+<p><em>All of this work is presented in several publications found <a href="/About.html">here</a></em></p>
 
-<p>One of the strenghts of this work was that it allowed for weak tracking input (most existing approaches require more reliable &ldquo;strong&rdquo; tracks). This project consists of two main parts. The first part involves making sense of the weak tracking data (learning &ldquo;entities&rdquo;) so that it can be used to learn entry and exit regions. The second part involves clustering a set of potential entry and exit regions, and then scoring them using a behavioral based reliability metric to obtain a final set of entry/exit regions.</p>
+<p>My research in school focused developing a method to reliably learn scene entry and exit locations in video. More generally, given a camera that is viewing an area (scene), the goal is to automatically learn areas in the camera view that objects (e.g., people, cars, etc.) enter into the scene and exit out of the scene. These entry and exit &ldquo;zones&rdquo; can correspond to anything from a doorway to the edge of the camera view. This local camera view work was then extended to camera viewspaces, and various applications of the detected entry/exit regions were explored. My research project consisted of several large pieces. Each is detailed below.</p>
 
-<p>Part 1 (learning entities)
-As with most scene understanding algorithms, this approach uses tracking data as input. Strong tracking algorithms (ones that track objects reliably as they move through the scene) do not work well in busy urban environments, and can be computationally expensive. To compensate for these issues a &ldquo;weak&rdquo; tracking algorithm is used instead. Rather than attempting to track entire objects as strong trackers do, weak trackers track salient feature points (e.g., areas of high texture or corner points). Such trackers work well in crowded scenes, though rather than producing a single track as an object moves through the scene, a weak tracker will produce a set of short and frequently broken &ldquo;tracklets&rdquo;. These weak tracks are then clustered into &ldquo;entities&rdquo; using a modified version of mean-shift clustering on the frame level track obsersvations (see the paper for more details). This transforms the set of weak tracks into a set of &ldquo;entity&rdquo; tracks (see below). </p>
+<hr />
 
-<p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/kltToEntity.jpg" /></p>
+<h4 id="part-1-learning-entities"><strong>Part 1</strong> Learning Entities</h4>
+<p>As with most scene understanding algorithms, this approach uses tracking data as input. Strong tracking algorithms (ones that track objects reliably as they move through the scene) do not work well in busy urban environments, and can be computationally expensive. To compensate for these issues a &ldquo;weak&rdquo; tracking algorithm is used instead. Rather than attempting to track entire objects as strong trackers do, weak trackers track salient feature points (e.g., areas of high texture or corner points). Such trackers work well in crowded scenes, though rather than producing a single track as an object moves through the scene, a weak tracker will produce a set of short and frequently broken &ldquo;tracklets&rdquo;. These weak tracks are then clustered into &ldquo;entities&rdquo; using a modified version of mean-shift clustering on the frame level track observations (see the paper for more details). This transforms the set of weak tracks into a set of &ldquo;entity&rdquo; tracks (see below). </p>
 
-<p>This idea being using object tracks is to cluster track start points to form entry clusters, and track end points to form exit clusters. However, this is not possible using a weak tracker as the tracks are very fragmented. The process of learning entity tracks, however, drastically reduces the noise of the weak tracker. To demonstrate this, the below image displays weak tracker start observations and the corresponding entity track start observations (after transforming the weak tracks to entity tracks). </p>
+<p><img width="550px" src="/images/masters_work/scene_entry_exit_discovery/kltToEntity.jpg" /></p>
+
+<hr />
+
+<h4 id="part-2-learning-entries-and-exits"><strong>Part 2</strong> Learning Entries and Exits</h4>
+<p>Using the new set of entity tracks, the set of entity entry and entity exit observations are clustered using mean-shift clustering, and a convex-hull area reduction technique is used to obtain tighter clusters and a more generalized cluster shape (see paper). This results in a set of potential entry and exit regions. These potential regions are then scored using two behavorial reliability metrics - directional consistency, and interaction consistency. Directional consistency constrains the regions to be somewhat directional, and enforces that objects leave and entry or enter an exit in a semi-directional manner (e.g., objects don&rsquo;t spawn in the scene and leave/enter an entry/exit in all directions). Interaction consistency evaluates how other entity tracks in the scene intersect each potential entry and exit region. This enforces the idea that if an entry exists with objects leaving the entry in some direction, other objects in the scene should not intersect the region in the same direction that objects enter into the scene from the entry (the entry/exit region should not be a &ldquo;through state&rdquo;). An example of how the described reliability metrics can be used to reduce a set of potential entry/exit regions to reliable entry/exit regions is shown below. </p>
 
 <p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/kltStartToEntityStart.jpg" /></p>
-
-<p>Part 2 (learning entries and exits)
-Using the new set of entity tracks, the set of entity entry and entity exit observations are clustered using mean-shift clustering, and a convex-hull area reduction technique is used to obtain tighter clusters and a more generalized cluster shape (see paper). This results in a set of potential entry and exit regions. These potential regions are then scored using two behavorial reliability metrics - directional consistency, and interaction consistency. Directional consistency constrains the regions to be somewhat directional, and enforces that objects leave and entry or enter an exit in a semi-directional manner (e.g., objects don&rsquo;t spawn in the scene and leave/enter an entry/exit in all directions). Interaction consistency evaluates how other entity tracks in the scene intersect each potential entry and exit region. This enforces the idea that if an entry exists with objects leaving the entry in some direction, other objects in the scene should not intersect the region in the same direction that objects enter into the scene from the entry (the entry/exit region should not be a &ldquo;through state&rdquo;). An example of how the described reliability metrics can be used to reduce a set of potential entry/exit regions to reliable entry/exit regions is shown below. </p>
 
 <p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/potentialToReliableEntries.jpg" /></p>
 
 <p>In the above reliable entry image, the arrows denote the most popular angle that objects entered into the scene from each entry. Additional results are shown below. </p>
 
 <p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/additionalResults.jpg" /></p>
+
+<hr />
+
+<h4 id="part-3-camera-viewspace-extension"><strong>Part 3</strong> Camera Viewspace Extension</h4>
+<p>The approach described above applies to a single camera view. However, pan-tilt-zoom cameras are commonly used on surveillance applications. These cameras can pan 360 degrees and tilt 90 degrees, allowing them to move around to view different parts of the world. For a given pan-tilt orientation, a fixed view is observed (i.e., the camera views from Parts 1 and 2). The entire viewspace of a pan-tilt-zoom camera can be captured as a lower hemisphere, shown below:</p>
+
+<p><img width="300px" src="/images/masters_work/scene_entry_exit_discovery/panoinbowl.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/panoinbowlpano.jpg" /></p>
+
+<p>The first image shows the lower hemisphere camera viewspace. The second image shows a projection of the camera viewspace onto the equator plane. This projection is called a spherical panorama, and is used to help visualize the camera viewspace in a concise two dimensional image. Recall that at any given time, the camera is oriented in a particular pan-tilt orientation, and thus is viewing a sub-portion of the overall viewspace. The below images show a local view highlighted in the greater pan-tilt-zoom camera viewspace. </p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/viewspacepatch3.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/local_view.jpg" /></p>
+
+<p>The entry/exit detection method described in Parts 1 and 2 was extended to work in camera viewspaces. As above, tracking data was collected. This tracking data was is an aggregate of different local view trajectories projected into the viewspace. The entity tracks for several local views are shown below.</p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/global_entities.jpg" /></p>
+
+<p>As with the local view approach, these trajectories were transformed into a set of potential entry/exit regions, and the scoring mechanism was applied to produce a final set of reliable entry/exit regions, shown below.</p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera1_entries.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera1_exits.jpg" /></p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera2_entries.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera2_exits.jpg" /></p>
+
+<hr />
+
+<h4 id="part-4-using-the-detected-regions"><strong>Part 4</strong> Using the Detected Regions</h4>
+<p>Once regions are learned, they can be used to model occluded paths, and usage statistics can be collected to detect anomalous activities. Example occluded paths that were able to be detected are display below (path starting locations in red, and re-appearance locations in green):</p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/scene1Occlusions.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/scene2Occlusions.jpg" /></p>
+
 
       </div>
       
@@ -177,15 +213,15 @@ Using the new set of entity tracks, the set of entity entry and entity exit obse
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/16/c-sharp-sorting-woes/">C# Sorting Woes</a>
+    
     <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
     
     <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
     
     <a class="list-group-item " href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/01/android-virtual-machine-acceleration/">Android Virtual Machine Acceleration</a>
-    
-    <a class="list-group-item " href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a>
     
   </div>
 </section>

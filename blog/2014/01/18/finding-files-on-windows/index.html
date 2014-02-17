@@ -151,15 +151,23 @@
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">dir /s /b | findstr [search string]</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | findstr [search string]
+</pre></div>
+</div>
+ </figure></notextile></div>
 
 <p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
 
 <p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">dir /s /b | grep [search string]</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | grep [search string]
+</pre></div>
+</div>
+ </figure></notextile></div>
 
 </div>
 
@@ -231,15 +239,15 @@
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/16/c-sharp-sorting-woes/">C# Sorting Woes</a>
+    
     <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
     
     <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
     
     <a class="list-group-item " href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/01/android-virtual-machine-acceleration/">Android Virtual Machine Acceleration</a>
-    
-    <a class="list-group-item " href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a>
     
   </div>
 </section>

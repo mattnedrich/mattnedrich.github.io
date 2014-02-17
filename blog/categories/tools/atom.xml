@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools | Matt Nedrich]]></title>
   <link href="http://mattnedrich.github.io/blog/categories/tools/atom.xml" rel="self"/>
   <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-14T11:57:29-05:00</updated>
+  <updated>2014-02-17T18:57:20-05:00</updated>
   <id>http://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -18,7 +18,7 @@
     <link href="http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/"/>
     <updated>2014-02-07T00:01:49-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number</id>
-    <content type="html"><![CDATA[<p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
+    <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
@@ -43,7 +43,7 @@
  </figure></notextile></div>
 </code></pre>
 
-<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called Foo. This could be benchmarked via:</p>
+<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called <code>Foo</code>. This can be timed via:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
@@ -56,20 +56,23 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; Foo());
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
-<span class="type">int</span> bar = Baz();
+<span class="type">int</span> bar = FooWithReturnValue();
 </pre></div>
 </div>
  </figure></notextile></div></p>
 
-<p>you could do this</p>
+<p>you can use the above Benchmarker class via</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
   <div class="code"><pre>
 <span class="type">int</span> bar;
-TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = Baz());
+TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = FooWithReturnValue());
 </pre></div>
 </div>
  </figure></notextile></div></p>
+
+<p>I&rsquo;ve put this on github:
+<a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>
 ]]></content>
   </entry>
   

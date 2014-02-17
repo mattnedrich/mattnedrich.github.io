@@ -4,7 +4,7 @@
   <title><![CDATA[Matt Nedrich]]></title>
   <link href="http://mattnedrich.github.io/atom.xml" rel="self"/>
   <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-14T11:57:29-05:00</updated>
+  <updated>2014-02-17T18:57:20-05:00</updated>
   <id>http://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -14,15 +14,102 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Quicksort in C#]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number/"/>
+    <updated>2014-02-17T13:36:31-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number</id>
+    <content type="html"><![CDATA[<p>I have written an implementation of quicksort in C#. It can be found here.<br />
+<a href="https://github.com/mattnedrich/algorithms/blob/master/sorting/quicksort/csharp/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/sorting/quicksort/csharp/Quicksorter.cs</a></p>
+
+<p>It operates on anything that implements <code>IComparable&lt;T&gt;</code>. Suppose you have a class <code>SortableObject</code> that implements <code>IComparable&lt;SortableObject&gt;</code>. The usage model in this scenario would be</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="predefined-type">List</span>&lt;SortableObject&gt; items = ...
+Quicksorter&lt;SortableObject&gt; sorter = <span class="keyword">new</span> Quicksorter&lt;SortableObject&gt;();
+sorter.Sort(items);
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>My implementation contains a main <code>Partition</code> method that is called recursively to perform the sorting. In addition, there are two helper methods. The first, <code>ChoosePivotIndex</code> is responsible for choosing a pivot element from a list to be sorted. The current implementation naively selects a pivot at random. This method is virtual to keep it <a href="http://en.wikipedia.org/wiki/Open/closed_principle">Open/Closed</a> and allow others to extend it with a better pivot selection method if desired. The other method, <code>Swap</code>, swaps two elements in a list. I&rsquo;ve found that in-lining the swapping yields faster performance, though I decided not to do so for clarity.</p>
+
+<p>I benchmarked my implementation on different types of input of varying length. Results below.</p>
+
+<p><img width="425px" src="http://mattnedrich.github.io/images/quicksort_csharp/quicksort_perf.png" /></p>
+
+<p>As displayed, my implementation (even with the naive pivot selection) is fairly robust to random, sorted, and reverse sorted lists.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[C# Sorting Woes]]></title>
+    <link href="http://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes/"/>
+    <updated>2014-02-16T16:22:30-05:00</updated>
+    <id>http://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes</id>
+    <content type="html"><![CDATA[<p>I was having some fun implementing sorting algorithms and thought it might be interesting to compare my implementations against the C# built in <code>List&lt;T&gt;.Sort</code>. That was where the rabbit hole started. </p>
+
+<h3 id="slow-quicksort">Slow Quicksort</h3>
+<p>After finishing an implementation of quicksort I decided to give it a try on some big input. I wrote something to generate integer lists of arbitrary size with uniformly random elements. I ran some benchmarks, and then ran the same input against <code>List&lt;T&gt;.Sort</code>. My implementation was about <b>ten times</b> slower than the built in sort. I thought I must be doing something wrong. There must be some bug in my code. After all, the description of <code>List&lt;T&gt;.Sort</code> states that (from <a href="http://msdn.microsoft.com/en-us/library/b0zbh7b6%28v=vs.110%29.aspx">here</a>)</p>
+
+<ul>
+  <li>If the partition size is fewer than 16 elements, it uses an insertion sort algorithm.</li>
+  <li>If the number of partitions exceeds 2 * LogN, where N is the range of the input array, it uses a Heapsort algorithm.</li>
+  <li>Otherwise, it uses a Quicksort algorithm.</li>
+</ul>
+
+<p>So the built-in sorting should be using Quicksort <em>most</em> of the time. I thought my implementation might just be slow, so I started to make some optimizations. My base implementation can be found here:<br />
+<a href="https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp">https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp</a></p>
+
+<p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn&rsquo;t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
+
+<p>I was stuck, so I posted <a href="http://stackoverflow.com/questions/21818889/why-is-my-c-sharp-quicksort-implementation-significantly-slower-than-listt-sor">this</a>, and learned that the .NET Framework special cases the sorting of built-in types (ints, string, etc). Just how much of a performance gain is achieved by doing this? I wanted to find out so I setup yet another experiment.</p>
+
+<h3 id="int-vs-intinwrapper">Int vs. IntInWrapper</h3>
+<p>I compared the performance of <code>List&lt;T&gt;.Sort</code> when using plain ol&rsquo; <code>int</code>&rsquo;s to the performance when using <code>int</code>&rsquo;s in a wrapper class. For the wrapper class I used:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">IntInWrapper</span> : IComparable&lt;IntInWrapper&gt;
+{
+    <span class="directive">public</span> <span class="type">int</span> Val { get; set; }
+    <span class="directive">public</span> IntInWrapper(<span class="type">int</span> val)
+    {
+        Val = val;
+    }
+
+    <span class="directive">public</span> <span class="type">int</span> CompareTo(IntInWrapper other)
+    {
+        <span class="keyword">if</span> (<span class="local-variable">this</span>.Val &lt; other.Val)
+            <span class="keyword">return</span> -<span class="integer">1</span>;
+        <span class="keyword">else</span> <span class="keyword">if</span> (<span class="local-variable">this</span>.Val == other.Val)
+            <span class="keyword">return</span> <span class="integer">0</span>;
+        <span class="keyword">else</span>
+            <span class="keyword">return</span> <span class="integer">1</span>;
+    }
+}
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>I benchmarked sorting Lists of various sizes for the two input classes. Results are shown below. For each List size, sorting was performed ten times (each time on a different randomized list), and the average execution time was kept.</p>
+
+<p><img width="450px" src="http://mattnedrich.github.io/images/c_sharp_sorting/ListT.png" /></p>
+
+<p>Sorting on wrapped <code>int</code>&rsquo;s drastically degrades performance compared to plain  <code>int</code>&rsquo;s. From my understanding, this is largely due to the <code>IComparable&lt;T&gt;.CompareTo</code> function pointer being used for element comparison, rather than a simple <code>&gt;</code> or <code>&lt;</code> (which likely trickles down to a single assembly instruction). Anyway, the key learning from this is that use built-in types when you need sorting performance and be aware of the penalty associated with using custom types! </p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Hide and Seek with OneNote]]></title>
     <link href="http://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/"/>
     <updated>2014-02-14T11:26:01-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem</id>
-    <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It&rsquo;s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 20 pixel mistake.</p>
+    <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It&rsquo;s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
 
 <p><img width="250px" src="http://mattnedrich.github.io/images/onenote_fun/onenote_cmd_window.jpg" /></p>
 
-<p>Some backstory - my original intent was to open a cmd window to the souce directory of my blog to build it (I&rsquo;m using Octopress). At first it wasn&rsquo;t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn&rsquo;t see these in the blog source directory, but everytime I would build my blog they would show up in <strong>every</strong> output directory.</p>
+<p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I&rsquo;m using Octopress). At first it wasn&rsquo;t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn&rsquo;t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
 
 <p>I tried grepping for interesting files/directories in the blog source, but nothing showed up. I tried manually browsing through the source directory structure. Also note that I had show hidden files and folders turned on. Still, I found nothing.</p>
 
@@ -116,7 +203,7 @@ del /S /A:H *.onetoc2
     <link href="http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/"/>
     <updated>2014-02-07T00:01:49-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number</id>
-    <content type="html"><![CDATA[<p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
+    <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -142,7 +229,7 @@ del /S /A:H *.onetoc2
 </div>
  </figure></notextile></div>
 
-<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called Foo. This could be benchmarked via:</p>
+<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called <code>Foo</code>. This can be timed via:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -155,20 +242,23 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; Foo());
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
-<span class="type">int</span> bar = Baz();
+<span class="type">int</span> bar = FooWithReturnValue();
 </pre></div>
 </div>
  </figure></notextile></div>
 
-<p>you could do this</p>
+<p>you can use the above Benchmarker class via</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
 <span class="type">int</span> bar;
-TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
+TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
 </pre></div>
 </div>
  </figure></notextile></div>
+
+<p>I&rsquo;ve put this on github:
+<a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>
 ]]></content>
   </entry>
   
@@ -177,7 +267,7 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
     <link href="http://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration/"/>
     <updated>2014-02-01T14:15:29-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration</id>
-    <content type="html"><![CDATA[<p>I&rsquo;m currently taking <a href="https://class.coursera.org/android-001">Programming Mobile Applications for Android Handheld Systems</a> on Coursera. I&rsquo;ve dabbled in Android development in the past, but haven&rsquo;t done much with emulation. In my experience the Android emulators are too slow to use, and I&rsquo;ve usually used my phone for testing/debugging.</p>
+    <content type="html"><![CDATA[<p>I&rsquo;ve dabbled in Android development in the past, but haven&rsquo;t done much with emulation. In my experience the Android emulators are too slow to use, and I&rsquo;ve usually used my phone for testing/debugging.</p>
 
 <p>Intel&rsquo;s <a href="http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager">Hardware Accelerated Execution Manager</a> (HAXM) uses CPU virtualization to speed up Android emulators. I wanted to give it a try. </p>
 
@@ -197,7 +287,7 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
 <h2 id="results">Results</h2>
 <p>With virtualization verified and enabled, I followed <a href="http://developer.android.com/tools/devices/emulator.html#acceleration">this</a> writeup to install everything and setup an x86 Android emulator.</p>
 
-<p>So how did it work? It wasn&rsquo;t that much faster, but there was a noticable difference. The HAXM emulator booted in 182 seconds, compared to 282 seconds for the ARM emulator. With both emulators open, I could click on a button (e.g., open the Settings app) and the HAXM emulator would finish first, usually by 1-5 seconds depending on the task. As a disclaimer, I was using a pretty old computer. I&rsquo;m not sure what impact that had on my experience.</p>
+<p>So how did it work? It wasn&rsquo;t that much faster, but there was a noticeable difference. The HAXM emulator booted in 182 seconds, compared to 282 seconds for the ARM emulator. With both emulators open, I could click on a button (e.g., open the Settings app) and the HAXM emulator would finish first, usually by 1-5 seconds depending on the task. As a disclaimer, I was using a pretty old computer. I&rsquo;m not sure what impact that had on my experience.</p>
 
 <p>Regardless, while there was some speedup, it&rsquo;s nowhere close to testing/debugging on a real phone (as is to be expected). The emulator is nice for testing different phones/configurations, but in general I find it much nicer to just push my application to a real phone.</p>
 ]]></content>
@@ -212,7 +302,7 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
 <p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we&rsquo;ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
 
 <h2 id="the-input">The Input</h2>
-<p>The input to K-Means is a set of data and a parameter K, which defines the number of clusters to partition the data into. Each input observation is a vector in d-dimensional space. Tthe number of dimensions doesn&rsquo;t matter.</p>
+<p>The input to K-Means is a set of data and a parameter K, which defines the number of clusters to partition the data into. Each input observation is a vector in d-dimensional space. The number of dimensions doesn&rsquo;t matter.</p>
 
 <h2 id="the-algorithm">The Algorithm</h2>
 <p>The goal of the K-Means algorithm is to find a partitioning of the input data that minimizes within-cluster sum of squares (WCSS). Simply put, the goal is to find a clustering such that the points in each cluster are close together. This objective function (we&rsquo;ll call it $J$) can be expressed as:</p>
@@ -265,11 +355,11 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 
 <p><img width="400px" height="300px" src="http://mattnedrich.github.io/images/kmeans_basics/0ab.png" /></p>
 
-<p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we&rsquo;ll randomly select five observations from our data set to be the intial cluster centroids:</p>
+<p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we&rsquo;ll randomly select five observations from our data set to be the initial cluster centroids:</p>
 
 <p><img width="400px" height="300px" src="http://mattnedrich.github.io/images/kmeans_basics/0abc.png" /></p>
 
-<p>With the initial cluster centroids selected, we iteration steps <strong>2</strong> and <strong>3</strong> described above.</p>
+<p>With the initial cluster centroids selected, steps <strong>2</strong> and <strong>3</strong> are iterated as described above.</p>
 
 <p><img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00001_a.png" />
 <img width="270px" src="http://mattnedrich.github.io/images/kmeans_basics/00001_b.png" />
@@ -320,15 +410,23 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">dir /s /b | findstr [search string]</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | findstr [search string]
+</pre></div>
+</div>
+ </figure></notextile></div>
 
 <p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
 
 <p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
 
-<div class="bogus-wrapper"><notextile><figure class="code"><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
-</pre></td><td class="code"><pre><code class=""><span class="line">dir /s /b | grep [search string]</span></code></pre></td></tr></table></div></figure></notextile></div>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | grep [search string]
+</pre></div>
+</div>
+ </figure></notextile></div>
 
 ]]></content>
   </entry>
@@ -360,18 +458,18 @@ printf(<span class="string"><span class="delimiter">&quot;</span><span class="co
 </div>
  </figure></notextile></div>
 
-<p>This time around we get the value 1084227584. That&rsquo;s certainly not 5 (as we observed the first time around), so what&rsquo;s going on here. As you may have guessed, integer and floating point numbers are stored differently.</p>
+<p>This time around we get the value 1084227584. That&rsquo;s certainly not 5 (as we observed the first time around), so what&rsquo;s going on here. As you may already know, integer and floating point numbers are stored differently.</p>
 
-<h2 id="dissecting-floating-point-numbers">Dissecting floating point numbers</h2>
-<p>Let&rsquo;s start with how the float value is stored in memory. Wikipedia gives us this handly IEE 754 single precision binary floating point representation diagram:</p>
+<h3 id="floating-point-numbers">Floating Point Numbers</h3>
+<p>Let&rsquo;s start with how the float value is stored in memory. Wikipedia gives us this handy IEE 754 single precision binary floating point representation diagram:</p>
 
 <p><img width="500px" src="http://mattnedrich.github.io/images/c_casting/500px-Float_example.svg.png" /></p>
 
 <p>The most significant bit denotes the sign of the number. The next 8 bits store what&rsquo;s called the exponent. Finally the last 23 bits store the fraction, also known as the mantissa. When determining the value stored in such a floating point number, the following approach is used.</p>
 
-<script type="math/tex; mode=display">value = (1.0+fraction)\cdot 2^{(exponent-127)}</script>
+<script type="math/tex; mode=display">(1.0+fraction)\cdot 2^{(exponent-127)}</script>
 
-<p>In our example we were storing the value 5. This can be computed as <script type="math/tex">1.25\cdot 2^2</script>. As a 32-bit floating point number this is stored as </p>
+<p>In our example we were storing the value <script type="math/tex">5</script>. This can be computed as <script type="math/tex">1.25\cdot 2^2</script>. As a 32-bit floating point number this is stored as </p>
 
 <p><script type="math/tex">{01000000101000000000000000000000}_2</script>. </p>
 
@@ -379,14 +477,13 @@ printf(<span class="string"><span class="delimiter">&quot;</span><span class="co
 
 <p><script type="math/tex">\color{blue}0\color{green}{10000001}\color{red}{01000000000000000000000}_2</script>. </p>
 
-<p>If we look at these numbers individually we see that the sign bit <script type="math/tex">\color{blue}{0}_2</script> tells us the number is positive. The exponent <script type="math/tex">\color{green}{100000001}_2</script> is equal to <script type="math/tex">129-127=2</script> in decimal. Finally the fraction <script type="math/tex">\color{red}{01000000000000000000000}_2</script> gives us <script type="math/tex">2^{-2} = 0.25</script>. </p>
+<p>Here, the sign bit <script type="math/tex">\color{blue}{0}_2</script> tells us the number is positive. The exponent <script type="math/tex">\color{green}{100000001}_2</script> is equal to <script type="math/tex">129-127=2</script> in base ten. Finally the fraction <script type="math/tex">\color{red}{01000000000000000000000}_2</script> gives us <script type="math/tex">2^{-2}</script>, also known as <script type="math/tex">0.25</script>. If we put these three pieces together we see that they give us <script type="math/tex">1.25\cdot 2^2 = 5</script>.</p>
 
-<p>If we put these three peices together we see that they give us the number <script type="math/tex">5</script>, as </p>
+<h3 id="integer-numbers">Integer Numbers</h3>
+<p>Integers are stored in standard <a href="http://en.wikipedia.org/wiki/Two%27s_complement">two&rsquo;s complement</a> format. The number five, would be stored as <script type="math/tex">{101}_2</script>. In two&rsquo;s complement, this is <script type="math/tex">1\cdot 2^2 + 0\cdot 2^1 + 1\cdot 2^0</script>. We can easily see that this two&rsquo;s complement representation of <script type="math/tex">5</script> is very different than the above floating point representation.</p>
 
-<p><script type="math/tex">(1.0+fraction)\cdot 2^{(exponent-127)} = 1.25\cdot 2^2 = 5</script>.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-<p>In the first snippet when we assigned foo to bar an implicit floating point to two&rsquo;s complement conversion happened. The result of this converion was then stored in bar&rsquo;s memory location. In the second snippet we cast foo to an integer and the bits that make up foo were copied verbatim and stored as bar. Because no conversion occured we ended up with a different result.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>In the first snippet when we assigned foo to bar an implicit floating point to two&rsquo;s complement conversion happened. The result of this conversion was then stored in bar&rsquo;s memory location. In the second snippet we cast foo to an integer and the bits that make up foo were copied verbatim and stored as bar. Because no conversion occurred we ended up with a different result because we treated the bits from the floating point representation of 5 as if they were two&rsquo;s complement.</p>
 ]]></content>
   </entry>
   
@@ -405,57 +502,41 @@ printf(<span class="string"><span class="delimiter">&quot;</span><span class="co
 
 <p>To find the red line we&rsquo;re going to use the following approach. Let&rsquo;s consider all two dimensional lines. We&rsquo;re going to call this set $L$. We want to find some line $l$ in $L$ that models our data well. Seems obvious, right? The big question is how to we find $l$. To do this we need is a mechanism for scoring each line $l$. That way we could theoretically score every line and select the best one.</p>
 
-<p>So, given a line $l$ we require some way to score it. To do this we&rsquo;re going to use the idea that lines that fit our data well will have low error. Let&rsquo;s define error in the following way. For a given line $l$</p>
+<p>Scoring every line is impossible, as there are infinite lines. We can, however, develop a mechanism for scoring a single line. Recall the standard line equation $y = mx + b$. Here, $m$ is the slope of the line and $b$ is the y-intercept. With this equation we can define any two dimensional line. Now suppose we have a line defined by some $(m,b)$ pair. We&rsquo;re going to use the following approach to compute the error <script type="math/tex">e_{(m,b)} </script> for line <script type="math/tex">(m,b)</script>.</p>
 
-<p>So, how do we find the red line? It would seem as if there are many lines would fit the data pretty well. How do we determine which one is the best? What we need is a method to score how &ldquo;good&rdquo; a given line is. To do this, we&rsquo;re going to use the following approach. Suppose we have a candidate line $l$. We can measure how close each point in our dataset is from $l$, and add all of these distances up. This sum of distances is called the error for our line $l$. If we find the line with the lowest error, we can find the line the fits our data the best.</p>
+<script type="math/tex; mode=display">e_{(m,b)}=\sum_{p\in P}\left( \color{red}{p_y}-( \color{blue}{mp_x+b})\right)^2</script>
 
-<p>Let&rsquo;s get a little more formal. Recall the standard line equation $y = mx + b$. Here, $m$ is the slope of the line and $b$ is the y-intercept. With this equation we can define any two dimensional line. Now suppose we have a line defined by some $(m,b)$ pair. For a given point $p=(x,y)$ in our dataset we can compute an error measure for that point. Let&rsquo;s call this error value $e_p$, and compute it as:</p>
-
-<script type="math/tex; mode=display">
-\begin{align}
-e_p = (y - (mx + b))^2
-\end{align}
-</script>
-
-<p>This gives us the error for a particular point. We want the error for all the points. This will tell us how well the candidate line $l=(m,b)$ fits our data. We can compute this overall error $e_l$ by adding up all of the errors from each data point. This can be expressed as:</p>
-
-<script type="math/tex; mode=display">
-\begin{align}
-e_l = \sum_{p\inP} e_p
-\end{align}
-</script>
-
-<p>Notice that using our line equation, if we provide an $x$ values, the line function gives us back the corresponding $y$ value by pluggin $x$ into $mx+b$. Thus, for any point $(x,y)$, we can plug the $x$ value into our line equation, and it will give us the corresponding $y$ value assuming the point falls onto the line. If the point does not fall onto the line we can determine how close our original point is to the line by comparing the $y$ value of our original point to the $y$ value that the line equation gave us. This difference is called the error (it&rsquo;s also called the residual). </p>
-
-<p>For a given line $y=mx+b$ and a single point $(x,y)$ the error can be computed as $e=y-(mx+b)$. However, in our scenario we have several points, and we also  want to consider multiple lines ($(m,b) pairs)$. Given a line, we can compute the error of each point and add them all up to get a total error. This error $e_{(m,b)}$, can be computed as:</p>
-
-<script type="math/tex; mode=display">e_{(m,b)}=\sum_{p\in P}\left(p_y-(mp_x+b)\right)^2</script>
+<p>Here <script type="math/tex">P</script> is the original set of points. For each point <script type="math/tex">p=(p_x,p_y)</script> from <script type="math/tex">P</script> we use the slope and y-intercept from the candidate line to compute a prediction for <script type="math/tex">p_y</script> based on <script type="math/tex">m</script> and <script type="math/tex">b</script>. This estimate is the blue portion of the above equation. The error for this point <script type="math/tex">p</script> is computed by comparing this blue value to the red value (via subtraction, and then squaring it). This process is repeated for every point, and the errors are added up to produce the total error <script type="math/tex">e_{(m,b)}</script> for the candidate line <script type="math/tex">(m,b)</script>.</p>
 
 <div class="note">
-<b>Note:</b> For those not familiar with the notation, this is describing a sum over all points $p$ in our total set of data points $P$. For each $p$ we plug in it&#8217;s x value ($p_x$) to the term $mp_x+b$ and get a value. That value is then subtracted from $p_y$ (the y-value of the point). If the candidate line defined by $m$ and $b$ does a good job at fitting the point $p$ this subtracted value will be small. If the line does a good job for all points $p\in P$ then the sum of the errors will be small, and $e_{(m,b)}$ will be small. The individual error values are squared to make the error positive and to make the error function differentiable (e.g., if we used the absolute value instead, we would not be able to differentiate it).
+<b>Note:</b> If the candidate line defined by $m$ and $b$ does a good job at fitting the point $p$ then $$p_y - (mp_x+b)$$ will be small. If the line does a good job for all points $p\in P$ then the sum of these errors $e_{(m,b)}$ will be small.
 </div>
 <p><br /></p>
 
-<p>Now, for any set of candidate lines (set of $(m,b)$ pairs) we can compute error values for all of them and select the one with the smallest error. Although we&rsquo;ve made progress on our problem definition there are still many important questions to answer. For example - how are we going to be sure that find the best line? We could randomly choose some lines, but the set of lines to consider is infinite. We need a structured method to search for this magical &ldquo;lowest error&rdquo; line.</p>
+<p>Now, for any set of candidate lines (i.e., $(m,b)$ pairs) we can compute error values for all of them and select the one with the smallest error. Although we&rsquo;ve made progress there are still many important questions to answer. For example - how are we going to be sure that find the best line? We could randomly choose some lines, but the set of lines to consider is infinite. We need a structured method to search for this magical &ldquo;lowest error&rdquo; line.</p>
 
-<p>The fact that we can define a line as any $(m,b)$ pair is important. By doing so we are have actually defined a line space that looks something like this:</p>
+<p>This is where things get interesting. The fact that we can define a line as any $(m,b)$ pair is important. By doing so we can define a <em>line space</em> that looks something like this:</p>
 
 <p><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/mb_space.jpg" /></p>
 
-<p>This space is similar to the standard 2D $(x,y)$ space that we grew up with, but instead of $x$ and $y$ we have $m$ and $b$. Every location in this space defines a unique $(m,b)$ pair, and thus a unique line. Some where in this space exists the magical line that produces the lowest amount of error for our data set. The above error function $e_{(m,b)}$ works over this $(m,b)$ space. Using our input data set (which is fixed) if we computed the error for every line in our $(m,b)$ space we could visualize this error function as a surface where the height of the surface corresponds to the error at that location in the $(m,b)$ space (the error that the line yielded given our data set). We might imagine such a surface to look something like this:</p>
+<p>This space is similar to the standard 2D $(x,y)$ space that most people are familiar with, but instead of $x$ and $y$ we have $m$ and $b$. Every location in this space defines a unique $(m,b)$ pair, and thus a unique line. Some where in this space exists the magical line that produces the lowest amount of error for our data set. The above error function $e_{(m,b)}$ works over this $(m,b)$ space. Using our input data set (which is fixed) if we computed the error for every line in our $(m,b)$ space we could visualize this error function as a surface where the height of the surface corresponds to the error at that location in the $(m,b)$ space (the error that the line yielded given our data set). We might imagine such a surface to look something like this:</p>
 
 <p><img width="350px" src="http://mattnedrich.github.io/images/points_lines_calculus/expected_error_surface.jpg" /></p>
 
 <p>Although this isn&rsquo;t what our surface looks like for our data set, it gives us some intuition as to what we might expect. Somewhere in this surface exists a minimum (e.g., the lowest location on the surface). This location corresponds to a $(m,b)$ pair - the line that we&rsquo;re looking for that produces the lowest amount of error for our data set. Our problem is basically reduced to finding this minimum. We can do this using two approaches - both involve calculus.</p>
 
-<h2 id="method-1---closed-form-solution">Method 1 - Closed Form Solution</h2>
-<p>We have defined our error function <script type="math/tex">e_{(m,b)}=\sum_{p\in P}\left(p_y-(mp_x+b)\right)^2</script>. We are interested in finding the line ($m,b$ pair) that minimizes this function given our data set. If you&rsquo;re familiar with calculus you should realize that in order to do this all we need to do is take the derivative of our error function, set it equal to zero, and solve for $m$ and $b$. The derivative evaluated at zero will give use the line ($m,b$ pair) that yields the minimum error for our data set. To do this we should realize that our error function depends on two variables - $m$ and $b$. Therefore we will need to take two partial derivatives, one with respect to $m$ and one with respect to $b$. These partial derivatives can be computed as:</p>
+<h3 id="method-1---closed-form-solution"><strong>Method 1</strong> - Closed Form Solution</h3>
+<p>Recall our error function </p>
+
+<script type="math/tex; mode=display">e_{(m,b)}=\sum_{p\in P}\left(p_y-(mp_x+b)\right)^2</script>
+
+<p>We are interested in finding the line ($m,b$ pair) that minimizes this function given our data set. If you&rsquo;re familiar with calculus you should realize that in order to do this we can take the derivative of our error function, set it equal to zero, and solve for $m$ and $b$. The derivative evaluated at zero will give use the line ($m,b$ pair) that yields the minimum error for our data set. Our error function depends on two variables - $m$ and $b$. Therefore we will need to take two partial derivatives, one with respect to $m$ and one with respect to $b$. These partial derivatives can be computed as:</p>
 
 <script type="math/tex; mode=display">\frac{\partial}{\partial m} = 2 \sum_{i=1}^{N}-x_i(y_i-(m x_i+b))</script>
 
 <script type="math/tex; mode=display">\frac{\partial}{\partial b} = 2 \sum_{i=1}^{N}-(y_i-(m x_i+b))</script>
 
-<p>The problem now reduces to setting each of the partial derivates equal to zero and solving for $m$ and $b$. We have two equations and two unknowns, so this is certainly a solvable problem. If you&rsquo;re interested the closed form solution works out to be:</p>
+<p>The problem now reduces to setting each of the partial derivatives equal to zero and solving for $m$ and $b$. We have two equations and two unknowns, so this is certainly a solvable problem. If you&rsquo;re interested the closed form solution works out to be:</p>
 
 <script type="math/tex; mode=display">m = \frac{N\sum_{i=1}^Nx_iy_i-\sum_{i=1}^Nx_i\sum_{i=1}^Ny_i}{N\sum_{i=1}^Nx_i^2-(\sum_{i=1}^Nx_i)^2}</script>
 
@@ -472,8 +553,8 @@ e_l = \sum_{p\inP} e_p
 
 <p>The closed form method is simple, but it requires some algebra to solve for $m$ and $b$. For other problems this can be extremely expensive. The next method eliminates the need to solve for $m$ and $b$ directly. Rather, it utilizes a nice property of the partial deriviaties we took.</p>
 
-<h2 id="method-2---gradient-search">Method 2 - Gradient Search</h2>
-<p>The two partial derivatives above are also known as our error function&rsquo;s gradient. The gradient is extremely useful because it can help us find $m$ and $b$ without actually solving the system of equations. It does this by acting as a compass and allowing us to search around the $(m,b)$ space, always pointing us in the direction of decreasing slope for our error function. This type of search is called gradient descent. The gradient evaluated at any given $(m,b)$ point of the error function gives us the slope of the function at that location (e.g., the direction in $(m,b)$ space to move to be at a lower location on the error surface. Since we&rsquo;re interested in the lowest location of our error function (the minimum) we can use the slope to move toward the solution. This is an iterative process where we evaluate the gradient, move toward the minimum, re-evaluate the gradient at the new location, move again, and continue this process until we reach a loction where the slope is zero (e.g., the minimum).</p>
+<h3 id="method-2---gradient-search"><strong>Method 2</strong> - Gradient Search</h3>
+<p>The two partial derivatives above are also known as our error function&rsquo;s gradient. The gradient is extremely useful because it can help us find $m$ and $b$ without actually solving the system of equations. It does this by acting as a compass and allowing us to search around the $(m,b)$ space, always pointing us in the direction of decreasing slope for our error function. This type of search is called gradient descent. The gradient evaluated at any given $(m,b)$ point of the error function gives us the slope of the function at that location (e.g., the direction in $(m,b)$ space to move to be at a lower location on the error surface. Since we&rsquo;re interested in the lowest location of our error function (the minimum) we can use the slope to move toward the solution. This is an iterative process where we evaluate the gradient, move toward the minimum, re-evaluate the gradient at the new location, move again, and continue this process until we reach a location where the slope is zero (e.g., the minimum).</p>
 
 <div class="note">
 <b>Note:</b> The gradient is evaluated by plugging a $m$ and $b$ value into the partial derivative equations. The result, $\frac{\partial}{\partial m}$ and $\frac{\partial}{\partial b}$ give us a vector that points in the direction of decreasing slope in the $(m,b)$ space. How far we move in that direction is a parameter that can be varied known as the step size. Choosing a good step size is important. A step size that is too large may never converge well, as it might step over the minimum location each time. A step size that is too small may take a long time to find a solution as you will be moving around very slowly.
@@ -486,29 +567,17 @@ e_l = \sum_{p\inP} e_p
 <img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/actual_error_surface.jpg" />
 <img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/contour_error_surface.jpg" />
 </div>
-
-<p>Eventhough it may be difficult to tell, there is an actual minimum location on this surface. It&rsquo;s easier to see using the contour plot on the right. In fact, it&rsquo;s even easier to observe if you look at the log of the error function. It&rsquo;s often useful to view the log of a function because log scales compress wide ranging data into a smaller window. Here is the log plot of our error function, and the corresponding contour plot:</p>
+<p><br />
+Although it may be difficult to tell, there is an actual minimum location on this surface. It&rsquo;s easier to see using the contour plot on the right. In fact, it&rsquo;s even easier to observe if you look at the log of the error function. It&rsquo;s often useful to view the log of a function because log scales compress wide ranging data into a smaller window. Here is the log plot of our error function, and the corresponding contour plot:</p>
 
 <div>
 <img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/actual_log_error_surface.jpg" />
 <td><img width="325px" src="http://mattnedrich.github.io/images/points_lines_calculus/contour_log_error_surface.jpg" /></td>
 </div>
+<p><br />
+From this, it can be seen that there is a strong minimum location in our error function.</p>
 
-<p>From this, it can be seen that there is a strong minimum location in our error function.</p>
-
-<p>Gradient search can be very useful. For our problem it isn&rsquo;t too difficult to solve for $m$ and $b$ directly. However, for many problems it is often difficult or very expensive to compute a closed form solution. In such cases, the gradient can usually be computed or at least estimated and is used to search for a solution. Our problem was also very easy in that our error funtion was monotonically decreasing. That is, it had one minimum location and all other locations sloped toward that minimum. More complex functions can have several local minima or maxima. This creates a mathmatical terrain that is difficult to navigate as it is easy to get suck in local minima/maxima (e.g. other locations where the slope is equal to zero).</p>
-
-<h2 id="method-1-solution">Method 1 Solution</h2>
-<p>Back to the problem. We need to find a line, lets call it $l$, thats fits this data nicely. To be more precise about what &ldquo;fits the data&rdquo; actually means, lets define it to mean the line that results in a smallest amount of error. For any given line we can compute it&rsquo;s error by measuring how close each point is to the line, and adding all of these measurements together to produce a total error value. Our goal now is to find the line that has the lowest error value. Up to this point we&rsquo;ve managed to define the problem more precisely, but we still need a method to find this magical lowest error line. </p>
-
-<p>Talk about the fact that a  line is defined by two parameters - slope and y-intercept
-Talk about randomly choosing lines, and how this isn&rsquo;t a very good method</p>
-
-<p>We&rsquo;re interested in finding a line that fits these points the best. In order to do this, we need a way to determine how good of a fit any given line is. That is - provided a line we need some way to measure how well it fits our data. </p>
-
-<p>Further Thoughts
-More about what we&rsquo;re actually doing - e.g., modelling data (compressing all of the points to a line, which can be described by two peices of data!)
- This concept in itself is pretty interesting. In some sense what you&rsquo;re doing when you fit a line to data is reducing the information stored in the data into a single line that can be defined by two values (slope and y-intercept).  </p>
+<p>Gradient search can be very useful. For our problem it isn&rsquo;t too difficult to solve for $m$ and $b$ directly. However, for many problems it is often difficult or very expensive to compute a closed form solution. In such cases, the gradient can usually be computed or at least estimated and is used to search for a solution. Our problem was also very easy in that our error function was monotonically decreasing. That is, it had one minimum location and all other locations sloped toward that minimum. More complex functions can have several local minima or maxima. This creates a mathematical terrain that is difficult to navigate as it is easy to get suck in local minima/maxima (e.g. other locations where the slope is equal to zero).</p>
 
 ]]></content>
   </entry>

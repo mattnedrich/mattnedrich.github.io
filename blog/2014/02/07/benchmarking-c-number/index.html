@@ -147,7 +147,7 @@
   </header>
 
 
-<div class="entry-content clearfix"><p>I was implementing some algorithms in C# and spent some time trying to optmize them. Whenever I&rsquo;m trying to optimize I always time my code using the StopWatch class. I&rsquo;m sure everyone&rsquo;s done this at some point or another. After realizing that I do this often enough to stop re-doing it, I threw together this completely unscientific but still very useful Benchmarker class:</p>
+<div class="entry-content clearfix"><p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -173,7 +173,7 @@
 </div>
  </figure></notextile></div>
 
-<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called Foo. This could be benchmarked via:</p>
+<p>This allows any code to be easily called and timed. For example, suppose you have a void Method called <code>Foo</code>. This can be timed via:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -186,20 +186,23 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; Foo());
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
-<span class="type">int</span> bar = Baz();
+<span class="type">int</span> bar = FooWithReturnValue();
 </pre></div>
 </div>
  </figure></notextile></div>
 
-<p>you could do this</p>
+<p>you can use the above Benchmarker class via</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
 <span class="type">int</span> bar;
-TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
+TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
 </pre></div>
 </div>
  </figure></notextile></div>
+
+<p>I&rsquo;ve put this on github:
+<a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>
 </div>
 
 
@@ -270,15 +273,15 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = Baz());
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/16/c-sharp-sorting-woes/">C# Sorting Woes</a>
+    
     <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
     
     <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
     
     <a class="list-group-item active" href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/01/android-virtual-machine-acceleration/">Android Virtual Machine Acceleration</a>
-    
-    <a class="list-group-item " href="/blog/2014/01/26/k-means-basics/">K-Means Clustering</a>
     
   </div>
 </section>
