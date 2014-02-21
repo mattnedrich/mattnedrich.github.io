@@ -159,7 +159,7 @@
 </ul>
 
 <p>So the built-in sorting should be using Quicksort <em>most</em> of the time. I thought my implementation might just be slow, so I started to make some optimizations. My base implementation can be found here:<br />
-<a href="https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp">https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp</a></p>
+<a href="https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs</a></p>
 
 <p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn&rsquo;t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
 

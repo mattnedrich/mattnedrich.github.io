@@ -4,7 +4,7 @@
   <title><![CDATA[Matt Nedrich]]></title>
   <link href="http://mattnedrich.github.io/atom.xml" rel="self"/>
   <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-20T11:22:18-05:00</updated>
+  <updated>2014-02-20T20:41:38-05:00</updated>
   <id>http://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -19,7 +19,7 @@
     <updated>2014-02-17T13:36:31-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number</id>
     <content type="html"><![CDATA[<p>I have written an implementation of quicksort in C#. It can be found here.<br />
-<a href="https://github.com/mattnedrich/algorithms/blob/master/sorting/quicksort/csharp/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/sorting/quicksort/csharp/Quicksorter.cs</a></p>
+<a href="https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs</a></p>
 
 <p>It operates on anything that implements <code>IComparable&lt;T&gt;</code>. Suppose you have a class <code>SortableObject</code> that implements <code>IComparable&lt;SortableObject&gt;</code>. The usage model in this scenario would be</p>
 
@@ -59,7 +59,7 @@ sorter.Sort(items);
 </ul>
 
 <p>So the built-in sorting should be using Quicksort <em>most</em> of the time. I thought my implementation might just be slow, so I started to make some optimizations. My base implementation can be found here:<br />
-<a href="https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp">https://github.com/mattnedrich/algorithms/tree/master/sorting/quicksort/csharp</a></p>
+<a href="https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs</a></p>
 
 <p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn&rsquo;t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
 
@@ -140,7 +140,7 @@ del /S /A:H *.onetoc2
     <updated>2014-02-09T14:45:25-05:00</updated>
     <id>http://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python</id>
     <content type="html"><![CDATA[<p>I&rsquo;ve written a general K-Means implementation in Python. It can be found here:<br />
-<a href="https://github.com/mattnedrich/algorithms/tree/master/clustering/kmeans/python">https://github.com/mattnedrich/algorithms/tree/master/clustering/kmeans/python</a></p>
+<a href="https://github.com/mattnedrich/algorithms/blob/master/python/clustering/kmeans/kmeans.py">https://github.com/mattnedrich/algorithms/blob/master/python/clustering/kmeans/kmeans.py</a></p>
 
 <p>Everything is contained in one file, <code>kmeans.py</code> The usage model is the following</p>
 
