@@ -4,7 +4,7 @@
   <title><![CDATA[Matt Nedrich]]></title>
   <link href="http://mattnedrich.github.io/atom.xml" rel="self"/>
   <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-20T20:41:38-05:00</updated>
+  <updated>2014-02-21T08:17:42-05:00</updated>
   <id>http://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -63,7 +63,7 @@ sorter.Sort(items);
 
 <p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn&rsquo;t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
 
-<p>I was stuck, so I posted <a href="http://stackoverflow.com/questions/21818889/why-is-my-c-sharp-quicksort-implementation-significantly-slower-than-listt-sor">this</a>, and learned that the .NET Framework special cases the sorting of built-in types (ints, string, etc). Just how much of a performance gain is achieved by doing this? I wanted to find out so I setup yet another experiment.</p>
+<p>I was stuck, so I posted <a href="http://stackoverflow.com/questions/21818889/why-is-my-c-sharp-quicksort-implementation-significantly-slower-than-listt-sor">this</a>, and learned that the .NET Framework special cases the sorting of built-in types (ints, string, etc). Just how much of a performance gain is achieved by doing this? I wanted to find out so I set up yet another experiment.</p>
 
 <h3 id="int-vs-intinwrapper">Int vs. IntInWrapper</h3>
 <p>I compared the performance of <code>List&lt;T&gt;.Sort</code> when using plain ol&rsquo; <code>int</code>&rsquo;s to the performance when using <code>int</code>&rsquo;s in a wrapper class. For the wrapper class I used:</p>
