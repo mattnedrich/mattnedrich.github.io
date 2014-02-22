@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Calculus | Matt Nedrich]]></title>
-  <link href="http://mattnedrich.github.io/blog/categories/calculus/atom.xml" rel="self"/>
-  <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-21T08:17:42-05:00</updated>
-  <id>http://mattnedrich.github.io/</id>
+  <link href="www.mattnedrich.com/blog/categories/calculus/atom.xml" rel="self"/>
+  <link href="www.mattnedrich.com/"/>
+  <updated>2014-02-22T18:04:04-05:00</updated>
+  <id>www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Points, Lines, and Calculus]]></title>
-    <link href="http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus/"/>
+    <link href="www.mattnedrich.com/blog/2013/03/03/points-lines-and-calculus/"/>
     <updated>2013-03-03T18:49:00-05:00</updated>
-    <id>http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus</id>
+    <id>www.mattnedrich.com/blog/2013/03/03/points-lines-and-calculus</id>
     <content type="html"><![CDATA[<p>Suppose we want to model some data using a line. This type of problem is very common and can be found in a variety of fields. It&rsquo;s also a great example of how calculus can be applied to solve problems. Let&rsquo;s say that our data set looks something like this:</p>
 
 <p><img width="325px" src="/images/points_lines_calculus/points.jpg" /></p>

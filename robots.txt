@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://mattnedrich.github.io/sitemap.xml 
+Sitemap: www.mattnedrich.com/sitemap.xml 

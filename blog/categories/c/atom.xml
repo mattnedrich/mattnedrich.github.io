@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: C | Matt Nedrich]]></title>
-  <link href="http://mattnedrich.github.io/blog/categories/c/atom.xml" rel="self"/>
-  <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-21T08:17:42-05:00</updated>
-  <id>http://mattnedrich.github.io/</id>
+  <link href="www.mattnedrich.com/blog/categories/c/atom.xml" rel="self"/>
+  <link href="www.mattnedrich.com/"/>
+  <updated>2014-02-22T18:04:04-05:00</updated>
+  <id>www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Good ol' C Casting]]></title>
-    <link href="http://mattnedrich.github.io/blog/2013/03/25/good-ol-c-casting/"/>
+    <link href="www.mattnedrich.com/blog/2013/03/25/good-ol-c-casting/"/>
     <updated>2013-03-25T21:28:00-04:00</updated>
-    <id>http://mattnedrich.github.io/blog/2013/03/25/good-ol-c-casting</id>
+    <id>www.mattnedrich.com/blog/2013/03/25/good-ol-c-casting</id>
     <content type="html"><![CDATA[<p>Understanding data representation is important. Consider the following C code.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">

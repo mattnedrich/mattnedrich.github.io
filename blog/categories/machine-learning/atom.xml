@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Machine Learning | Matt Nedrich]]></title>
-  <link href="http://mattnedrich.github.io/blog/categories/machine-learning/atom.xml" rel="self"/>
-  <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-21T08:17:42-05:00</updated>
-  <id>http://mattnedrich.github.io/</id>
+  <link href="www.mattnedrich.com/blog/categories/machine-learning/atom.xml" rel="self"/>
+  <link href="www.mattnedrich.com/"/>
+  <updated>2014-02-22T18:04:04-05:00</updated>
+  <id>www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[K-Means Clustering]]></title>
-    <link href="http://mattnedrich.github.io/blog/2014/01/26/k-means-basics/"/>
+    <link href="www.mattnedrich.com/blog/2014/01/26/k-means-basics/"/>
     <updated>2014-01-26T18:19:21-05:00</updated>
-    <id>http://mattnedrich.github.io/blog/2014/01/26/k-means-basics</id>
+    <id>www.mattnedrich.com/blog/2014/01/26/k-means-basics</id>
     <content type="html"><![CDATA[<h2 id="what-is-k-means">What is K-Means</h2>
 <p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we&rsquo;ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
 
@@ -108,9 +108,9 @@ Let&rsquo;s go over each of these steps.</p>
   
   <entry>
     <title type="html"><![CDATA[Points, Lines, and Calculus]]></title>
-    <link href="http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus/"/>
+    <link href="www.mattnedrich.com/blog/2013/03/03/points-lines-and-calculus/"/>
     <updated>2013-03-03T18:49:00-05:00</updated>
-    <id>http://mattnedrich.github.io/blog/2013/03/03/points-lines-and-calculus</id>
+    <id>www.mattnedrich.com/blog/2013/03/03/points-lines-and-calculus</id>
     <content type="html"><![CDATA[<p>Suppose we want to model some data using a line. This type of problem is very common and can be found in a variety of fields. It&rsquo;s also a great example of how calculus can be applied to solve problems. Let&rsquo;s say that our data set looks something like this:</p>
 
 <p><img width="325px" src="/images/points_lines_calculus/points.jpg" /></p>

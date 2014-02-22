@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: How-to | Matt Nedrich]]></title>
-  <link href="http://mattnedrich.github.io/blog/categories/how-to/atom.xml" rel="self"/>
-  <link href="http://mattnedrich.github.io/"/>
-  <updated>2014-02-21T08:17:42-05:00</updated>
-  <id>http://mattnedrich.github.io/</id>
+  <link href="www.mattnedrich.com/blog/categories/how-to/atom.xml" rel="self"/>
+  <link href="www.mattnedrich.com/"/>
+  <updated>2014-02-22T18:04:04-05:00</updated>
+  <id>www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[LaTeX Math in Octopress]]></title>
-    <link href="http://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress/"/>
+    <link href="www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress/"/>
     <updated>2014-01-18T17:16:43-05:00</updated>
-    <id>http://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress</id>
+    <id>www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress</id>
     <content type="html"><![CDATA[<p>I found this post helpful when trying to enable LaTeX style math formulas in Octopress:</p>
 
 <p><a href="http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress">http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress</a></p>
