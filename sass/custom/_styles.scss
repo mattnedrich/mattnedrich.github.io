@@ -1,0 +1,51 @@
+/* nice sticky footer, from http://getbootstrap.com/examples/sticky-footer/ */
+
+/* this seems to fix the font in chrome */
+html{
+-webkit-text-stroke: 0.22px; 
+}
+
+html, body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+footer[role=contentinfo] {
+    height: 60px;
+}
+
+.note{
+border: 1px solid #97c1da;
+background-color:#d8ebf8;
+border-radius:5px;
+color:#264c72;
+margin-top:15px;
+margin-bottom:5px;
+padding:10px;
+font-size:14px;
+box-shadow: 3px 3px 3px #E4E4E4;
+}
+
+/* Remove ugly shadow around code blocks */
+figure.code{
+    box-shadow:none;
+}
+
+figure.code{
+    box-shadow:none;
+}
+
+figure.code:not(.panel){
+    border:none;
+}

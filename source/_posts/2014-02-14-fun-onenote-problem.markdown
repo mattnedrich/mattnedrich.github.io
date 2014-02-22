@@ -1,0 +1,28 @@
+---
+layout: post
+title: "Hide and Seek with OneNote"
+date: 2014-02-14 11:26:01 -0500
+comments: true
+categories: [Windows, Debug]
+---
+
+I often open command windows on Windows via <code>shift + right click</code> on a directory. It's a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.
+
+<img width="250px" src="{{ root_url }}/images/onenote_fun/onenote_cmd_window.jpg"/>
+
+
+Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I'm using Octopress). At first it wasn't clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn't see these in the blog source directory, but every time I would build my blog they would show up in **every** output directory.
+
+I tried grepping for interesting files/directories in the blog source, but nothing showed up. I tried manually browsing through the source directory structure. Also note that I had show hidden files and folders turned on. Still, I found nothing.
+
+After some digging, and a lot of help from this [post](http://www.tigraine.at/2009/09/01/howto-get-rid-of-onetoc2-files-using-powershell) it turns out that there were several OneNote files embedded and hidden in every directory of my blog source. The only way I was able to see them was to display them in a cmd window via
+
+{% coderay lang:Text %}
+dir /A:H /B
+{% endcoderay %}
+
+After it was clear that they were indeed there but hidden, I was able to delete them via
+
+{% coderay lang:Text %}
+del /S /A:H *.onetoc2
+{% endcoderay %}
