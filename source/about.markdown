@@ -11,12 +11,18 @@ I am a software engineer with an interest in computer science and mathematics. I
 
 I have a Masters degree in Computer Science and Engineering from The Ohio State University, where I studied Computer Vision and Machine Learning under [Prof. James W. Davis](http://www.cse.ohio-state.edu/~jwdavis/). My research involved scene understanding and modeling in outdoor camera networks. My thesis focused on the automatic detection and exploitation of entry and exit regions (see this [publication](http://www.cse.ohio-state.edu/~jwdavis/Publications/MVA2012.pdf)). Additionally, I worked on several other projects including distributed camera network control, a TCP camera server for analog pan-tilt-zoom cameras, and android applications that leveraged GPS and outdoor camera networks.
 
-I am currently a Software Engineer at Intel where I work on tools that help characterize CPUs and SoCs.
+After college I spent three years at Intel working on tools to help characterize Intel CPUs and SoCs. During my time there I learned a tremendous amount about computer architecture, memory management, compilers, x86, and several other and hardware/software debugging.
+
+I'm currently a software developer at [Atomic Object](http://atomicobject.com/) where I get to work on a variety of fun and exciting software projects.
 
 ## About this site
 I created this site to write about topics that I'm interested in to help myself understand them better. Maybe one day someone will stumble upon my site and find it interesting.
 
 *Note that all views expressed here are my own and not those of my employer*
+
+## Presentations
+[Introduction to Machine Learning](http://www.meetup.com/Craftsman-Guild/events/170149222/)<br>
+May 6th 2014
 
 ## Publications
 [Detecting Behavioral Zones in Local and Global Camera Views](http://www.cse.ohio-state.edu/~jwdavis/Publications/MVA2012.pdf)<br>
