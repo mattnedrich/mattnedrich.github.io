@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Matt Nedrich</title>
+  <meta name="author" content="Matt Nedrich">
+
+  
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://www.mattnedrich.com/masters_work/scene_entry_exit_discovery.html">
+  <link href="/favicon.png" type="image/png" rel="icon">
+  <link href="/atom.xml" rel="alternate" title="Matt Nedrich" type="application/atom+xml">
+
+  <link href="/assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="/assets/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript"
+   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <script src="/javascripts/libs/jquery/jquery-2.0.3.min.js"></script>
+  
+
+</head>
+
+  <body   >
+    <div id="wrap">
+      <header role="banner">
+        <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Matt Nedrich</a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li >
+                    <a href="/">Blog</a>
+                </li>
+                <li >
+                    <a href="/blog/archives">Archives</a>
+                </li>
+				<li >
+                    <a href="/projects.html">Projects</a>
+                </li>
+				<li >
+                    <a href="/about.html">About</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a class="subscribe-rss" href="/atom.xml" title="subscribe via RSS">
+                        <span class="visible-xs">RSS</span>
+                        <img class="hidden-xs" src="/images/rss.png" alt="RSS">
+                    </a>
+                </li>
+                
+            </ul>
+            
+                <form class="search navbar-form navbar-right" action="http://google.com/search" method="GET">
+                    <input type="hidden" name="q" value="site:www.mattnedrich.com">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="q" placeholder="Search">
+                    </div>
+                </form>
+            
+        </div>
+    </div>
+</nav>
+
+
+      </header>
+      <div id="main" class="container">
+        <div id="content">
+          <div class="row">
+  <div class="page-content col-md-9">
+    <article role="article">
+      
+        <header class="page-header">
+          
+          
+        </header>
+      
+      <div class="entry-content">
+        <h2 id="scene-entry-and-exit-discovery">Scene Entry and Exit Discovery</h2>
+<p><em>All of this work is presented in several publications found <a href="/about.html">here</a></em></p>
+
+<p>My research in school focused developing a method to reliably learn scene entry and exit locations in video. More generally, given a camera that is viewing an area (scene), the goal is to automatically learn areas in the camera view that objects (e.g., people, cars, etc.) enter into the scene and exit out of the scene. These entry and exit “zones” can correspond to anything from a doorway to the edge of the camera view. This local camera view work was then extended to camera viewspaces, and various applications of the detected entry/exit regions were explored. My research project consisted of several large pieces. Each is detailed below.</p>
+
+<hr />
+
+<h4 id="part-1-learning-entities"><strong>Part 1</strong> Learning Entities</h4>
+<p>As with most scene understanding algorithms, this work uses tracking data as input. Strong tracking algorithms (ones that track objects reliably as they move through the scene) do not work well in busy urban environments, and can be computationally expensive. To compensate for these issues a “weak” tracking algorithm is used instead. Rather than attempting to track entire objects as strong trackers do, weak trackers track salient feature points (e.g., areas of high texture or corner points). Such trackers work well in crowded scenes, though rather than producing a single track as an object moves through the scene, a weak tracker will produce a set of short and frequently broken “tracklets”. These weak tracks are then clustered into “entities” using a modified version of mean-shift clustering on the frame level track observations (see the paper for more details). This transforms the set of weak tracks into a set of “entity” tracks (see below). </p>
+
+<p><img width="550px" src="/images/masters_work/scene_entry_exit_discovery/kltToEntity.jpg" /></p>
+
+<hr />
+
+<h4 id="part-2-learning-entries-and-exits"><strong>Part 2</strong> Learning Entries and Exits</h4>
+<p>Using the new set of entity tracks, the entity entry and entity exit observations are clustered using mean-shift clustering, and a convex-hull area reduction technique is used to obtain tighter clusters and a more generalized cluster shape (see paper). This results in a set of potential entry and exit regions. These potential regions are then scored using two behavorial reliability metrics - directional consistency, and interaction consistency. Directional consistency constrains the regions to be somewhat directional, and enforces that objects leave and entry or enter an exit in a semi-directional manner (e.g., objects don’t spawn in the scene and leave/enter an entry/exit in all directions). Interaction consistency evaluates how other entity tracks in the scene intersect each potential entry and exit region. This enforces the idea that if an entry exists with objects leaving the entry in some direction, other objects in the scene should not intersect the region in the same direction that objects enter into the scene from the entry (the entry/exit region should not be a “through state”). An example of how the described reliability metrics can be used to reduce a set of potential entry/exit regions to reliable entry/exit regions is shown below. </p>
+
+<p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/kltStartToEntityStart.jpg" /></p>
+
+<p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/potentialToReliableEntries.jpg" /></p>
+
+<p>In the above reliable entry image, the arrows denote the most popular angle that objects entered into the scene from each entry. Additional results are shown below. </p>
+
+<p><img width="500px" src="/images/masters_work/scene_entry_exit_discovery/additionalResults.jpg" /></p>
+
+<hr />
+
+<h4 id="part-3-camera-viewspace-extension"><strong>Part 3</strong> Camera Viewspace Extension</h4>
+<p>The approach described above applies to a single camera view. However, pan-tilt-zoom cameras are commonly used in surveillance applications. These cameras can pan 360 degrees and tilt 90 degrees, allowing them to move around to view different parts of the world. For a given pan-tilt orientation, a fixed view is observed (such as the camera views from Parts 1 and 2). The entire viewspace of a pan-tilt-zoom camera can be captured as a lower hemisphere, shown below:</p>
+
+<p><img width="300px" src="/images/masters_work/scene_entry_exit_discovery/panoinbowl.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/panoinbowlpano.jpg" /></p>
+
+<p>The first image shows the lower hemisphere camera viewspace. The second image shows a projection of the camera viewspace onto the equator plane. This projection is called a spherical panorama, and is used to help visualize the camera viewspace in a concise two dimensional image. Recall that at any given time, the camera is oriented in a particular pan-tilt orientation, and thus is viewing a sub-portion of the overall viewspace. The below images show a local view highlighted in the greater pan-tilt-zoom camera viewspace. </p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/viewspacepatch3.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/local_view.jpg" /></p>
+
+<p>The entry/exit detection method described in Parts 1 and 2 was extended to work in camera viewspaces using spherical geometry analogs to the local view Euclidean approach. As above, tracking data was collected. This tracking data was is an aggregate of different local view trajectories projected into the viewspace. The entity tracks for several local views are shown below.</p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/global_entities.jpg" /></p>
+
+<p>As with the local view approach, these trajectories were transformed into a set of potential entry/exit regions, and the scoring mechanism was applied to produce a final set of reliable entry/exit regions, shown below.</p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera1_entries.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera1_exits.jpg" /></p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera2_entries.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/camera2_exits.jpg" /></p>
+
+<hr />
+
+<h4 id="part-4-using-the-detected-regions"><strong>Part 4</strong> Using the Detected Regions</h4>
+<p>Once regions are learned, they can be used to model occluded paths, and usage statistics can be collected to detect anomalous activities. Example occluded paths that were able to be detected are display below (path starting locations in red, and re-appearance locations in green):</p>
+
+<p><img width="250px" src="/images/masters_work/scene_entry_exit_discovery/scene1Occlusions.jpg" />
+<img width="250px" src="/images/masters_work/scene_entry_exit_discovery/scene2Occlusions.jpg" /></p>
+
+
+      </div>
+      
+        <footer>
+          
+          
+            <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mattnedrich.com/masters_work/scene_entry_exit_discovery.html" data-via="" data-counturl="http://www.mattnedrich.com/masters_work/scene_entry_exit_discovery.html" >Tweet</a>
+  
+  
+  
+</div>
+
+          
+        </footer>
+      
+    </article>
+    
+  </div>
+
+  
+    <aside class="sidebar col-md-3">
+      
+        <section class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Recent Posts</h3>
+  </div>
+  
+  <div id="recent_posts" class="list-group">
+    
+    <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/16/c-sharp-sorting-woes/">C# Sorting Woes</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
+    
+    <a class="list-group-item " href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
+    
+  </div>
+</section>
+
+
+
+
+
+
+      
+    </aside>
+  
+</div>
+
+        </div>
+      </div>
+    </div>
+    <footer role="contentinfo"><div class="container">
+    <p class="text-muted credits">
+  Copyright &copy; 2014 - Matt Nedrich<br>
+  <small>
+      <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>,
+      <span class="credit">customized with <a href="https://github.com/kAworu/octostrap3">octostrap3</a></span>.
+  </small>
+</p>
+
+</div>
+</footer>
+    <script src="/assets/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/javascripts/modernizr-2.0.js"></script>
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+  </body>
+</html>

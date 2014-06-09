@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Windows | Matt Nedrich]]></title>
+  <link href="http://www.mattnedrich.com/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://www.mattnedrich.com/"/>
+  <updated>2014-06-08T22:04:08-04:00</updated>
+  <id>http://www.mattnedrich.com/</id>
+  <author>
+    <name><![CDATA[Matt Nedrich]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hide and Seek with OneNote]]></title>
+    <link href="http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem/"/>
+    <updated>2014-02-14T11:26:01-05:00</updated>
+    <id>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
+    <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It’s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
+
+<p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
+
+<p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I’m using Octopress). At first it wasn’t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn’t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
+
+<p>I tried grepping for interesting files/directories in the blog source, but nothing showed up. I tried manually browsing through the source directory structure. Also note that I had show hidden files and folders turned on. Still, I found nothing.</p>
+
+<p>After some digging, and a lot of help from this <a href="http://www.tigraine.at/2009/09/01/howto-get-rid-of-onetoc2-files-using-powershell">post</a> it turns out that there were several OneNote files embedded and hidden in every directory of my blog source. The only way I was able to see them was to display them in a cmd window via</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+dir /A:H /B
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+
+<p>After it was clear that they were indeed there but hidden, I was able to delete them via</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+del /S /A:H *.onetoc2
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Finding Files on Windows]]></title>
+    <link href="http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
+    <updated>2014-01-18T16:53:50-05:00</updated>
+    <id>http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
+    <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can’t find it.</p>
+
+<p>On Windows, the following can be used to search for a file from the current working directory</p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | findstr [search string]
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+
+<p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
+
+<p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
+
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | grep [search string]
+</pre></div>
+</div>
+ </figure></notextile></div></p>
+]]></content>
+  </entry>
+  
+</feed>
