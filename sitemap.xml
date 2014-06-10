@@ -1,14 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>www.mattnedrich.com/blog/2013/03/03/points-lines-and-calculus/</loc>
-        <lastmod>2014-02-17T18:41:55-05:00</lastmod>
-    </url>
-    <url>
-        <loc>www.mattnedrich.com/blog/2013/03/25/good-ol-c-casting/</loc>
-        <lastmod>2014-02-17T17:50:56-05:00</lastmod>
-    </url>
-    <url>
         <loc>www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/</loc>
         <lastmod>2014-02-16T23:41:43-05:00</lastmod>
     </url>
@@ -46,7 +38,7 @@
     </url>
     <url>
         <loc>www.mattnedrich.com/about.html</loc>
-        <lastmod>2014-02-17T18:44:11-05:00</lastmod>
+        <lastmod>2014-06-09T21:16:30-04:00</lastmod>
     </url>
     <url>
         <loc>www.mattnedrich.com/assets/bootstrap/about.html</loc>
@@ -94,7 +86,7 @@
     </url>
     <url>
         <loc>www.mattnedrich.com/projects.html</loc>
-        <lastmod>2014-03-25T18:07:38-04:00</lastmod>
+        <lastmod>2014-06-08T21:29:33-04:00</lastmod>
     </url>
     <url>
         <loc>www.mattnedrich.com/robots.txt</loc>
