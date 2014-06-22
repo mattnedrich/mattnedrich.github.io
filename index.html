@@ -150,6 +150,60 @@
 
 
 
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-22T13:04:11-04:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/22/managing-octopress-from-multiple-computers/">Managing Octopress From Different Local Repositories</a></h1>
+    
+  </header>
+
+
+  <div class="entry-content clearfix"><p>I wanted to manage my octopress blog from different computers. I have my blog source on github, so I thought it would be as easy as pulling it, making changes, generating, and deploying. However, I ran into several nuanced issues along the way which resulted in this error when I tried to deploy:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+## Pushing generated _deploy website
+To http://github.com/mattnedrich/mattnedrich.github.io
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to 'http://github.com/mattnedrich/mattnedrich.github.io'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>After being confused for a while, I came across this <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">post</a> and was able to successfully pull, modify, and deploy my blog from a second local repository. The only change I had to make from the instructions in the post was that I had to clone the master branch into the _deploy directory <b>after</b> running <code>rake setup_github_pages</code> as pointed out in the comments.</p>
+
+</div>
+  
+  
+
+
+        </article>
+      
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-17T13:36:31-05:00" pubdate data-updated="true">Feb 17<span>th</span>, 2014</time>
         
       </p>
@@ -824,6 +878,8 @@ dir /s /b | grep [search string]
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2014/06/22/managing-octopress-from-multiple-computers/">Managing Octopress From Different Local Repositories</a>
+    
     <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
     
     <a class="list-group-item " href="/blog/2014/02/16/c-sharp-sorting-woes/">C# Sorting Woes</a>
@@ -831,8 +887,6 @@ dir /s /b | grep [search string]
     <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
     
     <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/07/benchmarking-c-number/">Benchmarking C# Code</a>
     
   </div>
 </section>

@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Matt Nedrich</title>
+  <title>Managing Octopress from different local repositories - Matt Nedrich</title>
   <meta name="author" content="Matt Nedrich">
 
   
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.mattnedrich.com/masters_work/hci_visual_surveillance.html">
+  <link rel="canonical" href="http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Matt Nedrich" type="application/atom+xml">
 
@@ -88,7 +88,7 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li >
+                <li class="active">
                     <a href="/">Blog</a>
                 </li>
                 <li >
@@ -128,71 +128,124 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <article role="article">
+    <article class="hentry" role="article">
       
-        <header class="page-header">
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-22T13:04:11-04:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+    
+    <h1 class="entry-title">
+        Managing Octopress From Different Local Repositories
+        
+    </h1>
+    
+  </header>
+
+
+<div class="entry-content clearfix"><p>I wanted to manage my octopress blog from different computers. I have my blog source on github, so I thought it would be as easy as pulling it, making changes, generating, and deploying. However, I ran into several nuanced issues along the way which resulted in this error when I tried to deploy:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+## Pushing generated _deploy website
+To http://github.com/mattnedrich/mattnedrich.github.io
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to 'http://github.com/mattnedrich/mattnedrich.github.io'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>After being confused for a while, I came across this <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">post</a> and was able to successfully pull, modify, and deploy my blog from a second local repository. The only change I had to make from the instructions in the post was that I had to clone the master branch into the _deploy directory <b>after</b> running <code>rake setup_github_pages</code> as pointed out in the comments.</p>
+
+</div>
+
+
+      <footer>
+        <p class="meta text-muted">
           
-          
-        </header>
-      
-      <div class="entry-content">
-        <h2 id="human-computer-interaction-for-visual-surveillance">Human Computer Interaction for Visual Surveillance</h2>
-<p><em>All of this work is presented in a technical report found <a href="/about.html">here</a></em></p>
-
-<p>Part of my Masters work involved designing and developing an interface to help control and manage large distributed camera networks. Such large networks may consist of hundreds if not thousands of static and active (pan-tilt-zoom) cameras, and may become cumbersome to use as the size of the network grows. Furthermore, such networks may only be managed by a few operators at a time. This usually requires the network operators to have intimate knowledge of the camera topology (where the cameras are placed in the world), in order to respond quickly to events. The system I worked on attempts to integrate many cameras into a single user interface, allowing for multiple levels of camera control within the network, and is easily extensible for modular processes which may be applied to a camera or across many cameras in the network (e.g., object tracking). </p>
-
-<p>The system was built on top of <a href="http://worldwind.arc.nasa.gov/java/">NASA Worldwind</a>, an Java open source alternative to Google Earth. One of the ideas behind building it on top of NASA Worldwind was that it made the system capable of supporting many cameras across large distances, and provided a geographic framework which all of the cameras may be registered to. Cameras are integrated by providing connection, control, video, and registration information. Users can connect to any integrated camera, control the camera, and stream video (shown below) </p>
-
-<p><img width="500px" src="/images/masters_work/hci/video_ss5_1.jpg" /></p>
-
-<p>The system allows users to have different “levels of control” when controlling a pan-tilt-zoom camera (not including standard joystick control). One way to control the camera is through the live video window. Clicking anywhere on the video stream will re-position the camera to focus on the location clicked. Users can also click anywhere on the map. When doing so, the system finds the closest camera that can view the ground location of interest, opens up a video stream to that camera, and orients the camera to view the selected location. This approach enables operators to view any location in the world without worrying about where the cameras exist.</p>
-
-<p>In between the local “click on camera video feed” and global “click on the map” levels of control, the system also offers a middle level of control. Pan-tilt-zoom cameras have the capability of moving around to view different parts of the world, though at any given time they are only viewing a small subset of the total area they can view. By moving the camera to numerous overlapping pan-tilt-zoom orientations, and collecting an image at each location, the images may be stitched together to create a spherical panorama (shown below), capturing the full view-space of the camera. </p>
-
-<p><img width="300px" src="/images/masters_work/hci/pano.jpg" /></p>
-
-<p>The system leverages such spherical panoramas by allowing users to drag a viewbox around the panorama in order to quickly orient the camera to any desired view. </p>
-
-<p><img width="500px" src="/images/masters_work/hci/video_ss5_2.jpg" /></p>
-
-<p>In addition to interacting with the distributed camera network (controlling, streaming video, etc.) the system allows the integration of other modules. One such module is object tracking. The user can open a video stream to a camera, and invoke a remote tracking module (on a different machine) that starts to track objects in the cameras view. Tracking results are then sent back to the interface to be displayed and saved. Below are two screenshots of such a module. The tracker being used is a modified version of the KLT (Kanade Lucas Tomasi tracker). Such trackers track good feature points on objects over time (thus a single object may generate multiple tracks as seen below). </p>
-
-<p><img width="500px" src="/images/masters_work/hci/video_ss5_3.jpg" /></p>
-
-<p><img width="500px" src="/images/masters_work/hci/video_ss5_4.jpg" /></p>
-
-
-      </div>
-      
-        <footer>
-          
-          
-            <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mattnedrich.com/masters_work/hci_visual_surveillance.html" data-via="" data-counturl="http://www.mattnedrich.com/masters_work/hci_visual_surveillance.html" >Tweet</a>
+
+<span class="glyphicon glyphicon-user"></span> <span class="byline author vcard">Posted by <span class="fn">Matt Nedrich</span></span>
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-22T13:04:11-04:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2014</time>
+          
+
+<span class="glyphicon glyphicon-tags"></span>&nbsp;
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>Octopress</a>
+  
+</span>
+
+
+        </p>
+        
+          <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers/" data-via="" data-counturl="http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers/" >Tweet</a>
   
   
   
 </div>
 
-          
-        </footer>
-      
+        
+        
+          <ul class="meta text-muted pager">
+            
+            <li class="previous"><a href="/blog/2014/02/17/quicksort-in-c-number/" title="Previous Post: Quicksort in C#">&laquo; Quicksort in C#</a></li>
+            
+            
+          </ul>
+        
+      </footer>
     </article>
     
   </div>
 
   
-    <aside class="sidebar col-md-3">
-      
-        <section class="panel panel-default">
+  <aside class="sidebar col-md-3">
+    
+      <section class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Recent Posts</h3>
   </div>
   
   <div id="recent_posts" class="list-group">
     
-    <a class="list-group-item " href="/blog/2014/06/22/managing-octopress-from-multiple-computers/">Managing Octopress From Different Local Repositories</a>
+    <a class="list-group-item active" href="/blog/2014/06/22/managing-octopress-from-multiple-computers/">Managing Octopress From Different Local Repositories</a>
     
     <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
     
@@ -210,8 +263,8 @@
 
 
 
-      
-    </aside>
+    
+  </aside>
   
 </div>
 

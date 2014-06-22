@@ -4,7 +4,7 @@
   <title><![CDATA[Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2014-06-22T13:02:18-04:00</updated>
+  <updated>2014-06-22T15:15:53-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -12,6 +12,32 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Managing Octopress from different local repositories]]></title>
+    <link href="http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers/"/>
+    <updated>2014-06-22T13:04:11-04:00</updated>
+    <id>http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers</id>
+    <content type="html"><![CDATA[<p>I wanted to manage my octopress blog from different computers. I have my blog source on github, so I thought it would be as easy as pulling it, making changes, generating, and deploying. However, I ran into several nuanced issues along the way which resulted in this error when I tried to deploy:</p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+## Pushing generated _deploy website
+To http://github.com/mattnedrich/mattnedrich.github.io
+ ! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to 'http://github.com/mattnedrich/mattnedrich.github.io'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>After being confused for a while, I came across this <a href="http://blog.zerosharp.com/clone-your-octopress-to-blog-from-two-places/">post</a> and was able to successfully pull, modify, and deploy my blog from a second local repository. The only change I had to make from the instructions in the post was that I had to clone the master branch into the _deploy directory <b>after</b> running <code>rake setup_github_pages</code> as pointed out in the comments.</p>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Quicksort in C#]]></title>
