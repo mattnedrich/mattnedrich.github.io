@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Clustering | Matt Nedrich]]></title>
-  <link href="www.mattnedrich.com/blog/categories/clustering/atom.xml" rel="self"/>
-  <link href="www.mattnedrich.com/"/>
-  <updated>2014-06-09T21:22:41-04:00</updated>
-  <id>www.mattnedrich.com/</id>
+  <link href="http://www.mattnedrich.com/blog/categories/clustering/atom.xml" rel="self"/>
+  <link href="http://www.mattnedrich.com/"/>
+  <updated>2014-06-22T12:51:45-04:00</updated>
+  <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,17 +15,17 @@
   
   <entry>
     <title type="html"><![CDATA[K-Means Clustering]]></title>
-    <link href="www.mattnedrich.com/blog/2014/01/26/k-means-basics/"/>
+    <link href="http://www.mattnedrich.com/blog/2014/01/26/k-means-basics/"/>
     <updated>2014-01-26T18:19:21-05:00</updated>
-    <id>www.mattnedrich.com/blog/2014/01/26/k-means-basics</id>
+    <id>http://www.mattnedrich.com/blog/2014/01/26/k-means-basics</id>
     <content type="html"><![CDATA[<h2 id="what-is-k-means">What is K-Means</h2>
-<p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we&rsquo;ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
+<p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we’ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
 
 <h2 id="the-input">The Input</h2>
-<p>The input to K-Means is a set of data and a parameter K, which defines the number of clusters to partition the data into. Each input observation is a vector in d-dimensional space. The number of dimensions doesn&rsquo;t matter.</p>
+<p>The input to K-Means is a set of data and a parameter K, which defines the number of clusters to partition the data into. Each input observation is a vector in d-dimensional space. The number of dimensions doesn’t matter.</p>
 
 <h2 id="the-algorithm">The Algorithm</h2>
-<p>The goal of the K-Means algorithm is to find a partitioning of the input data that minimizes within-cluster sum of squares (WCSS). Simply put, the goal is to find a clustering such that the points in each cluster are close together. This objective function (we&rsquo;ll call it $J$) can be expressed as:</p>
+<p>The goal of the K-Means algorithm is to find a partitioning of the input data that minimizes within-cluster sum of squares (WCSS). Simply put, the goal is to find a clustering such that the points in each cluster are close together. This objective function (we’ll call it $J$) can be expressed as:</p>
 
 <script type="math/tex; mode=display">
 \begin{align}
@@ -45,13 +45,13 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 </pre></div>
 </div>
  </figure></notextile></div>
-Let&rsquo;s go over each of these steps.</p>
+Let’s go over each of these steps.</p>
 
 <h4 id="initialize-cluter-centroids"><strong>1. Initialize Cluter Centroids</strong></h4>
-<p>The first step is to choose an initial set of K cluster centroid locations. This can be done many ways. One approach is to choose K random locations in whatever dimensional space you&rsquo;re working in. This approach may work, but in practice it may be difficult to choose these locations well. For example, it&rsquo;s undesirable to choose locations very far away from any of the data. Another, perhaps better, approach is to choose K random observations from the input dataset.</p>
+<p>The first step is to choose an initial set of K cluster centroid locations. This can be done many ways. One approach is to choose K random locations in whatever dimensional space you’re working in. This approach may work, but in practice it may be difficult to choose these locations well. For example, it’s undesirable to choose locations very far away from any of the data. Another, perhaps better, approach is to choose K random observations from the input dataset.</p>
 
 <h4 id="cluster-assignment"><strong>2. Cluster Assignment</strong></h4>
-<p>In the cluster assignment step each observation in the dataset is assigned to a cluster centroid. This is done by assigning each observation to it&rsquo;s nearest centroid.</p>
+<p>In the cluster assignment step each observation in the dataset is assigned to a cluster centroid. This is done by assigning each observation to it’s nearest centroid.</p>
 
 <div class="note">
 <b>Note:</b> The true objective of this step is to minimize the WCSS objective. It just so happens that assinging each observation to the its nearest cluster achieves this when working in Euclidean space. This may not be the case if other distance metrics are used. 
@@ -69,11 +69,11 @@ Let&rsquo;s go over each of these steps.</p>
 </ol>
 
 <h2 id="example">Example</h2>
-<p>K-Means is often best understood visually, so let&rsquo;s walk through an example. Suppose you have the following data in two dimensional space.</p>
+<p>K-Means is often best understood visually, so let’s walk through an example. Suppose you have the following data in two dimensional space.</p>
 
 <p><img width="400px" height="300px" src="/images/kmeans_basics/0ab.png" /></p>
 
-<p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we&rsquo;ll randomly select five observations from our data set to be the initial cluster centroids:</p>
+<p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we’ll randomly select five observations from our data set to be the initial cluster centroids:</p>
 
 <p><img width="400px" height="300px" src="/images/kmeans_basics/0abc.png" /></p>
 
@@ -94,15 +94,15 @@ Let&rsquo;s go over each of these steps.</p>
 <h2 id="other-comments">Other Comments</h2>
 
 <h3 id="repeated-runs">Repeated Runs</h3>
-<p>It&rsquo;s very important to note that K-Means is notorious for getting stuck in local minima. This means that there is no guarantee that running K-Means will actually find the optimal solution for a given starting point (set of initial cluster centroids). To overcome this, K-Means is often run multiple times with different initial cluster centroids, and the clustering with the lowest error (WCSS) is chosen.</p>
+<p>It’s very important to note that K-Means is notorious for getting stuck in local minima. This means that there is no guarantee that running K-Means will actually find the optimal solution for a given starting point (set of initial cluster centroids). To overcome this, K-Means is often run multiple times with different initial cluster centroids, and the clustering with the lowest error (WCSS) is chosen.</p>
 
 <h3 id="choosing-k">Choosing K</h3>
-<p>This <a href="http://www.youtube.com/watch?v=Lz0sXs12uPk">video</a> from Andrew Ng&rsquo;s Machine Learning course on <a href="http://www.coursera.org">Coursera</a> does a great job summarizing the task of choosing K. In general, there is no great general purpose method. Choosing K often requires manual input based on data visualizaiton or other domain knowledge. Interestingly, for some applications, K may already be known. The T-Shirt sizing example in the video is a great example of this. For these types of problems the goal is to partition the data into a pre-defined number of sets, rather than learning how many distinct sub-sets make up the original input data.</p>
+<p>This <a href="http://www.youtube.com/watch?v=Lz0sXs12uPk">video</a> from Andrew Ng’s Machine Learning course on <a href="http://www.coursera.org">Coursera</a> does a great job summarizing the task of choosing K. In general, there is no great general purpose method. Choosing K often requires manual input based on data visualizaiton or other domain knowledge. Interestingly, for some applications, K may already be known. The T-Shirt sizing example in the video is a great example of this. For these types of problems the goal is to partition the data into a pre-defined number of sets, rather than learning how many distinct sub-sets make up the original input data.</p>
 
 <h3 id="strengths-and-weaknesses">Strengths and Weaknesses</h3>
-<p><strong>Strengths:</strong> K-Means is great because it&rsquo;s simple and fast. There are several off the shelf implementations available on the internet, and if they&rsquo;re not good enough, it&rsquo;s not terribly difficult to implement K-Means on your own.
+<p><strong>Strengths:</strong> K-Means is great because it’s simple and fast. There are several off the shelf implementations available on the internet, and if they’re not good enough, it’s not terribly difficult to implement K-Means on your own.
 <br />
-<strong>Weaknesses</strong>:The main weakness of K-Means is that it doesn&rsquo;t work that well for non-spherical clusters. Also, as we discussed earlier, it&rsquo;s also notorius for getting stuck in local minima, and requires the user to choose K.</p>
+<strong>Weaknesses</strong>:The main weakness of K-Means is that it doesn’t work that well for non-spherical clusters. Also, as we discussed earlier, it’s also notorius for getting stuck in local minima, and requires the user to choose K.</p>
 ]]></content>
   </entry>
   

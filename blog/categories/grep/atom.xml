@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Grep | Matt Nedrich]]></title>
-  <link href="www.mattnedrich.com/blog/categories/grep/atom.xml" rel="self"/>
-  <link href="www.mattnedrich.com/"/>
-  <updated>2014-06-09T21:22:41-04:00</updated>
-  <id>www.mattnedrich.com/</id>
+  <link href="http://www.mattnedrich.com/blog/categories/grep/atom.xml" rel="self"/>
+  <link href="http://www.mattnedrich.com/"/>
+  <updated>2014-06-22T12:51:45-04:00</updated>
+  <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,10 +15,10 @@
   
   <entry>
     <title type="html"><![CDATA[Finding Files on Windows]]></title>
-    <link href="www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
+    <link href="http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
     <updated>2014-01-18T16:53:50-05:00</updated>
-    <id>www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
-    <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can&rsquo;t find it.</p>
+    <id>http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
+    <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can’t find it.</p>
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 

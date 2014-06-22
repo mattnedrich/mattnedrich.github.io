@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes">
+  <link rel="canonical" href="http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Matt Nedrich" type="application/atom+xml">
 
@@ -161,12 +161,12 @@
 <p>So the built-in sorting should be using Quicksort <em>most</em> of the time. I thought my implementation might just be slow, so I started to make some optimizations. My base implementation can be found here:<br />
 <a href="https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs</a></p>
 
-<p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn&rsquo;t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
+<p>First I tried to in-line all of the function calls (e.g., <code>ChoosePivotIndex</code> and <code>Swap</code>). This yielded some performance improvement (about 10%). Next I played around with the pivot selection method. I was using a naive random pivot selection so I tried a median of three approach. This actually didn’t do much, though I suspect it is because my input was uniformly random. I tried parallelizing the calls to <code>Partition</code>. This actually slowed things down (probably due to the overhead of thread creation). Lastly, I cheated a bit and switched to insertion sort for small inputs, as the library sort does. This yielded the latest performance gain of around 20%. However, after all of my optimization, I was still around eight times slower than <code>List&lt;T&gt;.Sort</code>.</p>
 
 <p>I was stuck, so I posted <a href="http://stackoverflow.com/questions/21818889/why-is-my-c-sharp-quicksort-implementation-significantly-slower-than-listt-sor">this</a>, and learned that the .NET Framework special cases the sorting of built-in types (ints, string, etc). Just how much of a performance gain is achieved by doing this? I wanted to find out so I set up yet another experiment.</p>
 
 <h3 id="int-vs-intinwrapper">Int vs. IntInWrapper</h3>
-<p>I compared the performance of <code>List&lt;T&gt;.Sort</code> when using plain ol&rsquo; <code>int</code>&rsquo;s to the performance when using <code>int</code>&rsquo;s in a wrapper class. For the wrapper class I used:</p>
+<p>I compared the performance of <code>List&lt;T&gt;.Sort</code> when using plain ol’ <code>int</code>’s to the performance when using <code>int</code>’s in a wrapper class. For the wrapper class I used:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
   <div class="code"><pre>
@@ -196,7 +196,7 @@
 
 <p><img width="450px" src="/images/c_sharp_sorting/ListT.png" /></p>
 
-<p>Sorting on wrapped <code>int</code>&rsquo;s drastically degrades performance compared to plain  <code>int</code>&rsquo;s. From my understanding, this is largely due to the <code>IComparable&lt;T&gt;.CompareTo</code> function pointer being used for element comparison, rather than a simple <code>&gt;</code> or <code>&lt;</code> (which likely trickles down to a single assembly instruction). Anyway, the key learning from this is that use built-in types when you need sorting performance and be aware of the penalty associated with using custom types! </p>
+<p>Sorting on wrapped <code>int</code>’s drastically degrades performance compared to plain  <code>int</code>’s. From my understanding, this is largely due to the <code>IComparable&lt;T&gt;.CompareTo</code> function pointer being used for element comparison, rather than a simple <code>&gt;</code> or <code>&lt;</code> (which likely trickles down to a single assembly instruction). Anyway, the key learning from this is that use built-in types when you need sorting performance and be aware of the penalty associated with using custom types! </p>
 </div>
 
 
@@ -235,7 +235,7 @@
         
           <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/" data-via="" data-counturl="www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/" data-via="" data-counturl="http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/" >Tweet</a>
   
   
   

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Windows | Matt Nedrich]]></title>
-  <link href="www.mattnedrich.com/blog/categories/windows/atom.xml" rel="self"/>
-  <link href="www.mattnedrich.com/"/>
-  <updated>2014-06-09T21:22:41-04:00</updated>
-  <id>www.mattnedrich.com/</id>
+  <link href="http://www.mattnedrich.com/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://www.mattnedrich.com/"/>
+  <updated>2014-06-22T12:51:45-04:00</updated>
+  <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[Hide and Seek with OneNote]]></title>
-    <link href="www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem/"/>
+    <link href="http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem/"/>
     <updated>2014-02-14T11:26:01-05:00</updated>
-    <id>www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
-    <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It&rsquo;s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
+    <id>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
+    <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It’s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
 
 <p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
 
-<p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I&rsquo;m using Octopress). At first it wasn&rsquo;t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn&rsquo;t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
+<p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I’m using Octopress). At first it wasn’t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn’t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
 
 <p>I tried grepping for interesting files/directories in the blog source, but nothing showed up. I tried manually browsing through the source directory structure. Also note that I had show hidden files and folders turned on. Still, I found nothing.</p>
 
@@ -48,10 +48,10 @@ del /S /A:H *.onetoc2
   
   <entry>
     <title type="html"><![CDATA[Finding Files on Windows]]></title>
-    <link href="www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
+    <link href="http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
     <updated>2014-01-18T16:53:50-05:00</updated>
-    <id>www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
-    <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can&rsquo;t find it.</p>
+    <id>http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
+    <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can’t find it.</p>
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 

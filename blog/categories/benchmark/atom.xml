@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Benchmark | Matt Nedrich]]></title>
-  <link href="www.mattnedrich.com/blog/categories/benchmark/atom.xml" rel="self"/>
-  <link href="www.mattnedrich.com/"/>
-  <updated>2014-06-09T21:22:41-04:00</updated>
-  <id>www.mattnedrich.com/</id>
+  <link href="http://www.mattnedrich.com/blog/categories/benchmark/atom.xml" rel="self"/>
+  <link href="http://www.mattnedrich.com/"/>
+  <updated>2014-06-22T12:51:45-04:00</updated>
+  <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Benchmarking C# Code]]></title>
-    <link href="www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number/"/>
+    <link href="http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number/"/>
     <updated>2014-02-07T00:01:49-05:00</updated>
-    <id>www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number</id>
+    <id>http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number</id>
     <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
@@ -71,7 +71,7 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = FooWithReturnValue())
 </div>
  </figure></notextile></div></p>
 
-<p>I&rsquo;ve put this on github:
+<p>I’ve put this on github:
 <a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>
 ]]></content>
   </entry>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: How-to | Matt Nedrich]]></title>
-  <link href="www.mattnedrich.com/blog/categories/how-to/atom.xml" rel="self"/>
-  <link href="www.mattnedrich.com/"/>
-  <updated>2014-06-09T21:22:41-04:00</updated>
-  <id>www.mattnedrich.com/</id>
+  <link href="http://www.mattnedrich.com/blog/categories/how-to/atom.xml" rel="self"/>
+  <link href="http://www.mattnedrich.com/"/>
+  <updated>2014-06-22T12:51:45-04:00</updated>
+  <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,14 +15,14 @@
   
   <entry>
     <title type="html"><![CDATA[LaTeX Math in Octopress]]></title>
-    <link href="www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress/"/>
+    <link href="http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress/"/>
     <updated>2014-01-18T17:16:43-05:00</updated>
-    <id>www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress</id>
+    <id>http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress</id>
     <content type="html"><![CDATA[<p>I found this post helpful when trying to enable LaTeX style math formulas in Octopress:</p>
 
 <p><a href="http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress">http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress</a></p>
 
-<p>It&rsquo;s also worth noting that when you change Octopress themes <code>source/_includes/custom/head.html</code> seems to get overwritten, so you have to re-add the provided snippet.</p>
+<p>It’s also worth noting that when you change Octopress themes <code>source/_includes/custom/head.html</code> seems to get overwritten, so you have to re-add the provided snippet.</p>
 ]]></content>
   </entry>
   
