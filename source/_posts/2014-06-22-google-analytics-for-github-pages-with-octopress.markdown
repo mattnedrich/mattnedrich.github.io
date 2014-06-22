@@ -10,7 +10,7 @@ I wanted to setup google analytics for my octopress blog hosted on [github pages
 
 1. Create a [Google Analytics](http://www.google.com/analytics/) account.
 2. Tell your analytics account to monitor your custom domain. For me this was my <code>www.mattnedrich.com</code> domain, not the <code>mattnedrich.github.io</code> one.
-3. Update your Octopress <code>_config.yml</code> file to include your analytics tracking id by setting the <code>google_analytics_tracking_id:</code> property.
+3. Update your Octopress <code>_config.yml</code> file to include your analytics tracking id by setting the <code>google_analytics_tracking_id:</code> property. This tracking id will look something like <code>UA-23414877-5</code>
 4. Generate and deploy your site
 
-There are several [posts](http://rebootjeff.github.io/blog/2013/09/17/adding-google-analytics-to-octopress-blog-on-github-pages/) online that talk about modifying the <code>google_analytics.html</code> Octopress file. If you are using a custom domain with your github page you don't have to do this (or at least I didn't have to).
+There are several [posts](http://rebootjeff.github.io/blog/2013/09/17/adding-google-analytics-to-octopress-blog-on-github-pages/) online that talk about modifying the <code>google_analytics.html</code> octopress file. If you are using a custom domain with your github page you don't have to do this (or at least I didn't have to).
