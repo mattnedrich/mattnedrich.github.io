@@ -4,10 +4,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Intel - Matt Nedrich</title>
+  <title>Matt Nedrich</title>
   <meta name="author" content="Matt Nedrich">
 
-  <meta name="description" content="Category: Intel">
+  
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://www.mattnedrich.comblog/categories/intel">
+  <link rel="canonical" href="http://www.mattnedrich.com/blog/page/2">
   <link href="/favicon.png" type="image/png" rel="icon">
   <link href="/atom.xml" rel="alternate" title="Matt Nedrich" type="application/atom+xml">
 
@@ -88,10 +88,10 @@
 
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li >
+                <li class="active">
                     <a href="/">Blog</a>
                 </li>
-                <li class="active">
+                <li >
                     <a href="/blog/archives">Archives</a>
                 </li>
 				<li >
@@ -128,31 +128,16 @@
         <div id="content">
           <div class="row">
   <div class="page-content col-md-9">
-    <article role="article">
+    <div class="blog-index">
       
-        <header class="page-header">
-          
-          
-            <h1 class="entry-title">
-              Category: Intel
-              
-            </h1>
-          
-        </header>
       
-      <div class="entry-content">
-        <div id="blog-archives" class="category">
-
-
-
-  
-  <h2>2014</h2>
-
-<article class="page-header">
-  
-<h1><a href="/blog/2014/02/01/android-virtual-machine-acceleration/">Android Virtual Machine Acceleration</a></h1>
-<p class="meta text-muted">
-  
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
 
 
 
@@ -165,27 +150,56 @@
 
 
 
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-02-01T14:15:29-05:00" pubdate data-updated="true">Feb 1<span>st</span>, 2014</time>
-  
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-18T16:53:50-05:00" pubdate data-updated="true">Jan 18<span>th</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/blog/2014/01/18/finding-files-on-windows/">Finding Files on Windows</a></h1>
+    
+  </header>
 
-<span class="glyphicon glyphicon-tags"></span>&nbsp;
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/android/'>Android</a>, <a class='category' href='/blog/categories/emulation/'>Emulation</a>, <a class='category' href='/blog/categories/intel/'>Intel</a>
-  
-</span>
 
+  <div class="entry-content clearfix"><p>I often find myself in situations where I know a file exists but can’t find it.</p>
 
-</p>
+<p>On Windows, the following can be used to search for a file from the current working directory</p>
 
-</article>
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | findstr [search string]
+</pre></div>
+</div>
+ </figure></notextile></div>
+
+<p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
+
+<p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
+
+<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
+  <div class="code"><pre>
+dir /s /b | grep [search string]
+</pre></div>
+</div>
+ </figure></notextile></div>
 
 </div>
+  
+  
 
-      </div>
+
+        </article>
       
-    </article>
-    
+    </div>
+
+    <ul class="pager">
+      
+        <li class="previous disabled"><a href="#">&larr;&nbsp;Older</a></li>
+      
+      <li><a href="/blog/archives">Blog Archives</a></li>
+      
+        <li class="next"><a href="/">Newer&nbsp;&rarr;</a></li>
+      
+    </ul>
   </div>
 
   

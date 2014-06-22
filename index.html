@@ -150,6 +150,52 @@
 
 
 
+<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-22T16:56:10-04:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+    
+      <h1 class="entry-title"><a href="/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/">Google Analytics for Github Pages With Octopress</a></h1>
+    
+  </header>
+
+
+  <div class="entry-content clearfix"><p>I wanted to setup google analytics for my octopress blog hosted on <a href="https://pages.github.com/">github pages</a>. My situation was a little different than some of the existing tutorials because I’m using a custom domain, not the standard <code>username.github.io</code> domain. To get everything setup and working I did the following:</p>
+
+<ol>
+  <li>Create a <a href="http://www.google.com/analytics/">Google Analytics</a> account.</li>
+  <li>Tell your analytics account to monitor your custom domain. For me this was my <code>www.mattnedrich.com</code> domain, not the <code>mattnedrich.github.io</code> one.</li>
+  <li>Update your Octopress <code>_config.yml</code> file to include your analytics tracking id by setting the <code>google_analytics_tracking_id:</code> property.</li>
+  <li>Generate and deploy your site</li>
+</ol>
+
+<p>There are several <a href="http://rebootjeff.github.io/blog/2013/09/17/adding-google-analytics-to-octopress-blog-on-github-pages/">posts</a> online that talk about modifying the <code>google_analytics.html</code> Octopress file. If you are using a custom domain with your github page you don’t have to do this (or at least I didn’t have to).</p>
+</div>
+  
+  
+
+
+        </article>
+      
+      
+        <article class="post">
+          
+  <header class="page-header">
+    
+      <p class="meta text-muted text-uppercase">
+        
+
+
+
+
+
+
+
+
+
+
+
+
 <span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-06-22T13:04:11-04:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2014</time>
         
       </p>
@@ -797,69 +843,11 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 
         </article>
       
-      
-        <article class="post">
-          
-  <header class="page-header">
-    
-      <p class="meta text-muted text-uppercase">
-        
-
-
-
-
-
-
-
-
-
-
-
-
-<span class="glyphicon glyphicon-calendar"></span> <time datetime="2014-01-18T16:53:50-05:00" pubdate data-updated="true">Jan 18<span>th</span>, 2014</time>
-        
-      </p>
-    
-    
-      <h1 class="entry-title"><a href="/blog/2014/01/18/finding-files-on-windows/">Finding Files on Windows</a></h1>
-    
-  </header>
-
-
-  <div class="entry-content clearfix"><p>I often find myself in situations where I know a file exists but can’t find it.</p>
-
-<p>On Windows, the following can be used to search for a file from the current working directory</p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
-  <div class="code"><pre>
-dir /s /b | findstr [search string]
-</pre></div>
-</div>
- </figure></notextile></div>
-
-<p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
-
-<p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
-
-<div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
-  <div class="code"><pre>
-dir /s /b | grep [search string]
-</pre></div>
-</div>
- </figure></notextile></div>
-
-</div>
-  
-  
-
-
-        </article>
-      
     </div>
 
     <ul class="pager">
       
-        <li class="previous disabled"><a href="#">&larr;&nbsp;Older</a></li>
+        <li class="previous"><a href="/blog/page/2/">&larr;&nbsp;Older</a></li>
       
       <li><a href="/blog/archives">Blog Archives</a></li>
       
@@ -878,6 +866,8 @@ dir /s /b | grep [search string]
   
   <div id="recent_posts" class="list-group">
     
+    <a class="list-group-item " href="/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/">Google Analytics for Github Pages With Octopress</a>
+    
     <a class="list-group-item " href="/blog/2014/06/22/managing-octopress-from-multiple-computers/">Managing Octopress From Different Local Repositories</a>
     
     <a class="list-group-item " href="/blog/2014/02/17/quicksort-in-c-number/">Quicksort in C#</a>
@@ -885,8 +875,6 @@ dir /s /b | grep [search string]
     <a class="list-group-item " href="/blog/2014/02/16/c-sharp-sorting-woes/">C# Sorting Woes</a>
     
     <a class="list-group-item " href="/blog/2014/02/14/fun-onenote-problem/">Hide and Seek With OneNote</a>
-    
-    <a class="list-group-item " href="/blog/2014/02/09/k-means-implementation-in-python/">K-Means in Python</a>
     
   </div>
 </section>

@@ -45,6 +45,12 @@
         <lastmod>2014-06-22T15:14:50-04:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://www.mattnedrich.com/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/
+        </loc>
+        <lastmod>2014-06-22T17:19:12-04:00</lastmod>
+    </url>
+    <url>
         <loc>http://www.mattnedrich.com/about.html</loc>
         <lastmod>2014-06-22T12:45:05-04:00</lastmod>
     </url>
@@ -70,7 +76,7 @@
     </url>
     <url>
         <loc>http://www.mattnedrich.com/assets/bootstrap/</loc>
-        <lastmod>2014-06-22T15:14:50-04:00</lastmod>
+        <lastmod>2014-06-22T17:19:12-04:00</lastmod>
     </url>
     <url>
         <loc>http://www.mattnedrich.com/assets/bootstrap/javascript.html</loc>
@@ -78,11 +84,11 @@
     </url>
     <url>
         <loc>http://www.mattnedrich.com/blog/archives/</loc>
-        <lastmod>2014-06-22T15:14:50-04:00</lastmod>
+        <lastmod>2014-06-22T17:19:12-04:00</lastmod>
     </url>
     <url>
         <loc>http://www.mattnedrich.com/</loc>
-        <lastmod>2014-06-22T15:14:50-04:00</lastmod>
+        <lastmod>2014-06-22T17:19:12-04:00</lastmod>
     </url>
     <url>
         <loc>http://www.mattnedrich.com/masters_work/hci_visual_surveillance.html</loc>
