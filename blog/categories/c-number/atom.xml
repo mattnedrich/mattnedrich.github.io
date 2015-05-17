@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C# | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/c-number/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2014-06-23T09:19:10-04:00</updated>
+  <updated>2015-05-17T14:32:56-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -23,20 +23,17 @@
 
 <p>It operates on anything that implements <code>IComparable&lt;T&gt;</code>. Suppose you have a class <code>SortableObject</code> that implements <code>IComparable&lt;SortableObject&gt;</code>. The usage model in this scenario would be</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
-<span class="predefined-type">List</span>&lt;sortableobject&gt; items = ...
-Quicksorter&lt;sortableobject&gt; sorter = <span class="keyword">new</span> Quicksorter&lt;sortableobject&gt;();
+<p>{% coderay lang:java%}
+List<sortableobject> items = ...
+Quicksorter<sortableobject> sorter = new Quicksorter<sortableobject>();
 sorter.Sort(items);
-</pre></div>
-</div>
- </figure></notextile></div></sortableobject></sortableobject></sortableobject></p>
+{% endcoderay %}</sortableobject></sortableobject></sortableobject></p>
 
 <p>My implementation contains a main <code>Partition</code> method that is called recursively to perform the sorting. In addition, there are two helper methods. The first, <code>ChoosePivotIndex</code> is responsible for choosing a pivot element from a list to be sorted. The current implementation naively selects a pivot at random. This method is virtual to keep it <a href="http://en.wikipedia.org/wiki/Open/closed_principle">Open/Closed</a> and allow others to extend it with a better pivot selection method if desired. The other method, <code>Swap</code>, swaps two elements in a list. I’ve found that in-lining the swapping yields faster performance, though I decided not to do so for clarity.</p>
 
 <p>I benchmarked my implementation on different types of input of varying length. Results below.</p>
 
-<p><img width="425px" src="/images/quicksort_csharp/quicksort_perf.png" /></p>
+<p><img width="425px" src="{{ root_url }}/images/quicksort_csharp/quicksort_perf.png" /></p>
 
 <p>As displayed, my implementation (even with the naive pivot selection) is fairly robust to random, sorted, and reverse sorted lists.</p>
 ]]></content>
@@ -68,32 +65,29 @@ sorter.Sort(items);
 <h3 id="int-vs-intinwrapper">Int vs. IntInWrapper</h3>
 <p>I compared the performance of <code>List&lt;T&gt;.Sort</code> when using plain ol’ <code>int</code>’s to the performance when using <code>int</code>’s in a wrapper class. For the wrapper class I used:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
-<span class="directive">public</span> <span class="type">class</span> <span class="class">IntInWrapper</span> : IComparable&lt;intinwrapper&gt;
+<p>{% coderay lang:java %}
+public class IntInWrapper : IComparable<intinwrapper>
 {
-    <span class="directive">public</span> <span class="type">int</span> Val { get; set; }
-    <span class="directive">public</span> IntInWrapper(<span class="type">int</span> val)
+    public int Val { get; set; }
+    public IntInWrapper(int val)
     {
         Val = val;
-    }&lt;/intinwrapper&gt;&lt;/p&gt;
+    }</intinwrapper></p>
 
-&lt;pre&gt;&lt;code&gt;<span class="directive">public</span> <span class="type">int</span> CompareTo(IntInWrapper other)
+<pre><code>public int CompareTo(IntInWrapper other)
 {
-    <span class="keyword">if</span> (<span class="local-variable">this</span>.Val &amp;lt; other.Val)
-        <span class="keyword">return</span> -<span class="integer">1</span>;
-    <span class="keyword">else</span> <span class="keyword">if</span> (<span class="local-variable">this</span>.Val == other.Val)
-        <span class="keyword">return</span> <span class="integer">0</span>;
-    <span class="keyword">else</span>
-        <span class="keyword">return</span> <span class="integer">1</span>;
-} } </pre></div>
-</div>
- </figure></notextile></div>
+    if (this.Val &lt; other.Val)
+        return -1;
+    else if (this.Val == other.Val)
+        return 0;
+    else
+        return 1;
+} } {% endcoderay %}
 </code></pre>
 
 <p>I benchmarked sorting Lists of various sizes for the two input classes. Results are shown below. For each List size, sorting was performed ten times (each time on a different randomized list), and the average execution time was kept.</p>
 
-<p><img width="450px" src="/images/c_sharp_sorting/ListT.png" /></p>
+<p><img width="450px" src="{{ root_url }}/images/c_sharp_sorting/ListT.png" /></p>
 
 <p>Sorting on wrapped <code>int</code>’s drastically degrades performance compared to plain  <code>int</code>’s. From my understanding, this is largely due to the <code>IComparable&lt;T&gt;.CompareTo</code> function pointer being used for element comparison, rather than a simple <code>&gt;</code> or <code>&lt;</code> (which likely trickles down to a single assembly instruction). Anyway, the key learning from this is that use built-in types when you need sorting performance and be aware of the penalty associated with using custom types! </p>
 ]]></content>
@@ -106,56 +100,44 @@ sorter.Sort(items);
     <id>http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number</id>
     <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
-<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Benchmarker</span>
+<p>{% coderay lang:java %}
+public static class Benchmarker
 {
-    <span class="directive">public</span> <span class="directive">static</span> TimeSpan RunOnce(<span class="predefined-type">Action</span> action)
+    public static TimeSpan RunOnce(Action action)
     {
         Stopwatch stopwatch = Stopwatch.StartNew();
         action();
         stopwatch.Stop();
-        <span class="keyword">return</span> stopwatch.Elapsed;
-    }&lt;/p&gt;
+        return stopwatch.Elapsed;
+    }</p>
 
-&lt;pre&gt;&lt;code&gt;<span class="directive">public</span> <span class="directive">static</span> IEnumerable&amp;lt;TimeSpan&amp;gt; RunMany(<span class="predefined-type">Action</span> action, <span class="type">int</span> runCount)
+<pre><code>public static IEnumerable&lt;TimeSpan&gt; RunMany(Action action, int runCount)
 {
-    <span class="predefined-type">List</span>&amp;lt;TimeSpan&amp;gt; results = <span class="keyword">new</span> <span class="predefined-type">List</span>&amp;lt;TimeSpan&amp;gt;();
-    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &amp;lt; runCount; i++)
+    List&lt;TimeSpan&gt; results = new List&lt;TimeSpan&gt;();
+    for (int i = 0; i &lt; runCount; i++)
         results.Add(RunOnce(action));
-    <span class="keyword">return</span> results;
-} } </pre></div>
-</div>
- </figure></notextile></div>
+    return results;
+} } {% endcoderay %}
 </code></pre>
 
 <p>This allows any code to be easily called and timed. For example, suppose you have a void Method called <code>Foo</code>. This can be timed via:</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
-TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; Foo());
-</pre></div>
-</div>
- </figure></notextile></div></p>
+<p>{% coderay lang:java%}
+TimeSpan timespan = Benchmarker.RunOnce(() =&gt; Foo());
+{% endcoderay %}</p>
 
 <p>Similarly, if you want to benchmark a method that happens to return something like this</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
-<span class="type">int</span> bar = FooWithReturnValue();
-</pre></div>
-</div>
- </figure></notextile></div></p>
+<p>{% coderay lang:java%}
+int bar = FooWithReturnValue();
+{% endcoderay %}</p>
 
 <p>you can use the above Benchmarker class via</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
-<span class="type">int</span> bar;
-TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = FooWithReturnValue());
-</pre></div>
-</div>
- </figure></notextile></div></p>
+<p>{% coderay lang:java%}
+int bar;
+TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
+{% endcoderay %}</p>
 
 <p>I’ve put this on github:
 <a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>

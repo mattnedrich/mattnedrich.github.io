@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: algorithms, | Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/blog/categories/algorithms/atom.xml" rel="self"/>
+  <title><![CDATA[Category: random | Matt Nedrich]]></title>
+  <link href="http://www.mattnedrich.com/blog/categories/random/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
   <updated>2015-05-17T14:32:56-04:00</updated>
   <id>http://www.mattnedrich.com/</id>

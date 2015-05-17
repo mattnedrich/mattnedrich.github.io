@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Grep | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/grep/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2014-06-23T09:19:10-04:00</updated>
+  <updated>2015-05-17T14:32:56-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -22,23 +22,17 @@
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
+<p>{% coderay %}
 dir /s /b | findstr [search string]
-</pre></div>
-</div>
- </figure></notextile></div></p>
+{% endcoderay %}</p>
 
 <p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
 
 <p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
+<p>{% coderay %}
 dir /s /b | grep [search string]
-</pre></div>
-</div>
- </figure></notextile></div></p>
+{% endcoderay %}</p>
 ]]></content>
   </entry>
   

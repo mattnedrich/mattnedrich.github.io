@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Debug | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/debug/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2014-06-23T09:19:10-04:00</updated>
+  <updated>2015-05-17T14:32:56-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -20,7 +20,7 @@
     <id>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
     <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It’s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
 
-<p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
+<p><img width="250px" src="{{ root_url }}/images/onenote_fun/onenote_cmd_window.jpg" /></p>
 
 <p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I’m using Octopress). At first it wasn’t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn’t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
 
@@ -28,21 +28,15 @@
 
 <p>After some digging, and a lot of help from this <a href="http://www.tigraine.at/2009/09/01/howto-get-rid-of-onetoc2-files-using-powershell">post</a> it turns out that there were several OneNote files embedded and hidden in every directory of my blog source. The only way I was able to see them was to display them in a cmd window via</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
+<p>{% coderay lang:Text %}
 dir /A:H /B
-</pre></div>
-</div>
- </figure></notextile></div></p>
+{% endcoderay %}</p>
 
 <p>After it was clear that they were indeed there but hidden, I was able to delete them via</p>
 
-<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
-  <div class="code"><pre>
+<p>{% coderay lang:Text %}
 del /S /A:H *.onetoc2
-</pre></div>
-</div>
- </figure></notextile></div></p>
+{% endcoderay %}</p>
 ]]></content>
   </entry>
   
