@@ -15,7 +15,6 @@
   <div>
   <div style="margin-left:20px;" id="mychart"></div>
   <div style="margin-left:20px" id="xaxis"></div>
-  <div style="margin-left:20px" id="rangeSlider"></div>
   </div>
 </body>
 
@@ -32,34 +31,16 @@
       name: "Series 1",
       color: "steelblue",
       data: [
-      {x: 0, y:10,},
-      {x: 1, y:3,},
-      {x: 2, y:8,},
-      {x: 3, y:15,},
-      {x: 4, y:12,},
-      {x: 5, y:8,},
-      {x: 6, y:3,},
-      {x: 7, y:5,},
-      {x: 8, y:2,},
-      {x: 9, y:1,},
-      {x: 10, y:4,},
+      {x: 0, y:10,},{x: 1, y:3,},{x: 2, y:8,},{x: 3, y:15,},{x: 4, y:12,},
+      {x: 5, y:8,},{x: 6, y:3,},{x: 7, y:5,},{x: 8, y:2,},{x: 9, y:1,},{x: 10, y:4,},
       ]
     },
     {
       name: "Series 2",
       color: "green",
       data: [
-      {x: 0, y:5,},
-      {x: 1, y:3,},
-      {x: 2, y:8,},
-      {x: 3, y:6,},
-      {x: 4, y:3,},
-      {x: 5, y:12,},
-      {x: 6, y:13,},
-      {x: 7, y:14,},
-      {x: 8, y:12,},
-      {x: 9, y:8,},
-      {x: 10, y:9,},
+      {x: 0, y:5,},{x: 1, y:3,},{x: 2, y:8,},{x: 3, y:6,},{x: 4, y:3,},
+      {x: 5, y:12,},{x: 6, y:13,},{x: 7, y:14,},{x: 8, y:12,},{x: 9, y:8,},{x: 10, y:9,},
       ]
     }
     ]
@@ -81,9 +62,9 @@
     graph:myGraph,
     element: document.querySelector("#mylegend")
   });
-  var rangeSlider = new Rickshaw.Graph.RangeSlider({
+  var toggling = new Rickshaw.Graph.Behavior.Series.Toggle({
     graph: myGraph,
-    element: document.querySelector("#rangeSlider")
+    legend: myLegend
   });
   myGraph.render();
 </script>
