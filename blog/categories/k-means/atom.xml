@@ -4,7 +4,7 @@
   <title><![CDATA[Category: K-Means | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/k-means/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-05-17T14:32:56-04:00</updated>
+  <updated>2015-07-26T14:10:30-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -36,12 +36,15 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 <p>Here, $K$ is the number of clusters, $N$ is the number of points, $\mu_k$ is the cluster centroid for cluster $k$, and $x_i$ corresponds to input observation $i$. Informally, this function computes the variance of the observations around each cluster centroid (for a given set of K centroids). The goal is the minimize this function. Each iteration of the K-Means algorithm reduces the objective function, moving closer to a minimum.</p>
 
 <p>K-Means uses an <a href="http://en.wikipedia.org/wiki/Expectation%E2%80%93maximization_algorithm">Expectation Maximization</a> approach to partition the input data and minimize the WCSS. Conceptually, we start with an initial set of cluster centroids (with an implicitly defined WCSS score). The goal is to figure out how to move these centroids around to make the WCSS score as small as possible. The algorithm can be expressed as
-{% coderay lang:python%}
-1. Initialize cluster centroids
-while not converged:
-    2. Cluster Assignment - assign each observation to the nearest cluster centroid
-    3. Update Centroids - update the cluster centroid locations
-{% endcoderay %}
+<div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="float">1.</span> Initialize cluster centroids
+<span class="keyword">while</span> <span class="keyword">not</span> converged:
+    <span class="float">2.</span> Cluster Assignment - assign each observation to the nearest cluster centroid
+    <span class="float">3.</span> Update Centroids - update the cluster centroid locations
+</pre></div>
+</div>
+ </figure></notextile></div>
 Let’s go over each of these steps.</p>
 
 <h4 id="initialize-cluter-centroids"><strong>1. Initialize Cluter Centroids</strong></h4>
@@ -68,25 +71,25 @@ Let’s go over each of these steps.</p>
 <h2 id="example">Example</h2>
 <p>K-Means is often best understood visually, so let’s walk through an example. Suppose you have the following data in two dimensional space.</p>
 
-<p><img width="400px" height="300px" src="{{ root_url }}/images/kmeans_basics/0ab.png" /></p>
+<p><img width="400px" height="300px" src="/images/kmeans_basics/0ab.png" /></p>
 
 <p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we’ll randomly select five observations from our data set to be the initial cluster centroids:</p>
 
-<p><img width="400px" height="300px" src="{{ root_url }}/images/kmeans_basics/0abc.png" /></p>
+<p><img width="400px" height="300px" src="/images/kmeans_basics/0abc.png" /></p>
 
 <p>With the initial cluster centroids selected, steps <strong>2</strong> and <strong>3</strong> are iterated as described above.</p>
 
-<p><img width="270px" src="{{ root_url }}/images/kmeans_basics/00001_a.png" />
-<img width="270px" src="{{ root_url }}/images/kmeans_basics/00001_b.png" />
-<img width="270px" src="{{ root_url }}/images/kmeans_basics/00001_c.png" /></p>
+<p><img width="270px" src="/images/kmeans_basics/00001_a.png" />
+<img width="270px" src="/images/kmeans_basics/00001_b.png" />
+<img width="270px" src="/images/kmeans_basics/00001_c.png" /></p>
 
-<p><img width="270px" src="{{ root_url }}/images/kmeans_basics/00002_a.png" />
-<img width="270px" src="{{ root_url }}/images/kmeans_basics/00002_b.png" />
-<img width="270px" src="{{ root_url }}/images/kmeans_basics/00002_c.png" /></p>
+<p><img width="270px" src="/images/kmeans_basics/00002_a.png" />
+<img width="270px" src="/images/kmeans_basics/00002_b.png" />
+<img width="270px" src="/images/kmeans_basics/00002_c.png" /></p>
 
-<p><img width="270px" src="{{ root_url }}/images/kmeans_basics/00003_a.png" />
-<img width="270px" src="{{ root_url }}/images/kmeans_basics/00003_b.png" />
-<img width="270px" src="{{ root_url }}/images/kmeans_basics/00003_c.png" /></p>
+<p><img width="270px" src="/images/kmeans_basics/00003_a.png" />
+<img width="270px" src="/images/kmeans_basics/00003_b.png" />
+<img width="270px" src="/images/kmeans_basics/00003_c.png" /></p>
 
 <h2 id="other-comments">Other Comments</h2>
 

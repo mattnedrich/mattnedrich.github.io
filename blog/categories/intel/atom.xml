@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Intel | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/intel/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-05-17T14:32:56-04:00</updated>
+  <updated>2015-07-26T14:10:30-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -33,7 +33,7 @@
 
 <p>The Intel utility looks like this:</p>
 
-<p><img width="525px" height="384px" src="{{ root_url }}/images/android_virtual/vmx_enabled.jpg" /></p>
+<p><img width="525px" height="384px" src="/images/android_virtual/vmx_enabled.jpg" /></p>
 
 <h2 id="results">Results</h2>
 <p>With virtualization verified and enabled, I followed <a href="http://developer.android.com/tools/devices/emulator.html#acceleration">this</a> writeup to install everything and setup an x86 Android emulator.</p>

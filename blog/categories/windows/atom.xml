@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Windows | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/windows/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-05-17T14:32:56-04:00</updated>
+  <updated>2015-07-26T14:10:30-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -20,7 +20,7 @@
     <id>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
     <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It’s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
 
-<p><img width="250px" src="{{ root_url }}/images/onenote_fun/onenote_cmd_window.jpg" /></p>
+<p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
 
 <p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I’m using Octopress). At first it wasn’t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn’t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
 
@@ -28,15 +28,21 @@
 
 <p>After some digging, and a lot of help from this <a href="http://www.tigraine.at/2009/09/01/howto-get-rid-of-onetoc2-files-using-powershell">post</a> it turns out that there were several OneNote files embedded and hidden in every directory of my blog source. The only way I was able to see them was to display them in a cmd window via</p>
 
-<p>{% coderay lang:Text %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
 dir /A:H /B
-{% endcoderay %}</p>
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 
 <p>After it was clear that they were indeed there but hidden, I was able to delete them via</p>
 
-<p>{% coderay lang:Text %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
 del /S /A:H *.onetoc2
-{% endcoderay %}</p>
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 ]]></content>
   </entry>
   
@@ -49,17 +55,23 @@ del /S /A:H *.onetoc2
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>
 
-<p>{% coderay %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
 dir /s /b | findstr [search string]
-{% endcoderay %}</p>
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 
 <p>Here <code>/s</code> denotes a recursive search, and <code>/b</code> allows the full paths of the files to be printed (omit that if the full paths are not desired). The results from the <code>dir</code> are piped to a <code>findstr</code> command where a filter can be applied to find the desired file(s).</p>
 
 <p>If you have <code>grep</code> installed (e.g., via the <a href="http://sourceforge.net/projects/unxutils/">unix utilities</a>) you can replace <code>findstr</code> with <code>grep</code></p>
 
-<p>{% coderay %}
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
 dir /s /b | grep [search string]
-{% endcoderay %}</p>
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 ]]></content>
   </entry>
   

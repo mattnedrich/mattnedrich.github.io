@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tools | Matt Nedrich]]></title>
   <link href="http://www.mattnedrich.com/blog/categories/tools/atom.xml" rel="self"/>
   <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-05-17T14:32:56-04:00</updated>
+  <updated>2015-07-26T14:10:30-04:00</updated>
   <id>http://www.mattnedrich.com/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
@@ -20,44 +20,56 @@
     <id>http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number</id>
     <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
-<p>{% coderay lang:java %}
-public static class Benchmarker
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="directive">public</span> <span class="directive">static</span> <span class="type">class</span> <span class="class">Benchmarker</span>
 {
-    public static TimeSpan RunOnce(Action action)
+    <span class="directive">public</span> <span class="directive">static</span> TimeSpan RunOnce(<span class="predefined-type">Action</span> action)
     {
         Stopwatch stopwatch = Stopwatch.StartNew();
         action();
         stopwatch.Stop();
-        return stopwatch.Elapsed;
-    }</p>
+        <span class="keyword">return</span> stopwatch.Elapsed;
+    }&lt;/p&gt;
 
-<pre><code>public static IEnumerable&lt;TimeSpan&gt; RunMany(Action action, int runCount)
+&lt;pre&gt;&lt;code&gt;<span class="directive">public</span> <span class="directive">static</span> IEnumerable&amp;lt;TimeSpan&amp;gt; RunMany(<span class="predefined-type">Action</span> action, <span class="type">int</span> runCount)
 {
-    List&lt;TimeSpan&gt; results = new List&lt;TimeSpan&gt;();
-    for (int i = 0; i &lt; runCount; i++)
+    <span class="predefined-type">List</span>&amp;lt;TimeSpan&amp;gt; results = <span class="keyword">new</span> <span class="predefined-type">List</span>&amp;lt;TimeSpan&amp;gt;();
+    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &amp;lt; runCount; i++)
         results.Add(RunOnce(action));
-    return results;
-} } {% endcoderay %}
+    <span class="keyword">return</span> results;
+} } </pre></div>
+</div>
+ </figure></notextile></div>
 </code></pre>
 
 <p>This allows any code to be easily called and timed. For example, suppose you have a void Method called <code>Foo</code>. This can be timed via:</p>
 
-<p>{% coderay lang:java%}
-TimeSpan timespan = Benchmarker.RunOnce(() =&gt; Foo());
-{% endcoderay %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; Foo());
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 
 <p>Similarly, if you want to benchmark a method that happens to return something like this</p>
 
-<p>{% coderay lang:java%}
-int bar = FooWithReturnValue();
-{% endcoderay %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="type">int</span> bar = FooWithReturnValue();
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 
 <p>you can use the above Benchmarker class via</p>
 
-<p>{% coderay lang:java%}
-int bar;
-TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
-{% endcoderay %}</p>
+<p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
+  <div class="code"><pre>
+<span class="type">int</span> bar;
+TimeSpan timespan = Benchmarker.RunOnce(() =&amp;gt; bar = FooWithReturnValue());
+</pre></div>
+</div>
+ </figure></notextile></div></p>
 
 <p>I’ve put this on github:
 <a href="https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs">https://github.com/mattnedrich/tools/tree/master/csharp/Benchmarker.cs</a></p>
