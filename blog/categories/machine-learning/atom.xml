@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Machine Learning | Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/blog/categories/machine-learning/atom.xml" rel="self"/>
-  <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-07-27T08:16:59-04:00</updated>
-  <id>http://www.mattnedrich.com/</id>
+  <link href="https://mattnedrich.github.io/blog/categories/machine-learning/atom.xml" rel="self"/>
+  <link href="https://mattnedrich.github.io/"/>
+  <updated>2015-07-27T09:06:33-04:00</updated>
+  <id>https://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[K-Means Clustering]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/01/26/k-means-basics/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/01/26/k-means-basics/"/>
     <updated>2014-01-26T18:19:21-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/01/26/k-means-basics</id>
+    <id>https://mattnedrich.github.io/blog/2014/01/26/k-means-basics</id>
     <content type="html"><![CDATA[<h2 id="what-is-k-means">What is K-Means</h2>
 <p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we’ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
 

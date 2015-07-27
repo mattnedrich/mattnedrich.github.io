@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Emulation | Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/blog/categories/emulation/atom.xml" rel="self"/>
-  <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-07-27T08:16:59-04:00</updated>
-  <id>http://www.mattnedrich.com/</id>
+  <link href="https://mattnedrich.github.io/blog/categories/emulation/atom.xml" rel="self"/>
+  <link href="https://mattnedrich.github.io/"/>
+  <updated>2015-07-27T09:06:33-04:00</updated>
+  <id>https://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Android Virtual Machine Acceleration]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/01/android-virtual-machine-acceleration/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration/"/>
     <updated>2014-02-01T14:15:29-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/01/android-virtual-machine-acceleration</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration</id>
     <content type="html"><![CDATA[<p>I’ve dabbled in Android development in the past, but haven’t done much with emulation. In my experience the Android emulators are too slow to use, and I’ve usually used my phone for testing/debugging.</p>
 
 <p>Intel’s <a href="http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager">Hardware Accelerated Execution Manager</a> (HAXM) uses CPU virtualization to speed up Android emulators. I wanted to give it a try. </p>

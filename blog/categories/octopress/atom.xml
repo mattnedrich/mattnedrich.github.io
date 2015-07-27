@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Octopress | Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/blog/categories/octopress/atom.xml" rel="self"/>
-  <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-07-27T08:16:59-04:00</updated>
-  <id>http://www.mattnedrich.com/</id>
+  <link href="https://mattnedrich.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="https://mattnedrich.github.io/"/>
+  <updated>2015-07-27T09:06:33-04:00</updated>
+  <id>https://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Google Analytics for Github pages with Octopress]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/"/>
     <updated>2014-06-22T16:56:10-04:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/06/22/google-analytics-for-github-pages-with-octopress</id>
+    <id>https://mattnedrich.github.io/blog/2014/06/22/google-analytics-for-github-pages-with-octopress</id>
     <content type="html"><![CDATA[<p>I wanted to setup google analytics for my octopress blog hosted on <a href="https://pages.github.com/">github pages</a>. My situation was a little different than some of the existing tutorials because I’m using a custom domain, not the standard <code>username.github.io</code> domain. To get everything setup and working I did the following:</p>
 
 <ol>
@@ -33,9 +33,9 @@
   
   <entry>
     <title type="html"><![CDATA[Managing Octopress from different local repositories]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/06/22/managing-octopress-from-multiple-computers/"/>
     <updated>2014-06-22T13:04:11-04:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers</id>
+    <id>https://mattnedrich.github.io/blog/2014/06/22/managing-octopress-from-multiple-computers</id>
     <content type="html"><![CDATA[<p>I wanted to manage my octopress blog from different computers. I have my blog source on github, so I thought it would be as easy as pulling it, making changes, generating, and deploying. However, I ran into several nuanced issues along the way which resulted in this error when I tried to deploy:</p>
 
 <p><div class='bogus-wrapper'><notextile><figure class='code'> <div class="CodeRay">
@@ -59,9 +59,9 @@ hint: See the ‘Note about fast-forwards’ in ‘git push –help’ for detai
   
   <entry>
     <title type="html"><![CDATA[LaTeX Math in Octopress]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress/"/>
     <updated>2014-01-18T17:16:43-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress</id>
+    <id>https://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress</id>
     <content type="html"><![CDATA[<p>I found this post helpful when trying to enable LaTeX style math formulas in Octopress:</p>
 
 <p><a href="http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress">http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress</a></p>

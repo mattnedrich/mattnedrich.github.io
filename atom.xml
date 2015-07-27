@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/atom.xml" rel="self"/>
-  <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-07-27T08:16:59-04:00</updated>
-  <id>http://www.mattnedrich.com/</id>
+  <link href="https://mattnedrich.github.io/atom.xml" rel="self"/>
+  <link href="https://mattnedrich.github.io/"/>
+  <updated>2015-07-27T09:06:33-04:00</updated>
+  <id>https://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Google Analytics for Github pages with Octopress]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/"/>
     <updated>2014-06-22T16:56:10-04:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/06/22/google-analytics-for-github-pages-with-octopress</id>
+    <id>https://mattnedrich.github.io/blog/2014/06/22/google-analytics-for-github-pages-with-octopress</id>
     <content type="html"><![CDATA[<p>I wanted to setup google analytics for my octopress blog hosted on <a href="https://pages.github.com/">github pages</a>. My situation was a little different than some of the existing tutorials because I’m using a custom domain, not the standard <code>username.github.io</code> domain. To get everything setup and working I did the following:</p>
 
 <ol>
@@ -33,9 +33,9 @@
   
   <entry>
     <title type="html"><![CDATA[Managing Octopress from different local repositories]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/06/22/managing-octopress-from-multiple-computers/"/>
     <updated>2014-06-22T13:04:11-04:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers</id>
+    <id>https://mattnedrich.github.io/blog/2014/06/22/managing-octopress-from-multiple-computers</id>
     <content type="html"><![CDATA[<p>I wanted to manage my octopress blog from different computers. I have my blog source on github, so I thought it would be as easy as pulling it, making changes, generating, and deploying. However, I ran into several nuanced issues along the way which resulted in this error when I tried to deploy:</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
@@ -59,9 +59,9 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
   
   <entry>
     <title type="html"><![CDATA[Quicksort in C#]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/17/quicksort-in-c-number/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number/"/>
     <updated>2014-02-17T13:36:31-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/17/quicksort-in-c-number</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number</id>
     <content type="html"><![CDATA[<p>I have written an implementation of quicksort in C#. It can be found here.<br />
 <a href="https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs</a></p>
 
@@ -80,7 +80,7 @@ sorter.Sort(items);
 
 <p>I benchmarked my implementation on different types of input of varying length. Results below.</p>
 
-<p><img width="425px" src="http://www.mattnedrich.com/images/quicksort_csharp/quicksort_perf.png" /></p>
+<p><img width="425px" src="https://mattnedrich.github.io/images/quicksort_csharp/quicksort_perf.png" /></p>
 
 <p>As displayed, my implementation (even with the naive pivot selection) is fairly robust to random, sorted, and reverse sorted lists.</p>
 ]]></content>
@@ -88,9 +88,9 @@ sorter.Sort(items);
   
   <entry>
     <title type="html"><![CDATA[C# Sorting Woes]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes/"/>
     <updated>2014-02-16T16:22:30-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes</id>
     <content type="html"><![CDATA[<p>I was having some fun implementing sorting algorithms and thought it might be interesting to compare my implementations against the C# built in <code>List&lt;T&gt;.Sort</code>. That was where the rabbit hole started. </p>
 
 <h3 id="slow-quicksort">Slow Quicksort</h3>
@@ -138,7 +138,7 @@ sorter.Sort(items);
 
 <p>I benchmarked sorting Lists of various sizes for the two input classes. Results are shown below. For each List size, sorting was performed ten times (each time on a different randomized list), and the average execution time was kept.</p>
 
-<p><img width="450px" src="http://www.mattnedrich.com/images/c_sharp_sorting/ListT.png" /></p>
+<p><img width="450px" src="https://mattnedrich.github.io/images/c_sharp_sorting/ListT.png" /></p>
 
 <p>Sorting on wrapped <code>int</code>’s drastically degrades performance compared to plain  <code>int</code>’s. From my understanding, this is largely due to the <code>IComparable&lt;T&gt;.CompareTo</code> function pointer being used for element comparison, rather than a simple <code>&gt;</code> or <code>&lt;</code> (which likely trickles down to a single assembly instruction). Anyway, the key learning from this is that use built-in types when you need sorting performance and be aware of the penalty associated with using custom types! </p>
 ]]></content>
@@ -146,12 +146,12 @@ sorter.Sort(items);
   
   <entry>
     <title type="html"><![CDATA[Hide and Seek with OneNote]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/"/>
     <updated>2014-02-14T11:26:01-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem</id>
     <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It’s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
 
-<p><img width="250px" src="http://www.mattnedrich.com/images/onenote_fun/onenote_cmd_window.jpg" /></p>
+<p><img width="250px" src="https://mattnedrich.github.io/images/onenote_fun/onenote_cmd_window.jpg" /></p>
 
 <p>Some backstory - my original intent was to open a cmd window to the source directory of my blog to build it (I’m using Octopress). At first it wasn’t clear what clicking the OneNote option actually did. However, after a little poking around I was seeing a <code>OneNote Table Of Content.onetoc2</code> file in every directory of my blog output. That is, I didn’t see these in the blog source directory, but every time I would build my blog they would show up in <strong>every</strong> output directory.</p>
 
@@ -180,9 +180,9 @@ del /S /A:H *.onetoc2
   
   <entry>
     <title type="html"><![CDATA[K-Means in Python]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/09/k-means-implementation-in-python/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python/"/>
     <updated>2014-02-09T14:45:25-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/09/k-means-implementation-in-python</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python</id>
     <content type="html"><![CDATA[<p>I’ve written a general K-Means implementation in Python. It can be found here:<br />
 <a href="https://github.com/mattnedrich/algorithms/blob/master/python/clustering/kmeans/kmeans.py">https://github.com/mattnedrich/algorithms/blob/master/python/clustering/kmeans/kmeans.py</a></p>
 
@@ -227,26 +227,26 @@ del /S /A:H *.onetoc2
 
 <h3 id="dataset-1">Dataset 1</h3>
 
-<p><img width="350px" src="http://www.mattnedrich.com/images/kmeans_python/basicDataPoints.png" />
-<img width="350px" src="http://www.mattnedrich.com/images/kmeans_python/basicDataResult.png" /></p>
+<p><img width="350px" src="https://mattnedrich.github.io/images/kmeans_python/basicDataPoints.png" />
+<img width="350px" src="https://mattnedrich.github.io/images/kmeans_python/basicDataResult.png" /></p>
 
 <h3 id="dataset-2">Dataset 2</h3>
 
-<p><img width="350px" src="http://www.mattnedrich.com/images/kmeans_python/roundDataSetPoints.png" />
-<img width="350px" src="http://www.mattnedrich.com/images/kmeans_python/roundDataSetResult.png" /></p>
+<p><img width="350px" src="https://mattnedrich.github.io/images/kmeans_python/roundDataSetPoints.png" />
+<img width="350px" src="https://mattnedrich.github.io/images/kmeans_python/roundDataSetResult.png" /></p>
 
 <h3 id="dataset-3">Dataset 3</h3>
 
-<p><img width="350px" src="http://www.mattnedrich.com/images/kmeans_python/gaussianWithRoundPoints.png" />
-<img width="350px" src="http://www.mattnedrich.com/images/kmeans_python/gaussianWithRoundResult.png" /></p>
+<p><img width="350px" src="https://mattnedrich.github.io/images/kmeans_python/gaussianWithRoundPoints.png" />
+<img width="350px" src="https://mattnedrich.github.io/images/kmeans_python/gaussianWithRoundResult.png" /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Benchmarking C# Code]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/"/>
     <updated>2014-02-07T00:01:49-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number</id>
     <content type="html"><![CDATA[<p>I occasionally need to benchmark some code. In C#, this can easily be done using the Stopwatch class. After writing the same boilerplate Stopwatch wrapper enough times I decided to throw together a simple Benchmarker class.</p>
 
 <div class="bogus-wrapper"><notextile><figure class="code"> <div class="CodeRay">
@@ -308,9 +308,9 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
   
   <entry>
     <title type="html"><![CDATA[Android Virtual Machine Acceleration]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/01/android-virtual-machine-acceleration/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration/"/>
     <updated>2014-02-01T14:15:29-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/01/android-virtual-machine-acceleration</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration</id>
     <content type="html"><![CDATA[<p>I’ve dabbled in Android development in the past, but haven’t done much with emulation. In my experience the Android emulators are too slow to use, and I’ve usually used my phone for testing/debugging.</p>
 
 <p>Intel’s <a href="http://software.intel.com/en-us/android/articles/intel-hardware-accelerated-execution-manager">Hardware Accelerated Execution Manager</a> (HAXM) uses CPU virtualization to speed up Android emulators. I wanted to give it a try. </p>
@@ -326,7 +326,7 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
 
 <p>The Intel utility looks like this:</p>
 
-<p><img width="525px" height="384px" src="http://www.mattnedrich.com/images/android_virtual/vmx_enabled.jpg" /></p>
+<p><img width="525px" height="384px" src="https://mattnedrich.github.io/images/android_virtual/vmx_enabled.jpg" /></p>
 
 <h2 id="results">Results</h2>
 <p>With virtualization verified and enabled, I followed <a href="http://developer.android.com/tools/devices/emulator.html#acceleration">this</a> writeup to install everything and setup an x86 Android emulator.</p>
@@ -339,9 +339,9 @@ TimeSpan timespan = Benchmarker.RunOnce(() =&gt; bar = FooWithReturnValue());
   
   <entry>
     <title type="html"><![CDATA[K-Means Clustering]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/01/26/k-means-basics/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/01/26/k-means-basics/"/>
     <updated>2014-01-26T18:19:21-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/01/26/k-means-basics</id>
+    <id>https://mattnedrich.github.io/blog/2014/01/26/k-means-basics</id>
     <content type="html"><![CDATA[<h2 id="what-is-k-means">What is K-Means</h2>
 <p>Need to cluster some data? K-Means is one of the most common and simplistic clustering algorithms. It works by partitioning a data set into K  different groups (clusters). In this post, we’ll walk through the basics of K-Means, explain how it works, and touch on some of its strengths and weaknesses.</p>
 
@@ -397,25 +397,25 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
 <h2 id="example">Example</h2>
 <p>K-Means is often best understood visually, so let’s walk through an example. Suppose you have the following data in two dimensional space.</p>
 
-<p><img width="400px" height="300px" src="http://www.mattnedrich.com/images/kmeans_basics/0ab.png" /></p>
+<p><img width="400px" height="300px" src="https://mattnedrich.github.io/images/kmeans_basics/0ab.png" /></p>
 
 <p>The first step is to choose K starting cluster centers. For our example we will set K=5. For our example we’ll randomly select five observations from our data set to be the initial cluster centroids:</p>
 
-<p><img width="400px" height="300px" src="http://www.mattnedrich.com/images/kmeans_basics/0abc.png" /></p>
+<p><img width="400px" height="300px" src="https://mattnedrich.github.io/images/kmeans_basics/0abc.png" /></p>
 
 <p>With the initial cluster centroids selected, steps <strong>2</strong> and <strong>3</strong> are iterated as described above.</p>
 
-<p><img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00001_a.png" />
-<img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00001_b.png" />
-<img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00001_c.png" /></p>
+<p><img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00001_a.png" />
+<img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00001_b.png" />
+<img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00001_c.png" /></p>
 
-<p><img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00002_a.png" />
-<img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00002_b.png" />
-<img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00002_c.png" /></p>
+<p><img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00002_a.png" />
+<img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00002_b.png" />
+<img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00002_c.png" /></p>
 
-<p><img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00003_a.png" />
-<img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00003_b.png" />
-<img width="270px" src="http://www.mattnedrich.com/images/kmeans_basics/00003_c.png" /></p>
+<p><img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00003_a.png" />
+<img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00003_b.png" />
+<img width="270px" src="https://mattnedrich.github.io/images/kmeans_basics/00003_c.png" /></p>
 
 <h2 id="other-comments">Other Comments</h2>
 
@@ -434,9 +434,9 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
   
   <entry>
     <title type="html"><![CDATA[LaTeX Math in Octopress]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress/"/>
     <updated>2014-01-18T17:16:43-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress</id>
+    <id>https://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress</id>
     <content type="html"><![CDATA[<p>I found this post helpful when trying to enable LaTeX style math formulas in Octopress:</p>
 
 <p><a href="http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress">http://blog.zhengdong.me/2012/12/19/latex-math-in-octopress</a></p>
@@ -447,9 +447,9 @@ J=\sum_{k=1}^K\sum_{i=1}^N\lVert\mu_k-x_i\rVert ^2
   
   <entry>
     <title type="html"><![CDATA[Finding Files on Windows]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows/"/>
     <updated>2014-01-18T16:53:50-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
+    <id>https://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows</id>
     <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can’t find it.</p>
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>

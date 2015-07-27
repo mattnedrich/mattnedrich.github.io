@@ -1,113 +1,113 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/</loc>
+        <loc>https://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows/</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/blog/2014/01/18/latex-math-in-octopress/</loc>
+        <loc>https://mattnedrich.github.io/blog/2014/01/18/latex-math-in-octopress/</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/blog/2014/01/26/k-means-basics/</loc>
-        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>
-            http://www.mattnedrich.com/blog/2014/02/01/android-virtual-machine-acceleration/
-        </loc>
-        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.mattnedrich.com/blog/2014/02/07/benchmarking-c-number/</loc>
-        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.mattnedrich.com/blog/2014/02/09/k-means-implementation-in-python/</loc>
-        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem/</loc>
-        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/</loc>
-        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
-    </url>
-    <url>
-        <loc>http://www.mattnedrich.com/blog/2014/02/17/quicksort-in-c-number/</loc>
+        <loc>https://mattnedrich.github.io/blog/2014/01/26/k-means-basics/</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://www.mattnedrich.com/blog/2014/06/22/managing-octopress-from-multiple-computers/
+            https://mattnedrich.github.io/blog/2014/02/01/android-virtual-machine-acceleration/
+        </loc>
+        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
+    </url>
+    <url>
+        <loc>https://mattnedrich.github.io/blog/2014/02/07/benchmarking-c-number/</loc>
+        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
+    </url>
+    <url>
+        <loc>https://mattnedrich.github.io/blog/2014/02/09/k-means-implementation-in-python/</loc>
+        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
+    </url>
+    <url>
+        <loc>https://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/</loc>
+        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
+    </url>
+    <url>
+        <loc>https://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes/</loc>
+        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
+    </url>
+    <url>
+        <loc>https://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number/</loc>
+        <lastmod>2015-07-26T16:41:10-04:00</lastmod>
+    </url>
+    <url>
+        <loc>
+            https://mattnedrich.github.io/blog/2014/06/22/managing-octopress-from-multiple-computers/
         </loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
         <loc>
-            http://www.mattnedrich.com/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/
+            https://mattnedrich.github.io/blog/2014/06/22/google-analytics-for-github-pages-with-octopress/
         </loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/about.html</loc>
+        <loc>https://mattnedrich.github.io/about.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/about.html</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/about.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/components.html</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/components.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/css.html</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/css.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/customize.html</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/customize.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/getting-started.html</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/getting-started.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/assets/bootstrap/javascript.html</loc>
+        <loc>https://mattnedrich.github.io/assets/bootstrap/javascript.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/blog/archives/</loc>
+        <loc>https://mattnedrich.github.io/blog/archives/</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/</loc>
+        <loc>https://mattnedrich.github.io/</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/masters_work/hci_visual_surveillance.html</loc>
+        <loc>https://mattnedrich.github.io/masters_work/hci_visual_surveillance.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/masters_work/scene_entry_exit_discovery.html</loc>
+        <loc>https://mattnedrich.github.io/masters_work/scene_entry_exit_discovery.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/projects/stormcompass.html</loc>
+        <loc>https://mattnedrich.github.io/projects/stormcompass.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/projects.html</loc>
+        <loc>https://mattnedrich.github.io/projects.html</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
     <url>
-        <loc>http://www.mattnedrich.com/robots.txt</loc>
+        <loc>https://mattnedrich.github.io/robots.txt</loc>
         <lastmod>2015-07-26T16:41:10-04:00</lastmod>
     </url>
 </urlset>

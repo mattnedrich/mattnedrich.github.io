@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Windows | Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/blog/categories/windows/atom.xml" rel="self"/>
-  <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-07-27T08:16:59-04:00</updated>
-  <id>http://www.mattnedrich.com/</id>
+  <link href="https://mattnedrich.github.io/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="https://mattnedrich.github.io/"/>
+  <updated>2015-07-27T09:06:33-04:00</updated>
+  <id>https://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hide and Seek with OneNote]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem/"/>
     <updated>2014-02-14T11:26:01-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/14/fun-onenote-problem</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/14/fun-onenote-problem</id>
     <content type="html"><![CDATA[<p>I often open command windows on Windows via <code>shift + right click</code> on a directory. It’s a handy way to open a cmd window right where you want one. Ironically the option directly below <code>Open command window here</code> is <code>Open as Notebook in OneNote</code>. I accidentally clicked the OneNote option and it turned out to be a pretty interesting 10 pixel mistake.</p>
 
 <p><img width="250px" src="/images/onenote_fun/onenote_cmd_window.jpg" /></p>
@@ -48,9 +48,9 @@ del /S /A:H *.onetoc2
   
   <entry>
     <title type="html"><![CDATA[Finding Files on Windows]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows/"/>
     <updated>2014-01-18T16:53:50-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/01/18/finding-files-on-windows</id>
+    <id>https://mattnedrich.github.io/blog/2014/01/18/finding-files-on-windows</id>
     <content type="html"><![CDATA[<p>I often find myself in situations where I know a file exists but can’t find it.</p>
 
 <p>On Windows, the following can be used to search for a file from the current working directory</p>

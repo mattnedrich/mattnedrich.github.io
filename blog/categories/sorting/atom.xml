@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sorting | Matt Nedrich]]></title>
-  <link href="http://www.mattnedrich.com/blog/categories/sorting/atom.xml" rel="self"/>
-  <link href="http://www.mattnedrich.com/"/>
-  <updated>2015-07-27T08:16:59-04:00</updated>
-  <id>http://www.mattnedrich.com/</id>
+  <link href="https://mattnedrich.github.io/blog/categories/sorting/atom.xml" rel="self"/>
+  <link href="https://mattnedrich.github.io/"/>
+  <updated>2015-07-27T09:06:33-04:00</updated>
+  <id>https://mattnedrich.github.io/</id>
   <author>
     <name><![CDATA[Matt Nedrich]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Quicksort in C#]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/17/quicksort-in-c-number/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number/"/>
     <updated>2014-02-17T13:36:31-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/17/quicksort-in-c-number</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/17/quicksort-in-c-number</id>
     <content type="html"><![CDATA[<p>I have written an implementation of quicksort in C#. It can be found here.<br />
 <a href="https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs">https://github.com/mattnedrich/algorithms/blob/master/csharp/sorting/quicksort/Quicksorter.cs</a></p>
 
@@ -44,9 +44,9 @@ sorter.Sort(items);
   
   <entry>
     <title type="html"><![CDATA[C# Sorting Woes]]></title>
-    <link href="http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes/"/>
+    <link href="https://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes/"/>
     <updated>2014-02-16T16:22:30-05:00</updated>
-    <id>http://www.mattnedrich.com/blog/2014/02/16/c-sharp-sorting-woes</id>
+    <id>https://mattnedrich.github.io/blog/2014/02/16/c-sharp-sorting-woes</id>
     <content type="html"><![CDATA[<p>I was having some fun implementing sorting algorithms and thought it might be interesting to compare my implementations against the C# built in <code>List&lt;T&gt;.Sort</code>. That was where the rabbit hole started. </p>
 
 <h3 id="slow-quicksort">Slow Quicksort</h3>
